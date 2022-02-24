@@ -1,0 +1,41 @@
+.Card{
+    width: 33%;
+    height: 380px;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0px 1px 10px 1px palevioletred;    
+    
+}
+
+.upper-container{
+    height: 100px;
+    background: linear-gradient(to right, rgb(68, 0, 255), rgb(243, 84, 235));
+    
+}
+
+.image-container img{    
+    background-image: url("./images/dogs3.jpg");
+    background-size:cover;
+    background-position-x: 100%;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    padding: px;
+    transform: translate(25%);
+    overflow: hidden;
+    
+}
+
+.upper-container .image-container{
+    float: left;
+    margin-right: 15px;
+}
+
+.upper-container h3{
+    display: block;
+    margin-left: 15px;
+}
+
+.lower-container{
+    margin-left: 35%;
+}

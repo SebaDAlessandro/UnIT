@@ -1,10 +1,15 @@
 import './App.css';
+import Card from './components/Card';
+import {BrowserRouter} from 'react-router-dom';
+
 
 function App() {
   return (
-    <div className="App">
-      <h1>Rick and Morty</h1>
-    </div>
+    <BrowserRouter>
+      <div className='App'>
+        <Card/>
+      </div>
+    </BrowserRouter>
   );
 }
 

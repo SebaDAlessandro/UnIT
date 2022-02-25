@@ -1,0 +1,12 @@
+POST  http://localhost:3001/candidates/
+Content-Type: application/json
+
+{
+  "name": "emma", 
+  "lastname": "EMMA", 
+  "email": "algo@algp.com", 
+  "location": "BAAS", 
+  "status": "Estudiando", 
+  "image": "https://www.freejpg.com.ar/image-900/1d/1de8/F100007892-chispas.jpg", 
+  "password": "sd6a116"
+}

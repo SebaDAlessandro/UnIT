@@ -1,0 +1,2 @@
+GET   http://localhost:3001/candidates/
+Content-Type: application/json

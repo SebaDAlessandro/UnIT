@@ -2,12 +2,16 @@ const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 
-const {Candidate} = require('../db.js');
+const {Candidate, Language, Contacted} = require('../db.js');
 
 
 router.get('/', async(req, res) => {
     try {
-        const candidates = await Candidate.findAll()
+        const candidates = await Candidate.findAll({
+            include: [
+                {model: Language}, {model: Contacted}
+            ]
+        })
         res.json(candidates);
     } catch (error) {
         console.log(error)

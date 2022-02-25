@@ -25,19 +25,15 @@ module.exports = (sequelize) => {
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false,
     },
-    linkdin: {
+    linkedin: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     github: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     portfolio: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     status: {
       type: DataTypes.ENUM('Trabajando', 'Busqueda Activa', 'Estudiando'),
@@ -49,7 +45,6 @@ module.exports = (sequelize) => {
     },
     cv: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     password: {
       type: DataTypes.STRING,

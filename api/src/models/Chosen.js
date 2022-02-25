@@ -1,33 +1,32 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  return sequelize.define('contactado', {
+  return sequelize.define('contacted', {
     id:{
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    idCadidate: {
+    idCandidate: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    //en proceso, bloqueado, rechazado, contactado, macheado
     status: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM('En proceso', 'Rechazado', 'Contactado', 'Matched' ), 
       allowNull: false,
     },
-    detalle: {
+    details: {
       type: DataTypes.TEXT,
-      allowNull: false,
     },
-    fecha: {
+    date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    status_contacto: {
+    status_contact: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
     },
-    puesto: {
+    position: {
       type: DataTypes.STRING,
       allowNull: false,
     },

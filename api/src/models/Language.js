@@ -6,8 +6,9 @@ module.exports = (sequelize) => {
   sequelize.define('language', {
 id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
     primaryKey: true,
+    autoIncrement: true,
+    allowNull: false
 }, 
 language: {
     type: DataTypes.STRING,
@@ -18,7 +19,7 @@ native: {
     allowNull: false,
 },
 level: {
-    type: DataTypes.STRING,
+    type: DataTypes.ENUM('A0', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'),
     allowNull: false,
 }
 });

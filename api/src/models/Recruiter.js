@@ -19,6 +19,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    // nombre de la empresa o freelance desde el front
     organization: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -33,10 +34,9 @@ module.exports = (sequelize) => {
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false,
     },
     location:{
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     }
   });

@@ -31,12 +31,37 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Candidate, Recruiter } = sequelize.models;
+const { Candidate, Recruiter, Softskill,Technicalskills, Contacted, Language,  Orientation } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 Candidate.belongsToMany(Recruiter, { through: 'candidate_recruiter' });
 Recruiter.belongsToMany(Candidate, { through: 'candidate_recruiter' });
+
+Candidate.belongsToMany(Softskill, {through: 'candidate_softskill'});
+Softskill.belongsToMany(Candidate, {through: 'candidate_softskill'});
+
+Candidate.belongsToMany(Technicalskills, {through: 'canidate_technicalskill'});
+Technicalskills.belongsToMany(Candidate, {through: 'canidate_technicalskill'});
+
+Candidate.belongsToMany(Contacted, {through: 'candidate_contacted'});
+Contacted.belongsToMany(Candidate, {through: 'candidate_contacted'});
+
+Candidate.belongsToMany(Language,{through: 'candidate_language'});
+Language.belongsToMany(Candidate, {through: 'candidate_language'});
+
+Candidate.belongsToMany(Orientation, {through: 'candidate_orientation'});
+Orientation.belongsToMany(Candidate, {through: 'candidate_orientation'});
+
+Recruiter.hasMany(Contacted); 
+Contacted.belongsTo(Recruiter);
+
+
+
+
+
+
+
 
 
 module.exports = {

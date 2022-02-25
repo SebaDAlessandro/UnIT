@@ -6,32 +6,33 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-    },
-    cargo: {
+    },//cargo
+    position: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    nombre_empresa: {
+    organization_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    ubicacion: {
+    location: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    fecha_inicio: {
+    starting_date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    fecha_finalizacion: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
+    ending_date: {
+      type: DataTypes.DATE,
     },
+    // 
     status: {
       type: DataTypes.BOOLEAN,
+      default: false,
       allowNull: false,
     },
-    descripcion:{
+    description:{
         type: DataTypes.TEXT,
         allowNull: false,
     }

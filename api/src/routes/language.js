@@ -4,6 +4,7 @@ const router = express.Router();
 
 const {Candidate, Language} = require('../db.js');
 
+//! MEJORAR ESTA RUTA
 router.post("/", async (req, res) => {
     // en el req.body tomo toda la informacion que viene del front
     const {language, native, level, idCandidate} = req.body;

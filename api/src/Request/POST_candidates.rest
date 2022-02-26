@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
   "name": "emma", 
-  "lastname": "EMMA", 
+  "lastname": "emma", 
   "email": "algo@algp.com", 
   "location": "BAAS", 
   "status": "Estudiando", 

@@ -30,14 +30,14 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      
     },
     description: {
       type: DataTypes.TEXT,
     },
     location:{
       type: DataTypes.STRING,
-      allowNull: false,
+      
     }
   });
 };

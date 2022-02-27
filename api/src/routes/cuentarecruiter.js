@@ -6,22 +6,26 @@ const bcryptjs = require('bcryptjs');
 const {Recruiter} = require('../db.js');
 
 router.post('/', async (req, res)=> {
-    const {name, lastname, email, empresa, password} = req.body;
+    const {name, lastname, email, organization, password, image, location, description} = req.body;
     const passwords = await bcryptjs.hash(password, 10);
     try {
         const candidate = await Recruiter.create({
             name,
             lastname,
             email,
-            empresa,
-            password: passwords
-            
+            organization,
+            password: passwords,
+            image,
+            location,
+            description
             })
-        res.json({msg: "el usuario se creo corerctamente"})    
+        res.json(candidate)    
     } catch (error) {
         console.log(error)
     }
 })
+
+module.exports = router;
 
 
 

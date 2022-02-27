@@ -1,8 +1,10 @@
 const { Router } = require('express');
+const Recruiter = require('../models/Recruiter');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const candidates = require('./candidates');
 const language = require('./language');
+const cuentarecruiter = require('./cuentarecruiter')
 
 const router = Router();
 
@@ -11,6 +13,7 @@ const router = Router();
 
 router.use('/candidates', candidates)
 router.use('/language', language)
+router.use('/cuentarecruiter',cuentarecruiter)
 
 
 

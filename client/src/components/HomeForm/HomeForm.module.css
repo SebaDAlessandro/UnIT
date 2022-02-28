@@ -1,0 +1,21 @@
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vw;
+    min-height: 100vh;
+    background: #2f94c6;
+  /*   background-image: url('../images/undraw_connected_world_wuay.svg');
+    background-size: 50%;
+    background-position: 10% center;
+    background-repeat: no-repeat; */
+}
+
+.btn {
+    background-color: #FFD20A;
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 0.5rem;
+    font-weight: bold;
+}

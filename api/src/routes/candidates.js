@@ -5,7 +5,7 @@ const bcryptjs = require('bcryptjs');
 const {Candidate, Language, Contacted} = require('../db.js');
 
 
-router.get('/', async(req, res) => {
+router.get('/', async(req, res, next) => {
     try {
         const candidates = await Candidate.findAll({
             include: [
@@ -14,11 +14,11 @@ router.get('/', async(req, res) => {
         })
         res.json(candidates);
     } catch (error) {
-        console.log(error)
+        next(error)
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
     const {name, lastname, email, location, status, image, password} = req.body;
 
     const passwords = await bcryptjs.hash(password, 10);
@@ -33,9 +33,10 @@ router.post('/', async (req, res) => {
             image,
             password: passwords
         })
-        res.json({msg: "el candidato se guado corerctamente"})    
+        res.json({msg: "el candidato se guardo correctamente"})    
     } catch (error) {
-        console.log(error)
+        next(error);
+        
     }
 })
 

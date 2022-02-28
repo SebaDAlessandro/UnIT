@@ -5,19 +5,19 @@ const bcryptjs = require('bcryptjs');
 
 const {Recruiter, Contacted, Candidate} = require('../db.js');
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
     try{
         const recruiter = await Recruiter.findAll({
             include: [{model: Contacted},{model: Candidate}]
         })
         res.json(recruiter)
     }catch(error){
-        res.send(error)
+        next(error)
     }
 })
 
 
-router.post('/', async (req, res)=> {
+router.post('/', async (req, res, next)=> {
     const {name, lastname, email, organization, password, image, location, description} = req.body;
     const passwords = await bcryptjs.hash(password, 10);
     try {
@@ -31,9 +31,9 @@ router.post('/', async (req, res)=> {
             location,
             description
             })
-        res.send(recruiter)    
+        res.send(`El recruiter ${name} fue creado correctamente`)    
     } catch (error) {
-        console.log(error)
+        next(error)
     }
 })
 

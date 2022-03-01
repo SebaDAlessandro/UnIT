@@ -6,6 +6,7 @@ const candidates = require('./candidates');
 const language = require('./language');
 const cuentarecruiter = require('./cuentarecruiter');
 const favorites = require('./favorites');
+const candidatesBulkcreate = require('./candidatesBulkcreate')
 
 const router = Router();
 
@@ -16,6 +17,7 @@ router.use('/candidates', candidates);
 router.use('/language', language);
 router.use('/cuentarecruiter',cuentarecruiter);
 router.use('/favorites', favorites);
+router.use('/candidatesBulk', candidatesBulkcreate);
 
 
 

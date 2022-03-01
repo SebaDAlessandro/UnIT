@@ -1,0 +1,14 @@
+.globalCont {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 100%;
+    background-color: #EABCA3;
+}

@@ -39,7 +39,7 @@ module.exports = (sequelize) => {
     },
     status: {
       type: DataTypes.ENUM('Trabajando', 'Busqueda Activa', 'Estudiando'),
-      allowNull: false,
+      allowNull: false, 
     },
     image: {
       type: DataTypes.TEXT,

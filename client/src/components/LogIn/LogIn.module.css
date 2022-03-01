@@ -1,0 +1,187 @@
+.container {
+    min-height: 100vh;
+    min-width: 100vw;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    font-family: 'Roboto', sans-serif;
+    color: #C74874;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.conecta {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color:#EABCA3;
+    font-size: 90px;
+    align-items: center;
+    justify-content: center;
+}
+
+.cohete{
+    z-index: 80;
+    position: absolute;
+    width: 900px;
+    height: 580px;
+    left: 292px;
+    top: 300px;
+    background-image: url('../images/animacion.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.titulo h1{
+    text-align: left;
+    text-shadow: -14px 7px 20px rgba(199, 72, 116, 0.192) ;
+    position: relative;
+    z-index: 100;
+}
+
+.titulo p{
+    font-size: 40px;
+    text-align: center;
+    border: 1px solid #C74874;
+    border-radius: 10px;
+    padding: 0.5rem;
+    position: relative;
+    z-index: 100;
+    padding: 0;
+    margin: 0;
+}
+
+.titulo a {
+    color: #C74874;
+}
+
+.containerInputs {
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerInputs h1 {
+    font-size: 60px;
+    margin-bottom: 3rem;
+}
+
+.input_form {
+    min-width: 60%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:  none;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 3rem;
+ }
+ 
+ .input_form input {
+    width: 100%;
+    height: 100%;
+    background: none;
+    color: black;
+    padding-top: 20px;
+    border: none;
+    outline: none;
+ }
+ 
+ .lbl_nombre {
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     font-weight: bold;
+     width: 100%;
+     height: 100%;
+     pointer-events: none;
+     border-bottom: 1px solid #C74874;
+ }
+ 
+ .lbl_nombre::after {
+     content: '';
+     position: absolute;
+     left: 0;
+     bottom: -1px;
+     width: 100%;
+     height: 100%;
+     border-bottom: 3px solid #C5031D;
+     transform: translateX(-100%);
+     transition: all 0.3s ease;
+ }
+ 
+ .text_nomb {
+     position: absolute;
+     bottom: 5px;
+     left: 0;
+     transition: all 0.3s ease;
+ }
+ 
+ .input_form input:focus + .lbl_nombre .text_nomb,
+ .input_form input:valid + .lbl_nombre .text_nomb {
+    transform:  translateY(-150%);
+    font-size: 14px;
+    color: #C5031D;
+  }
+ 
+ .input_form input:focus + .lbl_nombre:after,
+ .input_form input:valid + .lbl_nombre:after {
+     transform: translateX(0%);
+ }
+
+/* Estilos de los botones (Iniciar, Crear Cuenta) */
+
+.containerbtn {
+    margin-top: 1rem;
+    min-width: 100%;
+}
+
+ .contbtn {
+     min-width: 100%;
+ }
+
+ button {
+     border: none;
+ }
+
+ .inicio {
+    border-radius: 10px;
+    font-size: 20px;
+    margin-top: 1rem;
+    padding: 1rem;
+    min-width: 60%;
+    background-color:#EABCA3;
+    color: #C74874;
+ }
+
+ .crear {
+     border-radius: 10px;
+    font-size: 20px;
+    margin-top: 1rem;
+    padding: 1rem;
+    min-width: 60%;
+    background-color: #C74874;
+    color: #EABCA3;
+ }
+
+ /* Parrafo se me olvido la contraseña */
+
+ .contOlvidar {
+    min-width: 60%;
+    text-align: left;
+ }
+
+ .olvidar {
+     color: #af3e65;
+     text-decoration: underline #c74874bd;
+     text-align: left;
+ }

@@ -7,22 +7,48 @@ import { Link, Routes, Route } from 'react-router-dom'
 const HomeForm = (e) => {
   return (
     <div className={styles.contenedor}>
-        <Link to={`/form/${e}`}>
-            <button className={styles.btn}>Home</button>
-        </Link>
 
-        <Link to='formr'>
-            <button className={styles.btn}>Recluiter</button>
-        </Link>
+        <div className={styles.recluiter}>
 
-        <Link to='formc'>
-            <button className={styles.btn}>Candidate</button>
-        </Link>
+            <div className={styles.titler}>
+            <Link to='/formr'>
+                <h1>Recluiter</h1>
+            </Link>
+            </div>
 
-            <Routes>
-                <Route exact path='/formr/' element={<FormRecluiter/>}/>
-                <Route exact path='/formc/' element={<FormCandidate/>}/>
-            </Routes>
+            <Link to='/formr'>
+            <div className={styles.contImgr}>
+
+            </div>
+            </Link>
+
+            <div>
+            <Link to='/formr'>
+                <button className={styles.btn}>Registrarse</button>
+            </Link>
+            </div>
+
+        </div>
+
+        <div className={styles.candidate}>
+
+            <div className={styles.titlec}>
+            <Link to='/formc'>
+                <h1>Candidate</h1>
+            </Link>
+            </div>
+
+            <Link to='/formc'>
+            <div className={styles.contImgc}>
+
+            </div>
+            </Link>
+
+            <Link to='/formc'>
+                <button className={styles.btn_claro}>Registrarse</button>
+            </Link>
+
+        </div>
         
     </div>
   )

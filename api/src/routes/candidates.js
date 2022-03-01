@@ -35,7 +35,7 @@ router.post('/', async (req, res, next) => {
         })
         res.json({msg: "el candidato se guardo correctamente"})    
     } catch (error) {
-        next(error);
+        res.send(error.message)
         
     }
 })

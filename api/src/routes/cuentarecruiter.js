@@ -8,7 +8,7 @@ const {Recruiter, Contacted, Candidate} = require('../db.js');
 router.get('/', async (req, res, next) => {
     try{
         const recruiter = await Recruiter.findAll({
-            include: [{model: Contacted},{model: Candidate}]
+            include: [{model: Contacted}]
         })
         res.json(recruiter)
     }catch(error){

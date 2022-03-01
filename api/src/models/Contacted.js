@@ -7,9 +7,9 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true
     },
-    idCandidate: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    candidateId: {
+       type: DataTypes.STRING,
+       allowNull: false,
     },
     //en proceso, bloqueado, rechazado, contactado, macheado
     status: {
@@ -30,5 +30,5 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       // allowNull: false,
     },
-  });
+  },{ timestamps: false});
 };

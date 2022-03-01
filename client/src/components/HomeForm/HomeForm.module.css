@@ -1,21 +1,96 @@
 .contenedor {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
     min-width: 100vw;
     min-height: 100vh;
-    background: #2f94c6;
-  /*   background-image: url('../images/undraw_connected_world_wuay.svg');
+  /*background-image: url('../images/undraw_connected_world_wuay.svg');
     background-size: 50%;
     background-position: 10% center;
     background-repeat: no-repeat; */
 }
 
 .btn {
-    background-color: #FFD20A;
-    border: 2px solid black;
-    border-radius: 30px;
-    padding: 0.5rem;
-    font-weight: bold;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-top: 1rem;
+  padding: 1rem;
+  min-width: 60%;
+  background-color:#C74874;
+  color: #EABCA3;
+  font-weight: bold;
+}
+.btn_claro{
+  border-radius: 10px;
+  font-size: 20px;
+  margin-top: 1rem;
+  padding: 1rem;
+  min-width: 60%;
+  background-color:#EABCA3;
+  color: #C74874;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+}
+
+.recluiter {
+  height: 100%;
+  background-color: #EABCA3;
+}
+
+.recluiter .contImgr:hover {
+  transform: scale(0.9);
+  filter: none;
+}
+
+.candidate {
+  height: 100%;
+}
+
+/* Aquí va el diseño de el titulo del recluta */
+
+.titler {
+  font-size: 50px;
+  color: #C74874;
+}
+
+.titler a {
+  color: #C74874;
+}
+
+.contImgr {
+  min-height: 70%;
+  background-image: url('../images/viejo.png');
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: 0.5s all ease-in-out;
+  filter: drop-shadow(0 2px 40px #8a8a8a);
+}
+
+/* Aquí va el diseño de el titulo del candidato */
+
+.titlec {
+  font-size: 50px;
+}
+
+.titlec a {
+  color: #C74874;
+}
+
+.contImgc {
+  min-height: 70%;
+  background-image: url('../images/candidato.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 60%;
+  transition: 0.5s all ease-in-out;
+  filter: drop-shadow(0 2px 40px #8a8a8a);
+}
+.candidate .contImgc:hover {
+  transform: scale(0.9);
+  filter: none;
 }

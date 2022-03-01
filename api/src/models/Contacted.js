@@ -14,21 +14,21 @@ module.exports = (sequelize) => {
     //en proceso, bloqueado, rechazado, contactado, macheado
     status: {
       type: DataTypes.ENUM('En proceso', 'Rechazado', 'Contactado', 'Matched' ), 
-      allowNull: false,
+      // allowNull: false,
     },
     details: {
       type: DataTypes.TEXT,
     },
     date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      // allowNull: false,
     },
     status_contact: {
       type: DataTypes.BOOLEAN,
     },
     position: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
   });
 };

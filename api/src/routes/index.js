@@ -10,6 +10,7 @@ const candidatesBulkcreate = require('./candidatesBulkcreate')
 const technicalskill = require('./technicalSkill')
 const softskill = require('./softSkill')
 const orientation = require('./orientation')
+const projectexperience = require('./projectexperience')
 
 
 const router = Router();
@@ -25,6 +26,7 @@ router.use('/candidatesBulk', candidatesBulkcreate);
 router.use('/technicalskill', technicalskill);
 router.use('/softskill', softskill);
 router.use('/orientation', orientation);
+router.use('/projectexperience', projectexperience)
 
 
 

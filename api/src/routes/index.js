@@ -7,7 +7,9 @@ const language = require('./language');
 const cuentarecruiter = require('./cuentarecruiter');
 const favorites = require('./favorites');
 const candidatesBulkcreate = require('./candidatesBulkcreate')
-
+const technicalskill = require('./technicalSkill')
+const softskill = require('./softSkill')
+const orientation = require('./orientation')
 
 
 const router = Router();
@@ -20,6 +22,9 @@ router.use('/language', language);
 router.use('/cuentarecruiter',cuentarecruiter);
 router.use('/favorites', favorites);
 router.use('/candidatesBulk', candidatesBulkcreate);
+router.use('/technicalskill', technicalskill);
+router.use('/softskill', softskill);
+router.use('/orientation', orientation);
 
 
 

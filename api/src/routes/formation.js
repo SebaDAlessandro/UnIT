@@ -47,6 +47,33 @@ router.post("/", async (req, res, next) => {
     }
 })
 
+router.put ('/:id', async (req, res, next) => {
+    const {title, institution, ubication, status, starting_date, ending_date, description, idCandidate} = req.body;
+    try {
+        const formation = await Formation.findByPk(req.params.id);
+        if(!formation){
+            return res.status(404).json({
+                message: "Formacion no encontrada"
+            })
+        }
+        await formation.update({
+            title,
+            institution,
+            ubication,
+            status,
+            starting_date,
+            ending_date,
+            description
+        })
+        if(formation && idCandidate){
+            const candidate = await Candidate.findByPk(idCandidate);
+            candidate.addFormation(formation);
+        }
+        res.json({msg: "la formacion se actualizo correctamente"})
+    } catch (error) {
+        next(error)
+    }
+})
 
 
 

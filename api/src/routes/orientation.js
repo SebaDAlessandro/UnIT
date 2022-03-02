@@ -4,6 +4,9 @@ const router = express.Router();
 
 const {Candidate, Orientation} = require('../db.js');
 
+
+
+
 router.post("/", async (req, res, next) => {
 
     const {name, idCandidate} = req.body;

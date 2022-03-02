@@ -2,7 +2,44 @@ const express = require('express');
 const router = express.Router();
 const {favoritesPost} = require('../controllers/favoritesRoutes');
 
-const {Recruiter} = require('../db.js');
+const {Recruiter, Candidate, Language, Contacted} = require('../db.js');
+
+
+router.get('/:id', async(req, res, next) => {
+    const {id} = req.params;
+    
+    if(id){
+       try {
+        
+        const candidatos = await Candidate.findByPk(id,{
+            include: [
+                {model: Language}
+            ]
+        })
+        if(candidatos !=0){
+            res.status(200).json({
+               candidatos
+            })
+
+        }else{
+            try{
+                const candidatosF = await Contacted.findAll()
+                res.status(200).json({
+                    candidatosF
+                })
+
+            } catch(e){
+                res.status(404).json({
+                    message: 'Candidate not found'
+                })
+            }
+            
+        }
+        // res.json(candidatos);
+    } catch (error) {
+        next(error)
+    }
+}
 
 
 router.post('/', async (req, res, next) => {
@@ -24,6 +61,31 @@ router.post('/', async (req, res, next) => {
         next(error);
     }
 })
+})
 
+
+router.delete('/candidate/:id', async (req, res) => {
+
+    // http://localhost:3001/favorites/candidate/:{id}
+
+    const {id} = req.params
+    console.log(id)
+    
+    try{
+        const candidateB = await Contacted.findByPk(id);
+
+        
+        if(candidateB){
+            await candidateB.destroy();
+            res.status(200).send ('Candidate deleted')
+
+        }
+    } catch(error){
+        res.status(404).send('Candidate not found')
+    }
+})
+
+        
+       
 
 module.exports = router;

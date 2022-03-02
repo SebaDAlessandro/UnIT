@@ -8,6 +8,8 @@ const cuentarecruiter = require('./cuentarecruiter');
 const favorites = require('./favorites');
 const candidatesBulkcreate = require('./candidatesBulkcreate')
 
+
+
 const router = Router();
 
 // Configurar los routers
@@ -18,6 +20,7 @@ router.use('/language', language);
 router.use('/cuentarecruiter',cuentarecruiter);
 router.use('/favorites', favorites);
 router.use('/candidatesBulk', candidatesBulkcreate);
+
 
 
 

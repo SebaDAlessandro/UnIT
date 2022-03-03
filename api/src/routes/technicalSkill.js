@@ -21,7 +21,7 @@ router.post("/", async (req, res, next) => {
     } catch (error) {
         next(error)
     }
-})//andres
+})
 
 
 router.get('/', async (req, res, next) => {
@@ -32,6 +32,22 @@ router.get('/', async (req, res, next) => {
             ]
         })
         res.json(technicalskills);
+    } catch (error) {
+        next(error)
+    }
+})
+
+
+router.delete("/:id", async (req, res, next) => {
+    const {id} = req.params;
+    try {
+        const tk = await Technicalskills.findByPk(id);
+        if(tk){
+            await tk.destroy();
+            res.json({msg: "Su technical skill se elimino correctamente"})
+        }else{
+            res.json({msg: "La technical skill no existe"})
+        }
     } catch (error) {
         next(error)
     }

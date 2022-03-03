@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize, Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+
 const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
 } = process.env;
@@ -36,8 +37,8 @@ const { Candidate, Recruiter, Softskill,Technicalskills, Contacted, Language,  O
 //console.log(sequelize.models)
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Candidate.belongsToMany(Recruiter, { through: 'candidate_recruiter' });
-Recruiter.belongsToMany(Candidate, { through: 'candidate_recruiter' });
+Candidate.belongsToMany(Recruiter, { through: 'favorites', foreignKey: 'idcandidate' });
+Recruiter.belongsToMany(Candidate, { through: 'favorites', foreignKey: 'idrecruiter' });
 
 Candidate.belongsToMany(Softskill, {through: 'candidate_softskill'});
 Softskill.belongsToMany(Candidate, {through: 'candidate_softskill'});

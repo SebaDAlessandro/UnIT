@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {favoritesPost} = require('../controllers/favoritesRoutes');
+//const {favoritesPost} = require('../controllers/favoritesRoutes');
 
 const {Recruiter, Candidate, Language, Contacted} = require('../db.js');
 
@@ -42,8 +42,17 @@ router.get('/:id', async(req, res, next) => {
 }
 })
 
+const favoritesPost = (idcandidate) => {
+    let favor = [];
+    idcandidate.map(async c => {
+         console.log(c)
+     let candidato = await Candidate.findByPk(c) 
+     favor.push(candidato)
+    })
+    return favor;
+}
 
-router.post('/', async (req, res, next) => {
+ router.post('/', async (req, res, next) => {
 
     console.log('Funciona')
 
@@ -67,8 +76,6 @@ router.post('/', async (req, res, next) => {
         res.send(error.message);
     }
 })
-    
-
 
 
 router.delete('/candidate/:id', async (req, res) => {

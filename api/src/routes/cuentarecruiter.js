@@ -62,7 +62,9 @@ router.post("/loginrecruiter", async (req, res) => {
             }      
     }
     catch (error) {
-        res.send(error.message)
+
+        res.json({msg: "Ups...!!!existe un error"})
+
     }
   })
 

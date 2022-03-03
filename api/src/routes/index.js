@@ -11,6 +11,8 @@ const technicalskill = require('./technicalSkill')
 const softskill = require('./softSkill')
 const orientation = require('./orientation')
 const projectexperience = require('./projectexperience')
+const folders = require('./folders')
+
 
 
 const router = Router();
@@ -27,6 +29,9 @@ router.use('/technicalskill', technicalskill);
 router.use('/softskill', softskill);
 router.use('/orientation', orientation);
 router.use('/projectexperience', projectexperience)
+router.use('/folders', folders)
+
+
 
 
 

@@ -37,6 +37,36 @@ router.post('/', async (req, res, next)=> {
     }
 })
 
+
+router.post("/loginrecruiter", async (req, res) => {
+    // TODO: >> http://localhost:3001/cuentarecruiter/loginrecruiter <<
+     
+    const { email, password } = req.body
+  
+    try {
+            const recruiter = await Recruiter.findOne({ where: { email: email }, })
+            const candidate = await Candidate.findOne({ where: { email: email }, })
+            if (recruiter !=0 ) {
+                const passwords = await bcryptjs.compare(password, recruiter.password)
+                if (passwords) {
+                    res.send(recruiter)
+                } else {
+                    res.send("Contraseña incorrecta")
+                }
+            } else if (candidate !=0) {
+                const passwordValidated = await bcryptjs.compare(password, Candidate.password)
+                if (passwordValidated) {
+                    res.send(Candidate)
+                } else {
+                    res.send("Contraseña incorrecta")
+                }
+            }      
+    }
+    catch (error) {
+        res.json({msg: "Ups...!!!existe un error"})
+    }
+  })
+
 module.exports = router;
 
 

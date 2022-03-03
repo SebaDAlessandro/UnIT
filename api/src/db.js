@@ -5,6 +5,7 @@ const path = require('path');
 const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
 } = process.env;
+// console.log(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME);
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
   logging: false, //
@@ -31,7 +32,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Candidate, Recruiter, Softskill,Technicalskills, Contacted, Language,  Orientation, Project_experience, Formation } = sequelize.models;
+const { Candidate, Recruiter, Softskill,Technicalskills, Contacted, Language,  Orientation, Project_experience, Formation, Folders} = sequelize.models;
 //console.log(sequelize.models)
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -61,6 +62,13 @@ Formation.belongsToMany(Candidate, {through: 'candidate_formation'});
 
 Recruiter.hasMany(Contacted); 
 Contacted.belongsTo(Recruiter);
+
+
+Folders.belongsToMany(Candidate, {through: 'folder_candidate' });
+Candidate.belongsToMany(Folders, {through: 'folder_candidate' });
+
+Recruiter.hasMany(Folders);
+Folders.belongsTo(Recruiter);
 
 
 

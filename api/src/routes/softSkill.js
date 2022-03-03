@@ -24,4 +24,17 @@ router.post("/", async (req, res, next) => {
 })
 
 
+router.get('/', async (req, res, next) => {
+    try {
+        const softskills = await Softskill.findAll({
+            include: [
+                {model: Candidate}
+            ]
+        })
+        res.json(softskills);
+    } catch (error) {
+        next(error)
+    }
+})
+
 module.exports = router;

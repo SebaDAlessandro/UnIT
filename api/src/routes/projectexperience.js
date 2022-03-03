@@ -49,9 +49,23 @@ router.post('/', async (req, res, next)=> {
                 const candidate = await Candidate.findByPk(idCandidate);
                 candidate.addProject_experience(project);
             }
+        
+        res.json(`El proyecto o experiencia fue cargado correctamente`)    
+    } catch (error) {
+        next(error)
+    }
+})
 
-            
-        res.json(`El proyecto fue creado correctamente`)    
+router.delete("/candidate/:id", async (req, res, next) => {
+    const {id} = req.params;
+    try {
+        const proExperience = await Project_experience.findByPk(id);
+        if(proExperience){
+            await proExperience.destroy();
+            res.json({msg: "Su experiencia se elimino correctamente"})
+        }else{
+            res.json({msg: "La experiencia no existe"})
+        }
     } catch (error) {
         next(error)
     }

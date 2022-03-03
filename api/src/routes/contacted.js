@@ -57,4 +57,39 @@ router.post('/', async (req, res, next) => {
 });
 
 
+router.delete('/', async (req, res, next) => {
+  const { id } = req.body;
+  try{
+    const contacteds = await Contacted.findByPk(id)
+
+    if(contacteds){
+      await contacteds.destroy();
+      res.send(`contacto ${id} eliminado`)
+    }
+  }catch(error){
+    next(error)
+  }
+})
+
+
+router.put('/', async (req, res, next) => {
+   const { idcontacted, status, details, date, status_contact, position} = req.body;
+  try{
+    const encontrado = await Contacted.findByPk(idcontacted)
+    const mod = await encontrado.update({
+      status,
+      details,
+      date,
+      status_contact,
+      position
+    })
+    res.json(mod)
+  }catch(error){
+    next(error)
+  }
+})
+
+
+
+
 module.exports = router;

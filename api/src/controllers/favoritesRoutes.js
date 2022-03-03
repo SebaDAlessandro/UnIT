@@ -5,7 +5,7 @@ const favoritesPost = (idcandidate) => {
     let favor = [];
     idcandidate.map(async c => {
          console.log(c)
-     let candidato = await Candidate.findOne({ where: {id: c}}) 
+     let candidato = await Candidate.findByPk(c) 
      favor.push(candidato)
     })
     return favor;

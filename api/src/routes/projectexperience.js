@@ -50,7 +50,7 @@ router.post('/', async (req, res, next)=> {
                 candidate.addProject_experience(project);
             }
         
-        res.json(`El proyecto o experiencia fue cargada correctamente`)    
+        res.json(`El proyecto o experiencia fue cargado correctamente`)    
     } catch (error) {
         next(error)
     }

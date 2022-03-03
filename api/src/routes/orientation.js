@@ -24,6 +24,7 @@ router.get('/', async(req, res, next) => {
 
 
 
+
 router.post("/", async (req, res, next) => {
 
     const {name, idCandidate} = req.body;

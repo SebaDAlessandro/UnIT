@@ -39,4 +39,18 @@ router.delete("/:id", async (req, res, next) => {
 })
 
 
+router.get('/', async (req, res, next) => {
+    try {
+        const technicalskills = await Technicalskills.findAll({
+            include: [
+                {model: Candidate}
+            ]
+        })
+        res.json(technicalskills);
+    } catch (error) {
+        next(error)
+    }
+})
+
+
 module.exports = router;

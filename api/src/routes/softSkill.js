@@ -24,4 +24,19 @@ router.post("/", async (req, res, next) => {
 })
 
 
+router.delete("/:id", async (req, res, next) => {
+    const {id} = req.params;
+    try {
+        const sk = await Softskill.findByPk(id);
+        if(sk){
+            await sk.destroy();
+            res.json({msg: "Su soft skill se elimino correctamente"})
+        }else{
+            res.json({msg: "La soft skill no existe"})
+        }
+    } catch (error) {
+        next(error)
+    }
+})
+
 module.exports = router;

@@ -57,4 +57,19 @@ router.post('/', async (req, res, next) => {
 });
 
 
+router.delete('/', async (req, res, next) => {
+  const { id } = req.body;
+  try{
+    const contacteds = await Contacted.findByPk(id)
+
+    if(contacteds){
+      await contacteds.destroy();
+      res.send(`contacto ${id} eliminado`)
+    }
+  }catch(error){
+    next(error)
+  }
+})
+
+
 module.exports = router;

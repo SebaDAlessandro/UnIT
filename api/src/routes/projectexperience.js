@@ -56,7 +56,7 @@ router.post('/', async (req, res, next)=> {
     }
 })
 
-router.delete("/candidate/:id", async (req, res, next) => {
+router.delete("/:id", async (req, res, next) => {
     const {id} = req.params;
     try {
         const proExperience = await Project_experience.findByPk(id);

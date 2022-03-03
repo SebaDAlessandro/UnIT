@@ -1,7 +1,13 @@
 import React, {useState} from 'react';
 import styles from '../Card/Card.module.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { addFavorite } from '../../redux/actions'
 
-function Card ({name, lastname, location, id , image}) {
+function Card ({name, lastname, location, id, image}) {
+
+    const dispatch = useDispatch();
+    const logeado = useSelector(state => state.usuario);
+
     return (
     <div className={styles.Cards}>
 
@@ -17,7 +23,7 @@ function Card ({name, lastname, location, id , image}) {
                             </div>
                             <div className={styles.contButons}>
                                 <span className="material-icons">favorite_border</span>
-                                <span className="material-icons">add</span>
+                                <span onClick={() => dispatch(addFavorite({ idrecruiter: logeado.id, idcandidate: id}))} className="material-icons">add</span>
                             </div>
                         </div> 
                             <div className={styles.footer}>

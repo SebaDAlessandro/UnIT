@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllCandidates } from '../../redux/actions'
 import { useEffect } from 'react';
 import Card from '../Card/Card'
-import Nav from '../Nav/Nav'
 import styles from '../Cards/Cards.module.css'
 
 const Cards = () => {
@@ -19,8 +18,6 @@ const Cards = () => {
 
   return (
     <div className={styles.globalCont}>
-
-      <Nav/>
 
     <div className={styles.container}>
 

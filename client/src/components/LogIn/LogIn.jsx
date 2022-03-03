@@ -1,22 +1,37 @@
 import React from 'react'
 import style from '../LogIn/LogIn.module.css'
+import About from '../About/About.jsx'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { Login } from '../../redux/actions'
 import { Link } from 'react-router-dom'
 
 const LogIn = () => {
 
     const [state, setState] = useState({
-        name: '',
+        email: '',
         password: ''
     })
+
+    const dispatch = useDispatch();
+    const history = useNavigate();
 
     const handleChange = (e) => {
         setState({ ...state, [e.target.name]: e.target.value })
     }
 
+    const handleSumbit = (e) => {
+        e.preventDefault();
+        dispatch(Login(state)); 
+        history('/home')
+        alert(`Info send corectly ${state.name}`)
+      }
+
     return (
-        <div>
-            <form className={style.container} autoComplete='off'>
+        <div className={style.global_cont}>
+
+            <form onSubmit={handleSumbit} className={style.container} autoComplete='off'>
 
                 <div className={style.conecta}>
                     <div className={style.titulo}>
@@ -35,6 +50,10 @@ const LogIn = () => {
 
                 <div className={style.containerInputs}>
 
+                <Link to='/about'>
+                        <p className={style.about}>Sobre Nosotros</p>
+                </Link>
+
                     <div>
                         <h1>Iniciar sesión</h1>
                     </div>
@@ -42,8 +61,8 @@ const LogIn = () => {
                     <div className={style.input_form}>
                         <input
                             type='text'
-                            value={state.name}
-                            name='name'
+                            value={state.email}
+                            name='email'
                             onChange={handleChange}
                             required
                         />

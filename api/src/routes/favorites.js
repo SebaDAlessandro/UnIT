@@ -11,10 +11,10 @@ router.get('/:id', async(req, res, next) => {
     if(id){
        try {
         
-        const candidatos = await Candidate.findByPk(id,{
-            include: [
-                {model: Language}
-            ]
+        const candidatos = await Recruiter.findByPk(id,{
+             include: [
+                {model: Contacted}
+            ] 
         })
         if(candidatos !=0){
             res.status(200).json({
@@ -40,13 +40,18 @@ router.get('/:id', async(req, res, next) => {
         next(error)
     }
 }
+})
 
 
 router.post('/', async (req, res, next) => {
 
+    console.log('Funciona')
+
     const {idrecruiter, idcandidate} = req.body;
             // (1) ,      [1,8]x  (1)
     
+    console.log(req.body)
+
     let favor = favoritesPost(idcandidate)
 
     try {
@@ -56,12 +61,14 @@ router.post('/', async (req, res, next) => {
 
         const creado = await encontrado.addCandidate(favor)
         res.json(creado)
+        
 
     } catch(error){
-        next(error);
+        res.send(error.message);
     }
 })
-})
+    
+
 
 
 router.delete('/candidate/:id', async (req, res) => {

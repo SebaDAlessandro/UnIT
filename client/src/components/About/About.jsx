@@ -1,0 +1,111 @@
+import React from 'react'
+import style from '../About/About.module.css'
+import logo from '../images/logo.png'
+import { Link } from 'react-router-dom'  
+
+export default function Slider() {
+  return (
+    <div className={style.contGlobal}>
+
+      <Link to='/'>
+      <p>Home</p>
+      </Link>
+      
+      <div id='0' className={style.home}>
+        <div className={style.gridHome}>
+          <div className={style.textHome}>
+          <div className={style.logo}><img src={logo} /></div>
+            <h1>Encuentra tu </h1>
+            <h1>Talento ideal</h1>
+            <div>
+              <a href='#1'>Continuar</a>
+              <a href='#1' className={style.botonHome}>Nuestro Proposito</a>
+            </div>
+          </div>
+          <div className={style.imgHome}></div>
+        </div>
+
+
+      </div>
+
+      <div id='1' className={style.cont}>
+        <div className={style.gridHome}>
+              <div className={style.imgSobrenosotros}>
+              </div>
+                <div className={style.textHome}>
+                  <div className={style.title}>
+                    <h1>Nuestro</h1>
+                    <h1>Proposito</h1>
+                  </div>
+                  <div className={style.aboutus}>
+                  <p>Queremos lograr que las empresas tengas un acceso mucho mas facil 
+                    a los talentos del mundo IT por medio de una algoritmo super complejo 
+                    el cual ler permitira hacer match con el candidato que ustedes relamente 
+                    quieren, no como LinkedIn que son nuestros hijos, espero les guste bye</p>
+                  </div>
+                  <a className={style.dropdown} href='#2'>
+                  <button className={style.botonHome}>Nuestro Proposito</button>
+                  </a>
+                  <div className={style.arrow}>
+                    <a className={style.dropdown} href='#2'>
+                      <span className="material-icons">
+                        arrow_drop_down
+                      </span>
+                    </a>
+                  </div>
+                </div>
+        </div>
+      </div>
+
+      <div id='2' className={style.cont1}>
+      <div className={style.gridHome}>
+                <div className={style.textHome}>
+                  <h1>Devs UnIT</h1>
+                  <div className={style.contdevs}>
+                    <div className={style.devs}></div>
+                    <div className={style.devs}></div>
+                    <div className={style.devs}></div>
+                    <div className={style.devs}></div>
+                    <div className={style.devs}></div>
+                    <div className={style.devs}></div>
+                    <div className={style.devs}></div>
+                    <div className={style.devs}></div>
+                    <div className={style.devs}></div>
+                    <div className={style.devs}></div>
+                    <div className={style.devs}></div>
+                    <div className={style.devs}></div>
+                    <div className={style.devs}></div>
+                    <div className={style.devs}></div>
+                    <div className={style.devs}></div>
+                  </div>
+                  <a className={style.dropdown} href='#3'>
+                    <button className={style.botonHome}>Siguiente</button>
+                  </a>
+                  <div className={style.arrow}>
+                    <a className={style.dropdown} href='#3'>
+                      <span className="material-icons">
+                        arrow_drop_down
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              <div className={style.imgdevs}>
+              </div>
+        </div>
+      </div>
+
+      <div id='3' className={style.cont}>
+        <h1>Section 4</h1>
+        <div className={style.arrow}>
+                    <a className={style.dropdown} href='#0'>
+                      <span className="material-icons">
+                        arrow_drop_down
+                      </span>
+                    </a>
+        </div>
+      </div>
+
+    </div>
+
+  )
+}

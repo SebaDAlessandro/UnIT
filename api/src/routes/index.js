@@ -6,11 +6,11 @@ const candidates = require('./candidates');
 const language = require('./language');
 const cuentarecruiter = require('./cuentarecruiter');
 const favorites = require('./favorites');
-const candidatesBulkcreate = require('./candidatesBulkcreate')
-const technicalskill = require('./technicalSkill')
-const softskill = require('./softSkill')
-const orientation = require('./orientation')
-const projectexperience = require('./projectexperience')
+const candidatesBulkcreate = require('./candidatesBulkcreate');
+const technicalskill = require('./technicalSkill');
+const softskill = require('./softSkill');
+const orientation = require('./orientation');
+const projectexperience = require('./projectexperience');
 
 
 const router = Router();

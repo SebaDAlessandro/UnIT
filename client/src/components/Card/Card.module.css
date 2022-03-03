@@ -1,6 +1,7 @@
 .Cards{
-    display: flex;
-    flex-direction: column;
+    height: 28rem;
+    width: 15%;
+    margin: 1rem 3rem; 
 }
 
 .cont_card {
@@ -9,11 +10,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 25rem;
-    width: 15rem;
+    height: 100%;
+    width: 100%;
     justify-content: space-between;
-    border-radius: 40px;
-    margin: 1rem 3rem; 
+    border-radius: 20px;
     color: white;
     overflow: hidden;
     box-shadow:-0px 0px 100px 0px #000000 ;

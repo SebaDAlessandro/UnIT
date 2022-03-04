@@ -27,5 +27,27 @@ router.post("/", async (req, res) => {
     }
 })
 
+router.delete('/:id', async (req, res, next) => {
+
+    const {id} = req.params;
+
+    
+    try{
+        const lg = await Language.findByPk(id);
+
+        
+        if(lg){
+            await lg.destroy();
+            res.json({msg: "el lenguaje se elimino correctamente"})
+        }else{
+                res.json({msg: "el lenguaje no existe"})
+
+            }
+        } catch(error){
+            next(error)
+       
+    }
+})
+
 
 module.exports = router;

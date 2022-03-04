@@ -81,6 +81,29 @@ router.put('/:id', async (req, res, next) => {
 })
 
 
+router.get('/:id', async (req, res, next) => {
+    const { id } = req.params;
+      
+      try{
+        if(id){
+          const candidato = await Candidate.findByPk(id,{
+            include: [
+                {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}
+            ]
+          })
+          if(candidato != 0){
+            res.json(candidato)
+          }else{
+            res.send("No existe ese candidato")
+          }
+        }
+      }catch(error){
+        next(error)
+      }
+  
+  })
+
+
 
 
 module.exports = router;

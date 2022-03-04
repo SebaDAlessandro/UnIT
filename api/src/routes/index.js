@@ -16,6 +16,7 @@ const experience = require('./projectexperience')
 const projectexperience = require('./projectexperience');
 const contacted = require('./contacted');
 const recruitersBulkcreate = require('./recruitersBulkcreate')
+const filters = require('./filters');
 
 
 
@@ -39,6 +40,7 @@ router.use('/experience', experience);
 router.use('/projectexperience', projectexperience);
 router.use('/contacted', contacted);
 router.use('/recruitersBulk', recruitersBulkcreate);
+router.use('/filters', filters);
 
 
 

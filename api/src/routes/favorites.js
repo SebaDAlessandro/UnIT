@@ -2,8 +2,19 @@ const express = require('express');
 const router = express.Router();
 //const {favoritesPost} = require('../controllers/favoritesRoutes');
 
-const {Recruiter, Candidate, Language, Contacted} = require('../db.js');
+const {Recruiter, Candidate, Language, Contacted, Favorite} = require('../db.js');
 
+
+router.get('/favorite/', async (req , res, next) => {
+    try{
+         const dato = await Favorite.findAll()
+         res.json(dato)
+    }catch(error){
+        next(error)
+    } 
+    
+ })
+ 
 
 router.get('/:id', async(req, res, next) => {
     const {id} = req.params;
@@ -92,7 +103,6 @@ router.delete('/candidate/:id', async (req, res) => {
     }
 })
 
-        
-       
 
+       
 module.exports = router;

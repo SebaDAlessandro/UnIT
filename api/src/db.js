@@ -64,7 +64,6 @@ Formation.belongsToMany(Candidate, {through: 'candidate_formation'});
 Recruiter.hasMany(Contacted); 
 Contacted.belongsTo(Recruiter);
 
-
 Folders.belongsToMany(Candidate, {through: 'folder_candidate' });
 Candidate.belongsToMany(Folders, {through: 'folder_candidate' });
 

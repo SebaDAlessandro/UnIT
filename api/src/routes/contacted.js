@@ -76,6 +76,7 @@ router.put('/', async (req, res, next) => {
    const { idcontacted, status, details, date, status_contact, position} = req.body;
   try{
     const encontrado = await Contacted.findByPk(idcontacted)
+    
     const mod = await encontrado.update({
       status,
       details,

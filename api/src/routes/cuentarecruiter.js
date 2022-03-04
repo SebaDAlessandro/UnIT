@@ -104,6 +104,20 @@ router.post("/loginrecruiter", async (req, res) => {
     }
   })
 
+  router.delete('/:id', async (req, res, next) => {
+    const { id } = req.params;
+    try{
+      const recruiter = await Recruiter.findByPk(id)
+  
+      if(recruiter){
+        await recruiter.destroy();
+        res.send(`Recruiter eliminado correctamente`)
+      }
+    }catch(error){
+      next(error)
+    }
+  })
+
 module.exports = router;
 
 

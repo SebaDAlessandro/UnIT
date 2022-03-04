@@ -53,30 +53,24 @@ router.get('/:id', async(req, res, next) => {
 }
 })
 
-const favoritesPost = async (idcandidate) => {
+router.post('/', async (req, res, next) => {
 
-     let candidato = await Candidate.findByPk(idcandidate) 
-     return candidato
- 
-}
+    const {idrecruiter, idcandidate} = req.body;
+            // (1) ,      [1,8]x  (1)
+   
+    let candidato = await Candidate.findByPk(idcandidate) 
 
- router.post('/', async (req, res, next) => {
+    try {
 
-     const {idrecruiter, idcandidate} = req.body;
-             // (1) ,      [1,8]x  (1)
-    
-     let favor = favoritesPost(idcandidate)
-     try {
-         const encontrado = await Recruiter.findOne({
-             where: {id: idrecruiter}})
+        const encontrado = await Recruiter.findByPk(idrecruiter)
 
-         const creado = await encontrado.addCandidate(favor)
-         res.json(creado)
+        const creado = await encontrado.addCandidate(candidato)
+        res.json(creado)
 
-     } catch(error){
-         res.send(error.message);
-     }
- })
+    } catch(error){
+        next(error);
+    }
+})
 
 
 router.delete('/candidate/:id', async (req, res) => {

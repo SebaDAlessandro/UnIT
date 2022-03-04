@@ -1,11 +1,21 @@
 .container {
-    padding-left: 3rem;
     display: flex;
-    justify-content: left;
+    justify-content: space-around;
     align-items: center;
     height: 4rem;
+    min-width: 100%;
     background-color: #EABCA3;
     border-bottom: 1px solid #C74874;
+}
+
+.user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user span {
+    font-size: 40px;
 }
 
 p {

@@ -3,6 +3,7 @@ const router = express.Router();
 
 const { Recruiter, Candidate, Folders } = require("../db.js");
 
+
 // Obtener la carpeta y sus candidatos
 // TODO: >> http://localhost:3001/folders/{id} <<
 router.get("/:id", async (req, res, next) => {
@@ -86,5 +87,44 @@ router.post("/:fId/candidate/:cId", async (req, res, next) => {
     next(error);
   }
 });
+
+
+
+router.delete('/', async(req, res, next) => {
+  const { idFolder } = req.body;
+  
+  try{
+   const dato = await Folders.findByPk(idFolder)
+   if(dato){
+     let nombre = dato.folderName;
+     dato.destroy();
+     res.send(`Carpeta ${nombre} fue eliminada con exito`)
+   }else{
+     res.send("No existe esa Carpate")
+   }
+  }catch(error){
+    next(error)
+  }
+})
+
+
+router.put('/', async (req, res, next) =>{
+  const { idFolder, folderName } = req.body;
+try{
+    const dato = await Folders.findByPk(idFolder);
+
+    let nombre = dato.folderName;
+    let recruiter = dato.recruiterId;
+
+    const nuevo = await dato.update({
+      folderName: folderName || nombre,
+      recruiterId: recruiter
+    })
+    res.status(200).json(nuevo)
+
+}catch(error){
+  next(error)
+}
+})
 
 module.exports = router;

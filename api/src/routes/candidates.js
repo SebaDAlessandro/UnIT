@@ -103,6 +103,19 @@ router.get('/:id', async (req, res, next) => {
   
   })
 
+  router.delete('/:id', async (req, res, next) => {
+    const { id } = req.params;
+    try{
+      const candidato = await Candidate.findByPk(id)
+  
+      if(candidato){
+        await candidato.destroy();
+        res.send(`Candidato eliminado correctamente`)
+      }
+    }catch(error){
+      next(error)
+    }
+  })
 
 
 

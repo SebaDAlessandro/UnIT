@@ -23,7 +23,7 @@ function Card ({name, lastname, location, id, image}) {
                             </div>
                             <div className={styles.contButons}>
                                 <span className="material-icons">favorite_border</span>
-                                <span onClick={() => dispatch(addFavorite({ idrecruiter: logeado.id, idcandidate: id}))} className="material-icons">add</span>
+                                <span onClick={() => dispatch(addFavorite({ idrecruiter: logeado.id, idcandidate: id }))} className="material-icons">add</span>
                             </div>
                         </div> 
                             <div className={styles.footer}>

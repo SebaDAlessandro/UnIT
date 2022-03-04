@@ -53,14 +53,11 @@ router.get('/:id', async(req, res, next) => {
 }
 })
 
-const favoritesPost = (idcandidate) => {
-    let favor = [];
-    idcandidate.map(async c => {
-         console.log(c)
-     let candidato = await Candidate.findByPk(c) 
-     favor.push(candidato)
-    })
-    return favor;
+const favoritesPost = async (idcandidate) => {
+
+     let candidato = await Candidate.findByPk(idcandidate) 
+     return candidato
+ 
 }
 
  router.post('/', async (req, res, next) => {
@@ -77,7 +74,7 @@ const favoritesPost = (idcandidate) => {
          res.json(creado)
 
      } catch(error){
-         next(error);
+         res.send(error.message);
      }
  })
 

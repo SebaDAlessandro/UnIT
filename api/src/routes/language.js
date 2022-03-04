@@ -50,4 +50,25 @@ router.delete('/:id', async (req, res, next) => {
 })
 
 
+router.put('/:id', async (req, res, next) => {
+    const { id } = req.params;
+    const { native, level } = req.body;
+    try{
+        const encontrado = await Language.findByPk(id);
+
+        let nativo = encontrado.dataValues.native 
+        let nivel= encontrado.dataValues.level 
+
+        const actualizacion = await encontrado.update({
+            native: native || nativo, 
+            level: level || nivel   
+        })
+        res.status(200).json(actualizacion);
+    }catch(error){
+        next(error);
+    }
+    
+})
+
+
 module.exports = router;

@@ -38,6 +38,43 @@ router.post('/', async (req, res, next)=> {
 })
 
 
+router.put('/:id', async (req, res, next) => {
+    const { id } = req.params;
+    const { name, lastname, email, organization, password, image, location, description } = req.body;
+    try{
+        const encontrado = await Recruiter.findByPk(id);
+
+        let nombre = encontrado.dataValues.name 
+        let apellido= encontrado.dataValues.lastname 
+        let correo = encontrado.dataValues.email 
+        let organizacion = encontrado.dataValues.organization
+        let contraseña = encontrado.dataValues.password
+        let imagen = encontrado.dataValues.image
+        let locacion = encontrado.dataValues.location 
+        let descripcion = encontrado.dataValues.description
+
+        const actualizacion = await encontrado.update({
+            name: name || nombre, 
+            lastname: lastname || apellido, 
+            email: email || correo, 
+            organization: organization || organizacion, 
+            password: password || contraseña, 
+            image: image || imagen, 
+            location: location || locacion, 
+            description: description || descripcion
+        
+        })
+        res.status(200).json(actualizacion);
+    }catch(error){
+        next(error);
+    }
+    
+})
+
+
+
+
+
 router.post("/loginrecruiter", async (req, res) => {
     // TODO: >> http://localhost:3001/cuentarecruiter/loginrecruiter <<
      

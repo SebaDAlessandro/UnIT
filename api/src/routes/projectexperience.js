@@ -71,4 +71,26 @@ router.delete("/:id", async (req, res, next) => {
     }
 })
 
+
+router.put('/', async (req, res, next) => {
+    const { idproject, position, organization_name, location, ending_date,starting_date, status, description} = req.body;
+   try{
+     const experience = await Project_experience.findByPk(idproject)
+     const datos = await experience.update({
+         position,
+         organization_name,
+         location,
+         starting_date,
+         ending_date,
+         status,
+         description
+     })
+     res.json(datos)
+   }catch(error){
+     next(error)
+   }
+ })
+
+
+
 module.exports = router;

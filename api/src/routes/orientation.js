@@ -66,6 +66,20 @@ router.delete('/candidate/:id', async (req, res, next) => {
     }
 })
 
+router.put ('/:id', async (req, res, next) => {
+    const {id} = req.params;
+    const {name} = req.body;
+    try {
+        const orientation = await Orientation.findByPk(id);
+        orientation.name = name;
+        await orientation.save();
+        res.json({msg: "la orientation se actualizo correctamente"})
+    } catch (error) {
+        next(error)
+    }
+})
+
+
         
        
 

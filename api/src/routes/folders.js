@@ -107,6 +107,31 @@ router.delete('/', async(req, res, next) => {
   }
 })
 
+router.delete('/:idFolder/:idUser', async(req, res, next)=>{
+
+  const {idFolder, idUser} = req.params;
+
+  try{
+
+    const carpeta = await Folders.findByPk(idFolder);
+    const candidate = await Candidate.findByPk(idUser);
+
+    if(carpeta && candidate){
+      const nombre = candidate.name
+      carpeta.removeCandidate(candidate);
+
+      res.send(`Se elimino correctamente el candidato ${nombre} de la carpeta ${carpeta.folderName}`)
+    }else{
+      res.send('El usuario a eliminar no fue encontrado')
+    }
+
+  }catch(error){
+    next(error)
+  }
+
+});
+
+
 
 router.put('/', async (req, res, next) =>{
   const { idFolder, folderName } = req.body;

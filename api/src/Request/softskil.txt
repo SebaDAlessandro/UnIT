@@ -1,0 +1,32 @@
+{"todos3":
+[{
+  "soft_skill": "Communication"
+}, {
+  "soft_skill": "Teamwork"
+}, {
+  "soft_skill": "Leadership"
+}, {
+  "soft_skill": "Problem-solving"
+}, {
+  "soft_skill": "Adaptability"
+}, {
+  "soft_skill": "Creativity"
+}, {
+  "soft_skill": "Leadership"
+}, {
+  "soft_skill": "Interpersonal skills"
+}, {
+  "soft_skill": "Work ethic"
+}, {
+  "soft_skill": "Attention to detail"
+}, {
+  "soft_skill": "Stress management"
+}, {
+  "soft_skill": "Organization"
+}, {
+  "soft_skill": "Prioritizing"
+}, {
+  "soft_skill": "Planning"
+}, {
+  "soft_skill": "Calmness"
+}]}

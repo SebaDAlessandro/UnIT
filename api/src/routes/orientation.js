@@ -55,7 +55,7 @@ router.delete('/candidate/:id', async (req, res, next) => {
         
         if(orient){
             await orient.destroy();
-            res.json({msg: "la formacion se elimino correctamente"})
+            res.json({msg: "la orientation se elimino correctamente"})
         }else{
                 res.json({msg: "la formacion no existe"})
 

@@ -38,6 +38,7 @@ router.get('/', async (req, res, next) => {
 })
 
 
+
 router.delete("/:id", async (req, res, next) => {
     const {id} = req.params;
     try {
@@ -48,6 +49,20 @@ router.delete("/:id", async (req, res, next) => {
         }else{
             res.json({msg: "La technical skill no existe"})
         }
+    } catch (error) {
+        next(error)
+    }
+})
+
+
+router.put ('/:id', async (req, res, next) => {
+    const {id} = req.params;
+    const {technicalskills} = req.body;
+    try {
+        const ts = await Technicalskills.findByPk(id);
+        ts.technicalskills = technicalskills;
+        await ts.save();
+        res.json({msg: "la technicalskill se actualizo correctamente"})
     } catch (error) {
         next(error)
     }

@@ -9,13 +9,13 @@ router.post("/", async (req, res, next) => {
     const {soft_skill, idCandidate} = req.body;
     try {
         
-        const softskills = await Softskill.create({
-            soft_skill
-        })
+        // const softskills = await Softskill.create({
+        //     soft_skill
+        // })
         
-        if(softskills && idCandidate){
+        if(soft_skill && idCandidate){
             const candidate = await Candidate.findByPk(idCandidate);
-            candidate.addSoftskill(softskills);
+            candidate.addSoftskill(soft_skill);
         }
         res.json({msg: "la softskill se guardo correctamente"})    
     } catch (error) {

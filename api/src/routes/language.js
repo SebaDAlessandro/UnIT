@@ -4,6 +4,15 @@ const router = express.Router();
 
 const {Candidate, Language} = require('../db.js');
 
+router.get("/", async (req, res, next) =>{
+    try {
+        const language = await Language.findAll();
+        res.json(language)
+    } catch (error) {
+        next(error)
+    }
+})
+
 router.post("/", async (req, res) => {
     // en el req.body tomo toda la informacion que viene del front
     const {language, native, level, idCandidate} = req.body;

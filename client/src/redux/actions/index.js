@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+export const GET_FAVORITES = 'GET_FAVORITES'
 export const GET_ALL_CANDIDATES = 'GET_ALL_CANDIDATES'
 export const GET_USER = 'GET_USER'
 export const ADD_FAVORITE = 'ADD_FAVORITE'
@@ -105,6 +106,16 @@ export const getAllCandidates = () => async dispatch => {
     let json = await axios.get('http://localhost:3001/candidates')
     dispatch({
         type: GET_ALL_CANDIDATES,
+        payload: json.data
+    })
+
+    console.log(json.data)
+}
+
+export const getFavorites = (id) => async dispatch => {
+    let json = await axios.get(`http://localhost:3001/favorites/${id}`)
+    dispatch({
+        type: GET_FAVORITES,
         payload: json.data
     })
 

@@ -80,6 +80,17 @@ router.delete('/candidate/:id', async (req, res) => {
     }
 })
 
-
+router.get('/table', async(req, res, next) => {
+    try {
+        const candidates = await Contacted.findAll({
+            include: [
+                {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}
+            ]
+        })
+        res.json(candidates);
+    } catch (error) {
+        next(error)
+    }
+})
 
 module.exports = router;

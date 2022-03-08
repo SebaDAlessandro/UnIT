@@ -40,7 +40,11 @@ const FavCart = ()=>{
                 }else if(val.nombre.toLocaleLowerCase().includes(busca.toLocaleLowerCase())||
                 val.apellido.toLocaleLowerCase().includes(busca.toLocaleLowerCase())||
                 val.ubicacion.toLocaleLowerCase().includes(busca.toLocaleLowerCase())||
-                val.idiomas.toLocaleLowerCase().includes(busca.toLocaleLowerCase())                
+                val.idiomas.toLocaleLowerCase().includes(busca.toLocaleLowerCase())||
+                val.tecnologias.find(e=>e.toLocaleLowerCase().includes(busca.toLocaleLowerCase()))||
+                val.blandas.find(e=>e.toLocaleLowerCase().includes(busca.toLocaleLowerCase()))||
+                val.status.toLocaleLowerCase().includes(busca.toLocaleLowerCase())||
+                val.contacto.toLocaleLowerCase().includes(busca.toLocaleLowerCase())
                 ){
                     return val
                 }
@@ -51,18 +55,19 @@ const FavCart = ()=>{
                     <td>{candidato.mail}</td>
                     <td>{candidato.ubicacion}</td>
                     <td>{candidato.idiomas}</td>
-                    <td>{candidato.tecnologias.map(e=><spam>{e} </spam>)}</td>
-                    <td>{candidato[("hab blanads")].map(e=><spam>{e} </spam>)}</td>
+                    <td>{candidato.tecnologias.map(e=><li >{e}</li>)}</td>
+                    <td>{candidato.blandas.map(e=><li>{e}</li>)}</td>
                     <td>{candidato.linkedin}</td>
                     <td>{candidato.github}</td>
                     <td>{candidato.portfolio}</td>
                     <td className={`status ${candidato.status}`}>{candidato.status}</td>
                     <td>{candidato.cv}</td>
                     <td>{candidato.contactar}</td>
-                    <td class={`estado contacto ${candidato["estado contacto"]}`}>{candidato["estado contacto"]}</td>                        
+                    <td class={`contacto ${candidato.contacto}`}>{candidato.contacto}</td>                        
                 </tr> 
-            ))
-            }            
+            )
+            )
+            }    
         </tbody>
     </table>
     </div>

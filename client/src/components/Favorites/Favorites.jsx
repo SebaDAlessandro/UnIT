@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import CardFavorite from '../CardFavorite/CardFavorite'
 import img from '../images/Carpeta.png'
 import style from '../Favorites/Favorites.module.css'
 import Nav from '../Nav/Nav'
+import { getFavorites } from '../../redux/actions'
 
 const Favorites = () => {
 
 const favorites = useSelector(state => state.favorites)
 const usuario = useSelector(state => state.usuario)
+const dispatch = useDispatch()
+console.log(favorites)
+useEffect(() => {
+  if (favorites.length===0){
+    dispatch(getFavorites(usuario.id));
+  }
+}, [favorites])
 
 
   return (
@@ -25,21 +33,18 @@ const usuario = useSelector(state => state.usuario)
         </div>
         <div className={style.rectangle}>
           <div className={style.contCards}>
-            {!favorites.length ?  
-                
-                favorites.candidates.map(c => <CardFavorite
+                {           
+                favorites?.candidates?.map(c => <CardFavorite
                 name={c.name}
                 lastname={c.lastname}
                 location={c.location}
                 id={c.id}
                 image={c.image}
-              />
-              )
-              : 
-              <div className={style.folder}>
+              />              
+              )}
+            <div className={style.folder}>
                 <img src={img} />
               </div>  
-              }
             </div>
         </div>
       </div>

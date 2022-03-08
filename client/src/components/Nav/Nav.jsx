@@ -23,8 +23,12 @@ const Nav = () => {
         <Link to='/'>
             <p className={`${style.pe} ${ruta === home ? style.prueba: null}`}>Home</p>
         </Link>
+        <Link to='/folders'>
         <p className={`${style.pe} ${ruta === folders ? style.prueba: null}`}>Folders</p>
+        </Link>
+        <Link to='/favorites'>
         <p className={`${style.pe} ${ruta === favorites ? style.prueba: null}`}>Favorites</p>
+        </Link>
       </div>
         <div className={style.icons}>
             <span className="material-icons">

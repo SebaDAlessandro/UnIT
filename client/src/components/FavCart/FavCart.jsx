@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./FavCart.css";
 import data from "./dataprueba.json"
-
+import { useSelector, useDispatch } from "react-redux";
+import { getFavorites } from "../../redux/actions";
 
 
 const FavCart = ()=>{
     const [busca, setBusca] = useState("");
+    const favorites = useSelector(state => state.favorites)
+    const usuario = useSelector(state => state.usuario)
+    const dispatch = useDispatch()
+    console.log(favorites)
+    useEffect(() => {
+    if (favorites.length===0){
+        dispatch(getFavorites(usuario.id));
+    }
+    }, [favorites])
    
     return (
         <div>
@@ -17,53 +27,53 @@ const FavCart = ()=>{
         <table>
         <thead>            
             <tr>                    
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Mail</th>
-                <th>Ubicacion</th>
-                <th>Idiomas</th>
-                <th>Tecnologias</th>
-                <th>Hab blandas</th>
+                <th>name</th>
+                <th>lastname</th>
+                <th>email</th>
+                <th>location</th>
+                <th>languages</th>
+                <th>technicalskills</th>
+                <th>Hab softskills</th>
                 <th>LinkedIn</th>
                 <th>Github</th>
                 <th>Portfolio</th>
                 <th>Status</th>
                 <th>Cv</th>
                 <th>Contactar</th>
-                <th>Estado contacto</th>
+                <th>Estado contacteds</th>
             </tr>
         </thead>
         <tbody>                
-            {data.filter(val=>{
+            {favorites?.candidates?.filter(val=>{
                 if(busca===""){
                     return val;
-                }else if(val.nombre.toLocaleLowerCase().includes(busca.toLocaleLowerCase())||
-                val.apellido.toLocaleLowerCase().includes(busca.toLocaleLowerCase())||
-                val.ubicacion.toLocaleLowerCase().includes(busca.toLocaleLowerCase())||
-                val.idiomas.toLocaleLowerCase().includes(busca.toLocaleLowerCase())||
-                val.tecnologias.find(e=>e.toLocaleLowerCase().includes(busca.toLocaleLowerCase()))||
-                val.blandas.find(e=>e.toLocaleLowerCase().includes(busca.toLocaleLowerCase()))||
-                val.status.toLocaleLowerCase().includes(busca.toLocaleLowerCase())||
-                val.contacto.toLocaleLowerCase().includes(busca.toLocaleLowerCase())
+                }else if(val?.name?.toLocaleLowerCase().includes(busca.toLocaleLowerCase())||
+                val?.lastname?.toLocaleLowerCase().includes(busca.toLocaleLowerCase())||
+                val?.location?.toLocaleLowerCase().includes(busca.toLocaleLowerCase())||
+                val?.languages?.find(e=>e.toLocaleLowerCase().includes(busca.toLocaleLowerCase()))||
+                val?.technicalskills?.find(e=>e.toLocaleLowerCase().includes(busca.toLocaleLowerCase()))||
+                val?.softskills?.find(e=>e.toLocaleLowerCase().includes(busca.toLocaleLowerCase()))||
+                val?.status?.toLocaleLowerCase().includes(busca.toLocaleLowerCase())||
+                val?.contacteds?.find(e=>e.toLocaleLowerCase().includes(busca.toLocaleLowerCase()))
                 ){
                     return val
                 }
             }).map((candidato)=>(               
                 <tr key={candidato.id}>
-                    <td>{candidato.nombre}</td>
-                    <td>{candidato.apellido}</td>
-                    <td>{candidato.mail}</td>
-                    <td>{candidato.ubicacion}</td>
-                    <td>{candidato.idiomas}</td>
-                    <td>{candidato.tecnologias.map(e=><li >{e}</li>)}</td>
-                    <td>{candidato.blandas.map(e=><li>{e}</li>)}</td>
+                    <td>{candidato.name}</td>
+                    <td>{candidato.lastname}</td>
+                    <td>{candidato.email}</td>
+                    <td>{candidato.location}</td>
+                    <td>{candidato.languages}</td>
+                    <td>{candidato.technicalskills.map(e=><li >{e}</li>)}</td>
+                    <td>{candidato.softskills.map(e=><li>{e}</li>)}</td>
                     <td>{candidato.linkedin}</td>
                     <td>{candidato.github}</td>
                     <td>{candidato.portfolio}</td>
                     <td className={`status ${candidato.status}`}>{candidato.status}</td>
                     <td>{candidato.cv}</td>
                     <td>{candidato.contactar}</td>
-                    <td class={`contacto ${candidato.contacto}`}>{candidato.contacto}</td>                        
+                    <td class={`contacteds ${candidato.contacteds}`}>{candidato.contacteds}</td>                        
                 </tr> 
             )
             )

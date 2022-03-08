@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { SECRET } = process.env;
 
 
 const {Recruiter, Contacted, Candidate} = require('../db.js');
@@ -77,8 +79,13 @@ router.put('/:id', async (req, res, next) => {
 
 router.post("/loginrecruiter", async (req, res) => {
     // TODO: >> http://localhost:3001/cuentarecruiter/loginrecruiter <<
-     
     const { email, password } = req.body
+
+    const userToken = {
+        email,
+        password
+    }
+    const token = jwt.sign(userToken, SECRET, { expiresIn: "1h" })
   
     try {
             const recruiter = await Recruiter.findOne({ where: { email: email }, })
@@ -86,21 +93,40 @@ router.post("/loginrecruiter", async (req, res) => {
             if (recruiter !=0 ) {
                 const passwords = await bcryptjs.compare(password, recruiter.password)
                 if (passwords) {
-                    res.send(recruiter)
+                    const data = {
+                        id: recruiter.id,
+                        email: recruiter.email,
+                        token
+                    }
+                    res.json(data)
                 } else {
-                    res.send("Contraseña incorrecta")
+                    res.send("Ingrese datos validos")
                 }
             } else if (candidate !=0) {
                 const passwordValidated = await bcryptjs.compare(password, Candidate.password)
                 if (passwordValidated) {
                     res.send(Candidate)
                 } else {
-                    res.send("Contraseña incorrecta")
+                    res.send("Ingrese datos validos")
                 }
             }      
     }
     catch (error) {
         res.json({msg: "Ups...!!!existe un error"})
+    }
+  })
+
+  router.delete('/:id', async (req, res, next) => {
+    const { id } = req.params;
+    try{
+      const recruiter = await Recruiter.findByPk(id)
+  
+      if(recruiter){
+        await recruiter.destroy();
+        res.send(`Recruiter eliminado correctamente`)
+      }
+    }catch(error){
+      next(error)
     }
   })
 

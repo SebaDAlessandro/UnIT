@@ -17,7 +17,10 @@ const projectexperience = require('./projectexperience');
 const contacted = require('./contacted');
 const recruitersBulkcreate = require('./recruitersBulkcreate')
 const filters = require('./filters');
-
+const admins = require('./admin')
+const softkillsBulk = require('./softSkillBulk')
+const technicalskillsBulk = require('./technicalSkillBulk')
+const lenguageBulk = require('./lenguageBulk')
 
 
 
@@ -41,7 +44,10 @@ router.use('/projectexperience', projectexperience);
 router.use('/contacted', contacted);
 router.use('/recruitersBulk', recruitersBulkcreate);
 router.use('/filters', filters);
-
+router.use('/admin', admins);
+router.use("/softskillBulk", softkillsBulk)
+router.use("/technicalBulk", technicalskillsBulk)
+router.use("/languageBulk", lenguageBulk)
 
 
 

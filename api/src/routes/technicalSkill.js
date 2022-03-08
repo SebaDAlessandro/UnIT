@@ -3,25 +3,70 @@ const router = express.Router();
 
 
 const {Candidate, Technicalskills} = require('../db.js');
+const { route } = require('./filters.js');
 
-router.post("/", async (req, res, next) => {
+// router.post("/", async (req, res, next) => {
 
-    const {technicalskills, idCandidate} = req.body;
-    try {
+//     const {technicalskills, idCandidate} = req.body;
+//     try {
         
-        const ts = await Technicalskills.create({
-            technicalskills
-        })
+//         const ts = await Technicalskills.create({
+//             technicalskills
+//         })
         
-        if(ts && idCandidate){
-            const candidate = await Candidate.findByPk(idCandidate);
-            candidate.addTechnicalskills(ts);
+//         if(ts && idCandidate){
+//             const candidate = await Candidate.findByPk(idCandidate);
+//             candidate.addTechnicalskills(ts);
+//         }
+//         res.json({msg: "la technicalskill se guardo correctamente"})    
+//     } catch (error) {
+//         next(error)
+//     }
+// })
+
+
+router.post('/', async (req, res, next) => {
+    const { technicalskills } = req.body;
+    try{
+        const [encontrado, creado] = await Technicalskills.findOrCreate({
+            where:{technicalskills}})
+        if(creado === true){
+            res.send(`La habilidad ${technicalskills} fue creada correctamente`)
+        }else{
+            res.send(`la habilidad ${technicalskills} ya existe`)
         }
-        res.json({msg: "la technicalskill se guardo correctamente"})    
-    } catch (error) {
+       
+    }catch(error){
         next(error)
     }
 })
+
+
+router.post('/:candidate', async (req, res, next) => {
+    const { candidate } = req.params;
+    const { technicalskills } = req.body;
+
+    try{
+
+        const encontrado = await Candidate.findByPk(candidate);
+        const tech = await Technicalskills.findOne({
+            where:{
+                technicalskills: technicalskills
+            }
+        })
+
+        if(encontrado && tech) {
+            await encontrado.addTechnicalskills(tech);
+            res.send(`La relacion del candidato ${encontrado.name} y la skill ${tech.technicalskills} se guardo correctamente`)
+        }else{
+            res.send('Algo salio mal')
+        }
+    }catch(error){
+        next(error);
+    }
+})
+
+
 
 
 router.get('/', async (req, res, next) => {
@@ -38,6 +83,7 @@ router.get('/', async (req, res, next) => {
 })
 
 
+
 router.delete("/:id", async (req, res, next) => {
     const {id} = req.params;
     try {
@@ -48,6 +94,20 @@ router.delete("/:id", async (req, res, next) => {
         }else{
             res.json({msg: "La technical skill no existe"})
         }
+    } catch (error) {
+        next(error)
+    }
+})
+
+
+router.put ('/:id', async (req, res, next) => {
+    const {id} = req.params;
+    const {technicalskills} = req.body;
+    try {
+        const ts = await Technicalskills.findByPk(id);
+        ts.technicalskills = technicalskills;
+        await ts.save();
+        res.json({msg: "la technicalskill se actualizo correctamente"})
     } catch (error) {
         next(error)
     }

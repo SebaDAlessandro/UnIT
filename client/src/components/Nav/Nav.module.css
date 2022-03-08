@@ -1,27 +1,12 @@
 .container {
+    
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 5rem;
+    top: 100vh;
+    min-height: 150px;
     min-width: 100%;
-    color: #C74874;
-    border-bottom: 1px solid #C74874;
-    background: none;
-}
-
-/* Contenedor y estilos logo NavBar */
-
-.logo {
-    height: 3rem;
-}
-
-.logo img {
-    height: 100%;
-}
-
-.container p {
-    font-weight: bold;
-    font-size: 23px;
+    background-color: aliceblue;
 }
 
 .user {
@@ -30,17 +15,49 @@
     align-items: center;
 }
 
-.user span {
-    font-size: 40px;
-}
 
-p {
-    margin: 0;
-}
 
-.text {
+.pe{
+    font-size: 22px;
+    color: #AC3F65;
+    cursor:pointer; cursor: hand;
+    font-family: 'Roboto', sans-serif;
+    padding-right: 80px;
+}
+.ps{
     display: flex;
-    justify-content: space-around;
+    height: 10px;
+    position: absolute;
     align-items: center;
-    width: 40%;
+    place-items: 5px;
+}
+
+.icons{
+    position: absolute;
+    right: 220px;
+    padding: 25px;
+}
+.icons span{
+    font-size: 35px;
+}
+
+.icons2{
+    position: absolute;
+    right: 90px;
+}
+span{
+    padding: 8px;
+    cursor:pointer; cursor: hand;
+}
+
+.logo{
+    position: absolute;
+    width: 90px;
+    height: 50px;
+    left: 150px;
+}
+
+.prueba{
+    color: red;
+    text-decoration: underline;
 }

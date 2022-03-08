@@ -65,10 +65,10 @@ router.put ('/:id', async (req, res, next) => {
             ending_date,
             description
         })
-        if(formation && idCandidate){
-            const candidate = await Candidate.findByPk(idCandidate);
-            candidate.addFormation(formation);
-        }
+        // if(formation && idCandidate){
+        //     const candidate = await Candidate.findByPk(idCandidate);
+        //     candidate.addFormation(formation);
+        // }
         res.json({msg: "la formacion se actualizo correctamente"})
     } catch (error) {
         next(error)

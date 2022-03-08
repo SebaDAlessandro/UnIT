@@ -1,0 +1,81 @@
+table{
+    font-family: sans-serif;        
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-collapse: collapse;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.658);    
+    overflow: hidden;
+    text-align: left;    
+}
+
+thead{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.658);        
+   
+}
+
+th{
+    padding: 0.25rem 0.5rem;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase(1);
+    font-weight: 800;    
+}
+
+td{
+    padding: 1rem 0;    
+    text-align: left;
+}
+.status{
+    padding: 0 0.5rem;
+    text-align: center;
+}
+
+.estudiando{
+    background-color: aqua;
+    color: rgb(0, 145, 145);
+}
+
+.buscando{
+    background-color: coral;
+}
+
+.trabajando{
+    background-color: rgba(85, 1, 71, 0.575);
+}
+
+.estado{
+    text-align: center;
+}
+
+.proceso{
+    background-color: rgb(255, 179, 134);
+}
+
+.rechazado{
+    background-color: rgb(255, 93, 93);
+}
+
+.contratado{
+    background-color: rgb(148, 231, 24);
+}
+
+.bloqueado{
+    background-color: black;
+    color: white;
+}
+
+tr:nth-child(even){
+    background-color: rgba(250, 128, 114, 0.11);
+}
+
+.buscador{
+    margin: 15px;
+    height: 30px;
+    width: 15%;
+    text-align:justify;
+    font-size: 16px;
+}
+
+
+

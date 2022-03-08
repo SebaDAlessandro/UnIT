@@ -11,12 +11,6 @@ const usuario = useSelector(state => state.usuario)
   return (
     <div className={style.globalcontainer}>
         <Nav/>
-        <div className={style.contSaludo}>
-            <h1>Bienvenido {usuario.name}</h1> 
-            <span className="material-icons">
-                waving_hand
-            </span>
-        </div>
         <Cards/>
     </div>
   )

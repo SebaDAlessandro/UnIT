@@ -4,6 +4,7 @@ const router = express.Router();
 
 const {Candidate, Language} = require('../db.js');
 
+
 router.get("/", async (req, res, next) =>{
     try {
         const language = await Language.findAll();
@@ -25,20 +26,51 @@ router.post("/", async (req, res) => {
             native,
             level
         })
-        
-        // Pregunto de tengo los datos del lenguaje y el id del candidato
-        if(languages){
-            // Busco el candidato por el id (ya viene del front) y lo guardo en "candidate"
-            // const candidate = await Candidate.findByPk(idCandidate);
-            // Con el id del candidato y con la info de lenguajes se llena la tabla intermedia y se crea la relacion  
-            can.addLanguage(languages);
+
+
+router.post('/', async (req, res, next) => {
+    const { language } = req.body;
+    try{
+
+        const [encontrado, creado] = await Language.findOrCreate({
+            where:{language: language}})
+        if(creado === true){
+            res.send(`El idioma ${language} fue creado correctamente`);
+        }else{
+            res.send(`El idioma ${language} ya existe`)
         }
-        res.json({msg: "el lenguaje se guardo correctamente"})
-        }
-    } catch (error) {
-        res.status(404).json({msg: "hubo un error"})
+
+    }catch(error){
+        next(error)
     }
 })
+
+
+router.post('/:candidate', async (req, res, next) => {
+    const { candidate } = req.params;
+    const { language, level } = req.body;
+
+    try{
+        const encontradoE = await Candidate.findByPk(candidate);
+        const encontradoL = await Language.findOne({
+            where:{
+                language: language
+            }
+        });
+        if(encontradoE && encontradoL){
+            await encontradoE.addLanguage(encontradoL, { through: {level: level}})
+            res.send(`El idioma ${language} fue agregado correctamente a el usuario ${encontradoE.name}`)
+        }else {
+            res.send(`Algo salio mal`)
+        }
+    }catch(error){
+        next(error)
+    }
+
+})
+
+
+
 
 router.delete('/:id', async (req, res, next) => {
 

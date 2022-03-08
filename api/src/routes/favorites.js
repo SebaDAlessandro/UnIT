@@ -30,7 +30,7 @@ router.get('/:id', async (req, res, next ) => {
           res.json(todos)
 
         }catch(error){
-            next(error)
+            res.send(error.message)
         }
     }else{
         res.send("ID no valido")

@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from '../Card/Card.module.css'
+import styles from '../CardFavorite/CardFavorite.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addFavorite } from '../../redux/actions'
 
-function Card ({name, lastname, location, id, image}) {
+function CardFavorite ({name, lastname, location, id, image}) {
 
     const dispatch = useDispatch();
     const logeado = useSelector(state => state.usuario);
@@ -21,10 +21,6 @@ function Card ({name, lastname, location, id, image}) {
                                 <p>{name} {lastname}</p>
                                 <p className={styles.roll}>Fronted</p>
                             </div>
-                            <div className={styles.contButons}>
-                                <span onClick={() => dispatch(addFavorite({ idrecruiter: logeado.id, idcandidate: id }))} className="material-icons">favorite_border</span>
-                                <span className="material-icons">add</span>
-                            </div>
                         </div> 
                             <div className={styles.footer}>
                                 <h4>{location}</h4>
@@ -39,4 +35,5 @@ function Card ({name, lastname, location, id, image}) {
   )
 }
 
-export default Card
+export default CardFavorite
+

@@ -1,8 +1,6 @@
 import React from 'react'
-import FormCandidate from '../FormCandidate/FormCandidate'
-import FormRecluiter from '../FormRecluiter/FormRecluiter'
 import styles from '../HomeForm/HomeForm.module.css'
-import { Link, Routes, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const HomeForm = (e) => {
   return (

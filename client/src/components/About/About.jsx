@@ -14,7 +14,7 @@ export default function Slider() {
           <Link to='/'>
       <p>Home</p>
       </Link>
-          <div className={style.logo}><img src={logo} /></div>
+          <div className={style.logo}><img src={logo} alt='Not Found' /></div>
             <h1>Encuentra tu </h1>
             <h1>Talento ideal</h1>
             <div>

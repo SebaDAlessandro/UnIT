@@ -2,10 +2,26 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 4rem;
+    height: 5rem;
     min-width: 100%;
-    background-color: #EABCA3;
+    color: #C74874;
     border-bottom: 1px solid #C74874;
+    background: none;
+}
+
+/* Contenedor y estilos logo NavBar */
+
+.logo {
+    height: 3rem;
+}
+
+.logo img {
+    height: 100%;
+}
+
+.container p {
+    font-weight: bold;
+    font-size: 24px;
 }
 
 .user {
@@ -20,4 +36,11 @@
 
 p {
     margin: 0;
+}
+
+.text {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
 }

@@ -1,13 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import style from '../Nav/Nav.module.css'
+import style from './Nav.module.css'
 import logo from '../images/uni.png'
 import ProfileHome from './Avatar'
 
 const Nav = () => {
 
   const usuario = useSelector(state => state.usuario)
+  const folders = "/folders"
+  const home = "/home"
+  const favorites = "/favorites"
+  const ruta = window.location.pathname
 
   return (
     <div className={style.container}>
@@ -17,10 +21,10 @@ const Nav = () => {
       </div>
       <div className={style.ps}>
         <Link to='/'>
-            <p>Home</p>
+            <p className={`${style.pe} ${ruta === home ? style.prueba: null}`}>Home</p>
         </Link>
-        <p>Folders</p>
-        <p>Favorites</p>
+        <p className={`${style.pe} ${ruta === folders ? style.prueba: null}`}>Folders</p>
+        <p className={`${style.pe} ${ruta === favorites ? style.prueba: null}`}>Favorites</p>
       </div>
         <div className={style.icons}>
             <span className="material-icons">

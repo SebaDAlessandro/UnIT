@@ -9,13 +9,13 @@ router.post("/", async (req, res, next) => {
     const {soft_skill, idCandidate} = req.body;
     try {
         
-        const softskills = await Softskill.create({
-            soft_skill
-        })
+        // const softskills = await Softskill.create({
+        //     soft_skill
+        // })
         
-        if(softskills && idCandidate){
+        if(soft_skill && idCandidate){
             const candidate = await Candidate.findByPk(idCandidate);
-            candidate.addSoftskill(softskills);
+            candidate.addSoftskill(soft_skill);
         }
         res.json({msg: "la softskill se guardo correctamente"})    
     } catch (error) {
@@ -38,6 +38,8 @@ router.get('/', async (req, res, next) => {
 })
 
 
+
+
 router.delete("/:id", async (req, res, next) => {
     const {id} = req.params;
     try {
@@ -48,6 +50,19 @@ router.delete("/:id", async (req, res, next) => {
         }else{
             res.json({msg: "La soft skill no existe"})
         }
+    } catch (error) {
+        next(error)
+    }
+})
+
+router.put('/:id', async (req, res, next) => {
+    const {id} = req.params;
+    const {soft_skill} = req.body;
+    try {
+        const softskill = await Softskill.findByPk(id);
+        softskill.soft_skill = soft_skill;
+        await softskill.save();
+        res.json({msg: "la softskill se actualizo correctamente"})
     } catch (error) {
         next(error)
     }

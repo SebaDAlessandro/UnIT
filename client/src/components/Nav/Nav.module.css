@@ -19,12 +19,10 @@
     align-items: center;
 }
 
-.user span {
-    font-size: 40px;
-}
 
-p {
-    font-size: 39px;
+
+.pe{
+    font-size: 22px;
     color: #AC3F65;
     cursor:pointer; cursor: hand;
     font-family: 'Roboto', sans-serif;
@@ -43,6 +41,9 @@ p {
     right: 220px;
     padding: 25px;
 }
+.icons span{
+    font-size: 35px;
+}
 
 .icons2{
     position: absolute;
@@ -55,7 +56,12 @@ span{
 
 .logo{
     position: absolute;
-    width: 115px;
-    height: 66px;
+    width: 90px;
+    height: 50px;
     left: 150px;
+}
+
+.prueba{
+    color: red;
+    text-decoration: underline;
 }

@@ -7,6 +7,7 @@ import FormRecluiter from './components/FormRecluiter/FormRecluiter';
 import About from './components/About/About'
 import Favorites from './components/Favorites/Favorites';
 import { Route, Routes } from 'react-router-dom'
+import FavCart from './components/FavCart/FavCart';
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
       <Route exact path='/about' element={<About/>}/>
 
       <Route exact path='/favorites' element={<Favorites/>}/>
+
+      <Route exact path='/folders' element={<FavCart/>}/>
 
     </Routes>
 

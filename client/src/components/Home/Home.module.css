@@ -9,6 +9,10 @@
     background-color: aliceblue;
 }
 
+.contNav {
+    width: 100%;
+}
+
 .contSaludo {
     font-size: 25px;
     display: flex;

@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { CreateCandidate } from '../../redux/actions'
 import { Link } from 'react-router-dom';
 import '../FormCandidate/FormCandidate.css'
 
 const FormCandidate = () => {
-
-const [show, setShow] = useState({
-    showpassword: false
-});
 
 const [state, setState] = useState({
     name: '',
@@ -169,7 +165,7 @@ const handleChange = (e) => {
 
                     <div className='input_form'>
                         <input
-                        type={show.showpassword ? 'text' : 'password'}
+                        type='password'
                         value={state.password}
                         name='password'
                         onChange={handleChange}

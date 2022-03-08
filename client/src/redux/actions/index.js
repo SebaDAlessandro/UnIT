@@ -3,6 +3,7 @@ import axios from 'axios'
 export const GET_ALL_CANDIDATES = 'GET_ALL_CANDIDATES'
 export const GET_USER = 'GET_USER'
 export const ADD_FAVORITE = 'ADD_FAVORITE'
+export const GET_FAVORITES = 'GET_FAVORITES'
 
 export const CreateCandidate = (create) => async () => {
 
@@ -42,6 +43,26 @@ export function addFavorite (payload) {
             }  
          }; 
         }
+
+        export function getFavorite (id) {   
+            /* console.log("Id ususarios");  */   
+            return async (dispatch) => {     
+                try {var json = await axios.get(`http://localhost:3001/favorites/${id}`);        
+                    console.log("Datos para posteo", json.data);   
+                   console.log(json.data)      
+                    return dispatch({         
+                        type: GET_FAVORITES,         
+                        payload: json.data,       
+                    });     
+                } 
+                    catch (error) {      
+                        return dispatch({         
+                            type: GET_FAVORITES,         
+                            payload: "No se pudo cargar los favoritos",      
+                        });     
+                    }  
+                 }; 
+                }        
 
 /* Mejor formad e hacer las rutas
 

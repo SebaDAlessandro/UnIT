@@ -24,6 +24,21 @@ h1 {
     transition: 0.5s all ease-in-out;
 }
 
+.explora {
+    font-weight: bold;
+    position: absolute;
+    top: 8%;
+    right: 13%;
+    border: 2px solid #C74874;
+    border-radius: 10px;
+    padding: 8px;
+    transition: 0.5s all ease-in-out;
+}
+
+.explora:hover {
+    transform: scale(0.9);
+}
+
 .about:hover {
     transform: scale(0.9);
 }

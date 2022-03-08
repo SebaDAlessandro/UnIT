@@ -38,9 +38,6 @@ const LogIn = () => {
                         <h1>Conecta</h1>
                         <h1>con tu</h1>
                         <h1>futuro</h1>
-                        <Link to='/home'>
-                        <p>Explora</p>
-                        </Link>
                     </div>
                     <div className={style.cohete}>
 
@@ -52,6 +49,10 @@ const LogIn = () => {
 
                 <Link to='/about'>
                         <p className={style.about}>Sobre Nosotros</p>
+                </Link>
+
+                <Link to='/home'>
+                    <p className={style.explora}>Explora</p>
                 </Link>
 
                     <div>

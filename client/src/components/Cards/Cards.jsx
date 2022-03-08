@@ -14,8 +14,6 @@ const Cards = () => {
         dispatch(getAllCandidates());
     }, [])
 
-    console.log(candidates)
-
   return (
     <div className={styles.globalCont}>
 

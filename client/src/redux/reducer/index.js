@@ -1,5 +1,5 @@
-import { GET_ALL_CANDIDATES, GET_USER } from '../actions/index'
-const inicialState = { candidates: [], usuario: [] };
+import { GET_ALL_CANDIDATES, GET_USER, GET_FAVORITES } from '../actions/index'
+const inicialState = { candidates: [], usuario: [], favorites: [] };
 
 const rootReducer = (state = inicialState, action) => {
     switch (action.type) {
@@ -16,6 +16,12 @@ const rootReducer = (state = inicialState, action) => {
                 usuario: action.payload
             }    
       
+        case GET_FAVORITES: 
+        return {
+            ...state,
+            favorites: action.payload
+        }
+
         default:
         return state
 

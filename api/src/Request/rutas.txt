@@ -1,0 +1,89 @@
+GET a candidatos.
+ >> http://localhost:3001/candidates/
+
+GET de busqueada por id del candidato
+ >> http://localhost:3001/candidates/{idCanndidate}
+ idCanndidate por params
+
+POST a candidatos 
+ >> http://localhost:3001/candidates/
+ Esto recibe por body:
+ {
+  "name": "emma", 
+  "lastname": "emma", 
+  "email": "algo@algp.com", 
+  "location": "BAAS", 
+  "status": "Estudiando", 
+  "image": "https://www.freejpg.com.ar/image-900/1d/1de8/F100007892-chispas.jpg", 
+  "password": "sd6a116"
+}
+
+PUT a candiddates 
+ >> http://localhost:3001/candidates/{idCanndidate}
+ Esto recibe por body:  >>** Solo se cambia lo que se necesite, los datos que no se cambian los vuelve a tomar de la BD **<<
+            {
+                name, 
+                lastname, 
+                email, 
+                location, 
+                description,
+                linkedin,
+                github,
+                portfolio,
+                status,
+                image,
+                cv,
+                password, 
+            }
+DELETE a candidate
+ >> http://localhost:3001/candidates/{idCanndidate}
+ idCanndidate por params
+
+-------------------------------------------------------------------------------------------------
+
+GET a Recruiter
+ >> http://localhost:3001/cuentarecruiter/
+
+
+POST a Recruiter 
+>> http://localhost:3001/cuentarecruiter/
+Esto recibe por body: 
+ {
+    "name": "edcdmma", 
+    "lastname": "emma", 
+    "email": "algo@algo.com", 
+    "organization": "UnIT", 
+    "password": "65SDcsdc1V6SD", 
+    "image":"imagen", 
+    "location": "argentina", 
+    "description":"por el momento no"
+}
+
+PUT a Recruiter
+>> http://localhost:3001/cuentarecruiter/{idRecluiter}
+ idRecluiter se recibe por params
+ los datos que se reciben por body >>** Solo recibe los datos que se quieren cambiar **<<
+ {
+    name, 
+    lastname, 
+    email,
+    organization, 
+    password, 
+    image, 
+    location, 
+    description
+ }
+
+POST Login Recruiter 
+ >>  http://localhost:3001/loginrecruiter
+ recibe por body:
+ {
+    email,
+    password
+ }
+
+
+---------------------------------------------------------------------
+
+
+POST a experiencia

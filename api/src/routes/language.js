@@ -26,7 +26,14 @@ router.post("/", async (req, res) => {
             native,
             level
         })
-
+        res.json(languages)
+    }}  catch (error) {
+        res.json({
+            message: "No se pudo crear el lenguaje"
+        })
+    }
+})
+    
 
 router.post('/', async (req, res, next) => {
     const { language } = req.body;

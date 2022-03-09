@@ -4,7 +4,7 @@ export const GET_FAVORITES = 'GET_FAVORITES'
 export const GET_ALL_CANDIDATES = 'GET_ALL_CANDIDATES'
 export const GET_USER = 'GET_USER'
 export const ADD_FAVORITE = 'ADD_FAVORITE'
-
+export const LOGOUT = 'LOGOUT'
 
 export const CreateCandidate = (create) => async () => {
 
@@ -113,3 +113,10 @@ export const getAllCandidates = () => async dispatch => {
     console.log(json.data)
 }
 
+export const logout = () => async dispatch => {
+    
+    dispatch({
+        type: LOGOUT,
+        payload: "cerrar sesion"
+    })
+}

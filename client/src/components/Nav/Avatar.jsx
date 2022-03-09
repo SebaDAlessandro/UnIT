@@ -14,6 +14,7 @@ import Logout from '@mui/icons-material/Logout';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { logout } from '../../redux/actions';
 
 
 
@@ -47,16 +48,12 @@ return (
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >   
-                        {!userLogeado.name ?
+                        
                         <Avatar sx={{ width: 48, height: 45, fontSize: "2.5rem", color:'#FF6363', background:'#19111d'}}></Avatar>
-
-                        : <img style={{width:'48px',height:'40px'}} src={userLogeado.image} alt={userLogeado.name?.charAt(0)} />
-
-                        }
                     </IconButton>
 
                 </Tooltip>
-                {/* <p className='log-usuario'>{userLogeado.name ? userLogeado.name : 'Invitado'}</p> */}
+                {/* <p className='log-usuario'>{userLogeado.email ? userLogeado.email : 'Invitado'}</p> */}
             </Box>
             <Menu
                 anchorEl={anchorEl}
@@ -99,25 +96,18 @@ return (
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
 
             >
-                {userLogeado.name ?
-                    <Link to={`/Detail`}>
-                        <MenuItem>
-                            <Avatar /> <p className='menu' style={{ paddingRigth: '20px' }}> Mi Perfil </p>
-                        </MenuItem>
-                    </Link> :
-                    <Link to='/Login'>
-                        <MenuItem >
-                            <Avatar /> <p className='menu' >Iniciar Sesion</p>
-                        </MenuItem>
-                    </Link>}
-                {userLogeado.name ?
+
+                {userLogeado.email ?
                     <Link to={'/'} >
                         <MenuItem >
-                            <Avatar /> <p className='menu' style={{ paddingRigth: '20px' }}> Cerrar Sesion </p>
+                            <Avatar /> <p className='menu' style={{ paddingRigth: '20px' }} onClick={() => (dispatch(logout()))} > Cerrar Sesion </p>
                         </MenuItem>
                         <MenuItem >
 
-                            <Avatar /> <p className='menu' style={{ paddingRigth: '20px' }}> Jugar </p>
+                            <Avatar /> 
+                            <Link to={'/miperfil'}>
+                            <p className='menu' style={{ paddingRigth: '20px' }}> Mi Perfil </p>
+                            </Link>
                         </MenuItem>
                     </Link> :
                     <Link to='/Registro'>
@@ -128,7 +118,7 @@ return (
 
 
                     {
-                        userLogeado.name === 'administrador'?
+                        userLogeado.email === 'administrador'?
 
                     <div>
                  <Divider />

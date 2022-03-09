@@ -9,10 +9,10 @@ id: {
     primaryKey: true,
     autoIncrement: true,
     allowNull: false
-},
+    },
 language: {
     type: DataTypes.STRING,
     allowNull: false,
-}
-});
+    }
+},{timestamps: false});
 };

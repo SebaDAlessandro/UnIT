@@ -88,7 +88,7 @@ router.get('/:id', async (req, res, next) => {
         if(id){
           const candidato = await Candidate.findByPk(id,{
             include: [
-                {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}
+                {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}, {model: Orientation}
             ]
           })
           if(candidato != 0){

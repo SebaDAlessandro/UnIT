@@ -70,7 +70,7 @@ router.post("/:idCandidate", async (req, res, next) => {
     }
 })
 
-router.delete('/candidate/:id', async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
 
     const {id} = req.params;
 
@@ -91,6 +91,25 @@ router.delete('/candidate/:id', async (req, res, next) => {
        
     }
 })
+
+
+router.delete("/candidate/:candidateId", async (req, res, next) => {
+    const {candidateId} = req.params;
+    const {name} = req.body;
+    try {
+        const or = await Orientation.findOne({where: {name: name}});
+        const candidate = await Candidate.findByPk(candidateId);
+        if(or && candidate){
+            await candidate.removeOrientation([or]);
+            res.json({msg: `La orientation ${name} fue desvinculada del candidato ${candidate.name} `})
+        }else{
+            res.json({msg: "La orientation o candidato no existe"})
+        }
+    } catch (error) {
+        next(error)
+    }
+})
+
 
 router.put ('/:id', async (req, res, next) => {
     const {id} = req.params;

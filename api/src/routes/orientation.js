@@ -27,19 +27,45 @@ router.get('/', async(req, res, next) => {
 
 router.post("/", async (req, res, next) => {
 
-    const {name, idCandidate} = req.body;
-    try {
+    const {name} = req.body;
+
+    try{
         
-        const or = await Orientation.create({
-            name
+        const [o, creado] = await Orientation.findOrCreate({
+            where: {name: name}
         })
-        
-        if(or && idCandidate){
-            const candidate = await Candidate.findByPk(idCandidate);
-            candidate.addOrientation(or);
+       
+
+        if(!creado){
+            res.json({msg: "la orientation ya existe"})
+        }else{
+            res.json({msg: "la orientation fue creada correctamente"})
         }
-        res.json({msg: "la orientation se guardo correctamente"})    
-    } catch (error) {
+
+    } catch (error){
+        next(error)
+    }
+
+})
+
+
+router.post("/:idCandidate", async (req, res, next) => {
+    const {idCandidate} = req.params;
+    const {name} = req.body;
+
+    try{
+
+        const orient = await Orientation.findOne({where: {name: name}});
+        const candidate = await Candidate.findByPk(idCandidate);
+
+        if(candidate && orient){
+            await candidate.addOrientation(orient)
+            res.json({msg: "la orientation ya fue relacionada con el candidato"})
+        }else{
+            res.json({msg: "error"})
+        }
+
+    } catch (error){
         next(error)
     }
 })

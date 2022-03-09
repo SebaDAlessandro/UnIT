@@ -14,25 +14,6 @@ router.get("/", async (req, res, next) =>{
     }
 })
 
-router.post("/", async (req, res) => {
-    // en el req.body tomo toda la informacion que viene del front
-    const {language, native, level, idCandidate} = req.body;
-    try {
-        const can = await Candidate.findByPk(idCandidate);
-        if(can){
-        // En la tabla Language creo un nuevo registro con los datos del front
-        const languages = await Language.create({
-            language,
-            native,
-            level
-        })
-        res.json(languages)
-    }}  catch (error) {
-        res.json({
-            message: "No se pudo crear el lenguaje"
-        })
-    }
-})
     
 
 router.post('/', async (req, res, next) => {

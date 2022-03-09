@@ -81,6 +81,26 @@ router.delete("/:id", async (req, res, next) => {
     }
 })
 
+
+router.delete("/candidate/:candidateId", async (req, res, next) => {
+    const {candidateId} = req.params;
+    const {soft_skill} = req.body;
+    try {
+        const sk = await Softskill.findOne({where: {soft_skill: soft_skill}});
+        const candidate = await Candidate.findByPk(candidateId);
+        if(sk && candidate){
+            await candidate.removeSoftskills([sk]);
+            res.json({msg: `La soft skill ${soft_skill} fue desvinculada del candidato ${candidate.name} `})
+        }else{
+            res.json({msg: "La soft skill o candidato no existe"})
+        }
+    } catch (error) {
+        next(error)
+    }
+})
+
+
+
 router.put('/:id', async (req, res, next) => {
     const {id} = req.params;
     const {soft_skill} = req.body;

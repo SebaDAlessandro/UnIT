@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const { SECRET } = process.env;
 
 
-const {Recruiter, Contacted, Candidate} = require('../db.js');
+const {Recruiter, Contacted, Candidate, Language, Technicalskills, Project_experience, Softskill, Orientation} = require('../db.js');
 
 router.get('/', async (req, res, next) => {
     try{
@@ -74,9 +74,40 @@ router.put('/:id', async (req, res, next) => {
 })
 
 
+// http://localhost:3001/cuentarecruiter/login
+router.get("/login", async (req, res, next) => {
+    const {email} = req.body;
+    
+    try{
+        const recruiter = await Recruiter.findOne({ where: { email: email }, })
+        
+        if(recruiter){
+            res.json(recruiter)
+        }else{
+            const candidate = await Candidate.findOne({ 
+                where: { email: email },
+                include: [
+                    {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}, {model: Orientation}
+                ]
+             })
+
+            if(candidate){
+                res.json(candidate)
+            }
+
+            if(!candidate && !recruiter){
+                res.json({msg: "Este mail no esta asociado a ninguna cuenta"})
+            }
+        }
+        
 
 
+    } catch(error){
+        next(error)
+    }
+})
 
+//VERIFICAR SI EXISTE EL MAIL, TANTO EN LA TABLA DE CANDIDATOS COMO EN LA DE RECRUITER
 router.post("/loginrecruiter", async (req, res) => {
     // TODO: >> http://localhost:3001/cuentarecruiter/loginrecruiter <<
     const { email, password } = req.body

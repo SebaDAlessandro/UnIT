@@ -99,6 +99,23 @@ router.delete("/:id", async (req, res, next) => {
     }
 })
 
+router.delete("/candidate/:candidateId", async (req, res, next) => {
+    const {candidateId} = req.params;
+    const {technicalskills} = req.body;
+    try {
+        const tk = await Technicalskills.findOne({where: {technicalskills: technicalskills}});
+        const candidate = await Candidate.findByPk(candidateId);
+        if(tk && candidate){
+            await candidate.removeTechnicalskills([tk]);
+            res.json({msg: `La technical skill ${technicalskills} fue desvinculada del candidato ${candidate.name} `})
+        }else{
+            res.json({msg: "La technical skill o candidato no existe"})
+        }
+    } catch (error) {
+        next(error)
+    }
+})
+
 
 router.put ('/:id', async (req, res, next) => {
     const {id} = req.params;

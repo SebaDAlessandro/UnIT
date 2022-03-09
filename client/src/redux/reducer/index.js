@@ -1,4 +1,4 @@
-import { GET_ALL_CANDIDATES, GET_USER, GET_FAVORITES } from '../actions/index'
+import { GET_ALL_CANDIDATES, GET_USER, GET_FAVORITES, LOGOUT } from '../actions/index'
 const inicialState = { candidates: [], usuario: [], favorites: [] };
 
 const rootReducer = (state = inicialState, action) => {
@@ -20,6 +20,12 @@ const rootReducer = (state = inicialState, action) => {
         return {
             ...state,
             favorites: action.payload
+        }
+
+        case LOGOUT: 
+        return {
+            ...state,
+            usuario: []
         }
 
         default:

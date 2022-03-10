@@ -8,7 +8,7 @@ import styles from '../Cards/Cards.module.css'
 const Cards = () => {
 
     let dispatch = useDispatch();
-    const candidates = useSelector(state => state.candidates)
+    const candidates = useSelector(state => state.mostrar)
 
     useEffect(() => {
         dispatch(getAllCandidates());
@@ -19,13 +19,15 @@ const Cards = () => {
 
     <div className={styles.container}>
 
-        {candidates.map((c) => <Card
+        {Array.isArray(candidates)?candidates.map((c) => <Card
         name={c.name}
         lastname={c.lastname}
         location={c.location}
         id={c.id}
         image={c.image}
-        />) }
+        />):
+        <h1>hola</h1>
+        }
     </div>
     </div>
   )

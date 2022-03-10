@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./FavCart.css";
-import data from "./dataprueba.json"
 import { useSelector, useDispatch } from "react-redux";
 import { getFavorites } from "../../redux/actions";
 import { Link } from 'react-router-dom'

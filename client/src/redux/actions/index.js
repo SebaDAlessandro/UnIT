@@ -7,6 +7,7 @@ export const ADD_FAVORITE = 'ADD_FAVORITE'
 export const LOGOUT = 'LOGOUT'
 export const LOADING = 'LOADING'
 export const CAMBIAR_LOGEO = 'CAMBIAR_LOGEO'
+export const FILTRO_BUSCADOS = 'FILTRO_BUSCADOS'
 
 export const CreateCandidate = (create) => async () => {
 
@@ -148,6 +149,14 @@ export const cambiarlogeo = (info) => async dispatch => {
     
     dispatch({
         type: CAMBIAR_LOGEO,
+        payload: info
+    })
+}
+
+export const filtrarBuscados = (info) => async dispatch => {
+    
+    dispatch({
+        type: FILTRO_BUSCADOS,
         payload: info
     })
 }

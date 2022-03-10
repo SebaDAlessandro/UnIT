@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import style from './Nav.module.css'
 import logo from '../images/uni.png'
 import ProfileHome from './Avatar'
+import FiltroNav from './FiltroNav'
 
 const Nav = () => {
 
@@ -45,7 +46,7 @@ const Nav = () => {
             {/* <span className="material-icons">
               expand_more
             </span> */}
-        </div>
+        </div>        
     </div>
   )
 }

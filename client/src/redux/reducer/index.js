@@ -1,5 +1,5 @@
-import { GET_ALL_CANDIDATES, GET_USER, GET_FAVORITES, LOGOUT, LOADING, CAMBIAR_LOGEO } from '../actions/index'
-const inicialState = { candidates: [], usuario: [], favorites: [], loading: {loading: false, msg:""}, logeado: false };
+import { GET_ALL_CANDIDATES, GET_USER, GET_FAVORITES, LOGOUT, LOADING, CAMBIAR_LOGEO, FILTRO_BUSCADOS } from '../actions/index'
+const inicialState = { candidates: [], usuario: [], favorites: [], loading: {loading: false, msg:""}, mostrar:[], logeado: false };
 
 const rootReducer = (state = inicialState, action) => {
     switch (action.type) {
@@ -7,7 +7,8 @@ const rootReducer = (state = inicialState, action) => {
         case GET_ALL_CANDIDATES:
             return {
                 ...state,
-                candidates: action.payload
+                candidates: action.payload,
+                mostrar: action.payload
             }
            
         case GET_USER:
@@ -44,7 +45,13 @@ const rootReducer = (state = inicialState, action) => {
                 ...state,
                 usuario: action.payload,
                 logeado: true
-            }      
+            }
+            
+        case FILTRO_BUSCADOS:
+            return {
+                ...state,
+                mostrar: action.payload
+            }
 
         default:
         return state

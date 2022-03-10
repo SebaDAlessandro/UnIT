@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import Cards from '../Cards/Cards'
 import Nav from '../Nav/Nav'
 import { useSelector, useDispatch } from 'react-redux'
-import { getFavorites } from '../../redux/actions'
+import { FILTRO_BUSCADOS, getFavorites } from '../../redux/actions'
 import style from '../Home/Home.module.css'
+import FiltroNav from '../Nav/FiltroNav'
 
 const Home = () => {
 
@@ -23,7 +24,8 @@ useEffect(() => {
   return (
     <div className={style.globalcontainer}>
         <Nav/>
-        <Cards/>
+        <FiltroNav/>
+        <Cards/>        
     </div>
   )
 }

@@ -3,6 +3,7 @@ import "./FavCart.css";
 import data from "./dataprueba.json"
 import { useSelector, useDispatch } from "react-redux";
 import { getFavorites } from "../../redux/actions";
+import { Link } from 'react-router-dom'
 
 
 const FavCart = ()=>{
@@ -24,6 +25,11 @@ const FavCart = ()=>{
             class="buscador"            
             onChange={(e)=>{setBusca(e.target.value)}}
             />
+            <div>
+                <Link to='/favorites'>
+                <button>Home</button>
+                </Link>
+            </div>
         <table>
         <thead>            
             <tr>                    

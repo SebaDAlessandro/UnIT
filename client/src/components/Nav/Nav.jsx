@@ -15,7 +15,9 @@ const Nav = () => {
 
   return (
     <div className={style.container}>
+      <Link to='/home'>
       <img className={style.logo} src={logo} />
+      </Link>
       <div className={style.user}>
         <p>{usuario.name}</p>
       </div>

@@ -1,0 +1,17 @@
+.globlacont {
+    position: relative;
+    height: 5rem;
+    background: linear-gradient(270deg, #ed725d94 15.6%, #f0bea781 100%);
+}
+
+.logo {
+    position: absolute;
+    top: 15px;
+    left: 50px;
+}
+
+.icons2{
+    position: absolute;
+    top: 10px;
+    right: 50px;
+}

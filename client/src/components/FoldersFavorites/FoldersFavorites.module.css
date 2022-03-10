@@ -1,0 +1,33 @@
+.globalCont {
+    display: grid;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.contGrid {
+    position: relative;
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 100vw;
+}
+
+.contCards {
+    min-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 100%;
+}
+
+
+
+/* Saludo */
+
+.contSaludo h1 {
+    color: white;
+}

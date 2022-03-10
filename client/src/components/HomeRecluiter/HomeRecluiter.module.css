@@ -1,0 +1,116 @@
+.globalCont {
+    min-height: 100vh;
+    min-width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 0.4fr repeat(3, 1fr);
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+    background-image: url('../images/PruebaFondo.jpg');
+    background-size: cover;
+    color: white;
+  }
+  
+  .nav { 
+    grid-area: 1 / 1 / 2 / 5; 
+  }
+  
+  .contButtons {
+    width: 95%;
+    grid-area: 2 / 2 / 3 / 5;
+    display: flex;
+    margin: 0 3rem 0 0;
+  }
+  
+  .carpetas { 
+    grid-area: 2 / 2 / 3 / 3; 
+  }
+  
+  .carpetas img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 2px 20px #429C6D );
+  }
+  
+  .carpetas img {
+    object-fit: contain;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    transition: 0.5s all;
+  }
+  
+  .tablas {
+    grid-area: 2 / 3 / 3 / 4;
+    margin: 0 3rem 0 3rem;
+  }
+  
+  .tablas img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 2px 20px #9B2E3D );
+  }
+  
+  .tablas img {
+    object-fit: contain;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    transition: 0.5s all;
+  }
+  
+  .explora {
+    grid-area: 2 / 4 / 3 / 5;
+  }
+  
+  .explora img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 2px 20px #4A38A9 );
+  }
+  
+  .explora img {
+    object-fit: contain;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    transition: 0.5s all;
+  }
+  
+  .bottominfo {
+    display: flex;
+    grid-area: 3 / 2 / 5 / 5;
+    box-shadow:0px 0px 100px 40px #dddddd ;
+    border-radius: 20px;
+    margin: 0 3rem 3rem 0;
+  }
+  
+  .bottominfo h1 {
+    font-weight: 400;
+  }
+  
+  .slider {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    grid-area: 2 / 1 / 5 / 2;
+    box-shadow:0px 0px 100px 40px #dddddd ;
+    border-radius: 20px;
+    margin: 0 0 3rem 3rem;
+  }
+
+  .text {
+    height: 10rem;
+    width: 100;
+    background-color: #429C6D;
+  }
+
+  .profilepicture {
+    margin-top: 2rem;
+    background-color: #429C6D;
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50%;
+  }
+  
+

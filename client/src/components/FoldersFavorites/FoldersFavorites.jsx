@@ -1,20 +1,24 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import CardFavorite from '../CardFavorite/CardFavorite'
 import img from '../images/Carpeta.png'
-import style from '../Favorites/Favorites.module.css'
+import style from '../FoldersFavorites/FoldersFavorites.module.css'
 import Nav from '../Nav/Nav'
 import { getFavorites } from '../../redux/actions'
 
-const Favorites = () => {
+const FoldersFavorites = () => {
 
+const [bandera, setBandera] = useState(0)
 const favorites = useSelector(state => state.favorites)
+const loading = useSelector(state => state.loading)
 const usuario = useSelector(state => state.usuario)
+console.log(favorites, "Estos son los favoritos")
 const dispatch = useDispatch()
 console.log(favorites)
 useEffect(() => {
-  if (favorites.length===0){
+  if (bandera === 0){
     dispatch(getFavorites(usuario.id));
+    setTimeout( () => {setBandera(1)}, 100)
   }
 }, [favorites])
 
@@ -33,18 +37,19 @@ useEffect(() => {
         </div>
         <div className={style.rectangle}>
           <div className={style.contCards}>
-                {           
-                favorites?.candidates?.map(c => <CardFavorite
+            {bandera === 0 ? 
+              <div className={style.folder}>
+                <img src={img} />
+              </div>  
+              :
+               favorites?.candidates?.map(c => <CardFavorite
                 name={c.name}
                 lastname={c.lastname}
                 location={c.location}
                 id={c.id}
                 image={c.image}
-              />              
-              )}
-            <div className={style.folder}>
-                <img src={img} />
-              </div>  
+              />)
+              }
             </div>
         </div>
       </div>
@@ -52,4 +57,4 @@ useEffect(() => {
   )
 }
 
-export default Favorites
+export default FoldersFavorites

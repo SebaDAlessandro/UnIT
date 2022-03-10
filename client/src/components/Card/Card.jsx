@@ -1,12 +1,16 @@
 import React from 'react';
 import styles from '../Card/Card.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { addFavorite } from '../../redux/actions'
+import { addFavorite, getFavorites } from '../../redux/actions'
 
 function Card ({name, lastname, location, id, image}) {
 
     const dispatch = useDispatch();
     const logeado = useSelector(state => state.usuario);
+
+    const handleChange = () =>  {
+        dispatch(addFavorite({ idrecruiter: logeado.id, idcandidate: id }))
+    }
 
     return (
     <div className={styles.Cards}>
@@ -22,7 +26,7 @@ function Card ({name, lastname, location, id, image}) {
                                 <p className={styles.roll}>Fronted</p>
                             </div>
                             <div className={styles.contButons}>
-                                <span onClick={() => dispatch(addFavorite({ idrecruiter: logeado.id, idcandidate: id }))} className="material-icons">favorite_border</span>
+                                <span onClick={handleChange} className="material-icons">favorite_border</span>
                                 <span className="material-icons">add</span>
                             </div>
                         </div> 

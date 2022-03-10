@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { CreateCandidate } from '../../redux/actions'
 import { Link } from 'react-router-dom';
+import UploadImage from '../UploadImage/UploadImage'
 import '../FormCandidate/FormCandidate.css'
 
 const FormCandidate = () => {
@@ -149,18 +150,7 @@ const handleChange = (e) => {
                     </div>
 
                     <div className='input_form'>
-                        <input
-                        type='text'
-                        value={state.image}
-                        name='image'
-                        onChange={handleChange}
-                        required
-                        /> 
-                            <label className='lbl_nombre'>
-                                    <span className='text_nomb'>
-                                        Foto perfil
-                                    </span>
-                                </label>
+                     <UploadImage/>
                     </div> 
 
                     <div className='input_form'>

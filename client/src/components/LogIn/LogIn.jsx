@@ -24,8 +24,7 @@ const LogIn = () => {
     const handleSumbit = (e) => {
         e.preventDefault();
         dispatch(Login(state)); 
-        history('/home')
-        alert(`Info send corectly ${state.name}`)
+        history('/homerecluiter')
       }
 
     return (
@@ -48,11 +47,7 @@ const LogIn = () => {
                 <div className={style.containerInputs}>
 
                 <Link to='/about'>
-                        <p className={style.about}>Sobre Nosotros</p>
-                </Link>
-
-                <Link to='/home'>
-                    <p className={style.explora}>Explora</p>
+                    <p className={style.about}>Sobre Nosotros</p>
                 </Link>
 
                     <div>

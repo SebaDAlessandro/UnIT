@@ -12,10 +12,16 @@ function CardFavorite ({name, lastname, location, id, image}) {
     <div className={styles.Cards}>
 
     <div className={styles.cont_card}>
+        
                 <div className={styles.image_container}>
                     <img src={image} alt="Not Found"/>
                 </div> 
                 <div className={styles.cont_text}>
+                    <div className={styles.delete}>
+                        <span className="material-icons">
+                            clear
+                        </span>
+                    </div>
                         <div className={styles.header}>
                             <div className={styles.title}>
                                 <p>{name} {lastname}</p>

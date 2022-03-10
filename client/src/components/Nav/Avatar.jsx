@@ -105,7 +105,7 @@ return (
                         <MenuItem >
 
                             <Avatar /> 
-                            <Link to={'/miperfil'}>
+                            <Link to={'/homerecluiter'}>
                             <p className='menu' style={{ paddingRigth: '20px' }}> Mi Perfil </p>
                             </Link>
                         </MenuItem>

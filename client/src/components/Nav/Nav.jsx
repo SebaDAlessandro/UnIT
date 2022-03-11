@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import style from './Nav.module.css'
-import logo from '../images/uni.png'
+import logo from '../images/LogoNav.png'
 import ProfileHome from './Avatar'
 
 const Nav = () => {

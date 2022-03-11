@@ -13,6 +13,7 @@ import FoldersFavorites from './components/FoldersFavorites/FoldersFavorites'
 import Error from './components/404/Error'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import FavCart from './components/FavCart/FavCart';
+import Profile from "./components/Profile/Profile"
 
 function App() {
 
@@ -52,6 +53,8 @@ function App() {
       <Route exact path='/home' element={logeado === false ? <Error/> : <Home/> }/>
       
       <Route exact path='/about' element={<About/>}/>
+
+      <Route exact path='/profile' element={<Profile/>}/>
 
       <Route exact path='/favorites' element={logeado === false ? <Error/> : <FoldersFavorites/>}/>
 

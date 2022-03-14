@@ -1,0 +1,32 @@
+.contenedor {
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    min-height: 2rem;
+    min-width: 10rem;
+    border: 1px solid rgb(199, 199, 199); 
+    border-radius: 20px;
+    padding: 0 10px 0 20px;
+    background-color: white;
+}
+
+.name {
+    width: 70%;
+    max-height: 3rem;
+}
+
+.name p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    text-align: left;
+    color: rgb(20, 20, 20);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.folder span {
+    font-size: 30px;
+    color: rgb(20, 20, 20);
+}

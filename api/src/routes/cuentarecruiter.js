@@ -127,6 +127,7 @@ router.post("/loginrecruiter", async (req, res) => {
                     const data = {
                         id: recruiter.id,
                         email: recruiter.email,
+                        image: recruiter.image,
                         token
                     }
                     res.json(data)

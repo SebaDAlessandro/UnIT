@@ -9,7 +9,7 @@ import explora from '../images/Explora.png'
 import style from './HomeRecluiter.module.css'
 import NavRecluiter from '../NavRecluiter/NavRecluiter'
 import 'animate.css';
-import { getFavorites } from '../../redux/actions'
+import { getFavorites, getFolders } from '../../redux/actions'
 
 const HomeRecluiter = () => {
 
@@ -38,6 +38,7 @@ useEffect(() => {
     <div className={style.globalCont}>
       <div className={style.slider}>
         <div className={style.profilepicture}>
+          <img src={`${favorites.image}`} alt="Not Found"/>
         </div>
         <div className={style.text}>
           <h1>Hola {favorites.name}</h1>

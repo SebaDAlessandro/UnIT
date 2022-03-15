@@ -3,18 +3,25 @@ import { useSelector, useDispatch } from 'react-redux'
 import CardFavorite from '../CardFavorite/CardFavorite'
 import img from '../images/Carpeta.png'
 import style from '../FoldersFavorites/FoldersFavorites.module.css'
-import Nav from '../Nav/Nav'
 import { getFavorites } from '../../redux/actions'
+import FormCarpetas from '../FormCarpetas/FormCarpetas'
+import NavRecluiter from '../NavRecluiter/NavRecluiter'
+import Carpetas from '../Carpetas/Carpetas'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 const FoldersFavorites = () => {
 
 const [bandera, setBandera] = useState(0)
+const [ cards, setCards ] = useState("finalSpace")
+
+/* Estados de Redux */
+
 const favorites = useSelector(state => state.favorites)
-const loading = useSelector(state => state.loading)
 const usuario = useSelector(state => state.usuario)
-console.log(favorites, "Estos son los favoritos")
+const carpetas = useSelector(state => state.carpetas)
+
 const dispatch = useDispatch()
-console.log(favorites)
+
 useEffect(() => {
   if (bandera === 0){
     dispatch(getFavorites(usuario.id));
@@ -22,38 +29,86 @@ useEffect(() => {
   }
 }, [favorites])
 
+const handleOnDragEnd = (result) => {
+  const items = Array.from(cards) 
+  const [reorderItem] = items.splice(result.source.index, 1)
+  items.splice(result.destination.index, 0, reorderItem)
+
+  setCards(items)
+}
+
 
   return (
-    <div className={style.globalCont}>
-      <div className={style.contNav}>
-        <Nav/>
-      </div>
-      <div className={style.contGrid}>
-        <div className={style.contSaludo}>
-            <h1>Bienvenido {usuario.name}</h1> 
-            <span className="material-icons">
-                waving_hand
-            </span>
-        </div>
-        <div className={style.rectangle}>
-          <div className={style.contCards}>
-            {bandera === 0 ? 
+
+    <DragDropContext dropD onDragEnd={handleOnDragEnd} >
+
+      <div className={style.globalCont}>
+
+      <Droppable direction='horizontal' droppableId='task'>  
+
+        {(droppableProvider) => (
+          <div 
+          className={style.contCards}
+          {...droppableProvider.droppableProps}
+          ref={droppableProvider.innerRef}
+          > 
+
+              {bandera === 0 ? 
               <div className={style.folder}>
                 <img src={img} />
               </div>  
               :
-               favorites?.candidates?.map(c => <CardFavorite
-                name={c.name}
-                lastname={c.lastname}
-                location={c.location}
-                id={c.id}
-                image={c.image}
-              />)
+               favorites?.candidates?.map((c, index) => 
+
+               <Draggable key={c.id} draggableId={c.id} index={index}>
+
+                {(draggableProvider) => 
+
+                <div
+                {...draggableProvider.draggableProps}
+                ref={draggableProvider.innerRef}
+                {...draggableProvider.dragHandleProps}
+                >
+                <CardFavorite
+                  key={index}
+                  name={c.name}
+                  lastname={c.lastname}
+                  location={c.location}
+                  id={c.id}
+                  image={c.image}
+                />
+                </div>
+
+                }
+
+              </Draggable>
+              )
               }
+
+            {droppableProvider.placeholder} 
+
+          </div>
+        )}
+
+      </Droppable>
+
+          <div className={style.contCarpetas}> 
+            <div>
+              {!carpetas.length ? <FormCarpetas/> : <h1>Aun no tienes carpetas creadas</h1>}
+            </div> 
+              <div>
+                <Carpetas/>
+              </div> 
+          </div>
+
+            <div className={style.contNav}>
+              <NavRecluiter/>
             </div>
-        </div>
+
       </div>
-    </div>
+
+    </DragDropContext>            
+
   )
 }
 

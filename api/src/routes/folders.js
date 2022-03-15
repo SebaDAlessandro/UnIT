@@ -48,10 +48,15 @@ router.get("/recruiter/:id", async (req, res, next) => {
     try {
       const folders = await Recruiter.findByPk(id,
         {include: Folders});
-
+        console.log(folders, "Estos son los folders")
         folderRecruiter = {
             Recruiter: folders.name,
-            Folders: folders.folders.map(f => f.folderName)
+            Folders: folders.folders.map(f =>{
+              return {
+                  folderName: f.folderName,
+                  folderId: f.id
+              }
+          }),
         }
       res.json(folderRecruiter);
     } catch (error) {
@@ -71,7 +76,7 @@ router.post("/", async (req, res, next) => {
     });
     res.json({ msg: "la carpeta se guardo correctamente" });
   } catch (error) {
-    res.send(error);
+    res.send(error.message);
   }
 });
 

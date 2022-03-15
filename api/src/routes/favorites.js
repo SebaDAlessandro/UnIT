@@ -59,24 +59,18 @@ router.get('/:id', async (req, res, next ) => {
  })
 
 
-router.delete('/candidate/:id', async (req, res) => {
-
-    // http://localhost:3001/favorites/candidate/:{id}
-
-    const {id} = req.params
-    console.log(id)
-
-    try{
-        const candidateB = await Contacted.findByPk(id);
-
-
-        if(candidateB){
-            await candidateB.destroy();
-            res.status(200).send ('Candidate deleted')
-
+ router.delete("/candidate/:candidateId", async (req, res, next) => {
+    const {candidateId} = req.params;
+    const {recruiterId} = req.body;
+    try {
+        const recruiter = await Recruiter.findByPk(recruiterId);
+        if(recruiter){
+            await recruiter.removeCandidate([candidateId]);
+            res.json({msg: `El candidato fue desvinculada de favoritos`})
         }
-    } catch(error){
-        res.status(404).send('Candidate not found')
+
+    } catch (error) {
+        next(error)
     }
 })
 

@@ -1,0 +1,21 @@
+.container {
+    margin: 1rem 0 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container button {
+    margin-left: 1rem;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background-color: rgb(49, 207, 255);
+}
+
+.input {
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    outline: none;
+}

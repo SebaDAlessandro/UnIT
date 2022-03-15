@@ -102,7 +102,6 @@
   .text {
     height: 10rem;
     width: 100;
-    background-color: #429C6D;
   }
 
   .profilepicture {
@@ -111,6 +110,13 @@
     height: 8rem;
     width: 8rem;
     border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .profilepicture img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
   }
   
 

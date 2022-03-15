@@ -7,6 +7,35 @@ import { Link } from 'react-router-dom'
 
 const FormRecluiter = () => {
 
+    /* Cloudinary */
+
+const [image, setImage] = useState("")
+const[loading, setLoading] = useState(false);
+
+const uploadImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append('file', files[0]);
+    data.append('upload_preset', "au1jdovv");
+    setLoading(true);
+    const res = await fetch(
+        'https://api.cloudinary.com/v1_1/dswadm5bw/image/upload',
+        {
+            method: "POST",
+            body: data,
+        }
+    )
+    const file = await res.json();
+    console.log(res)
+    setState({
+        ...state, image: file.secure_url
+      })
+    // console.log(file.secure_url)
+    setLoading(false)
+}
+
+/* ----------------------------------------------------- */
+
     const [state, setState] = useState({
         name: '',
         lastname: '',
@@ -131,19 +160,20 @@ const FormRecluiter = () => {
             </div>
 
             <div className={styles.input_form}>
-                <input
-                type='text'
-                value={state.image}
-                name='image'
-                onChange={handleChange}
-                required
-                />
-                    <label className={styles.lbl_nombre}>
-                        <span className={styles.text_nomb}>
-                        Foto perfil
-                        </span>
-                    </label>
-            </div>
+                    <div style={{textAlign: "center"}}>
+                     <div>
+                        <input
+                            type="file"
+                            name="file"
+
+                            placeholder="Sube tu imágen aquí"
+                            onChange={uploadImage}
+                        />
+                            {loading ? (<h3>Cargando imágen...</h3>) : (<img src={image} style={{width:"300px"}}/>)}
+                        </div>
+                    </div>
+                     
+                    </div> 
 
             <div className={styles.input_form}>
                 <input

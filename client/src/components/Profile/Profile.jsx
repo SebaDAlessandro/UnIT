@@ -1,73 +1,68 @@
-import React from "react";
-import style from './Profile.module.css'
+import React, {useState} from "react";
+import style from "./Profile.module.css";
 import Skills from "./Skills";
-import portada from '../images/portada.jpg'
-
-export default function Profile (){
-    return (
-        <div>
-
-            <div className={style.porta}>
-               <img src = {portada} className={style.img} />
-            </div>
-
-            <div>
-               <h3 className={style.title}>Mi Perfil</h3>
-            </div>
-
-            <div>
-                  <div>
-                      <img src="" ></img>
-                  </div>
-                  <div>
-                      <h3>Luis Lescano</h3>
-                      <h4>Junior UI/UX Design</h4>
-                  </div>
-                  <div>
-                      <i class='bx bx-map'><h4>Figura, Malta</h4></i>
-                      <i className='bx bx-search-alt-2'><h4>Seeking: No Data</h4></i>
-                      <i class='bx bx-calendar'><h4>2022-02-03</h4></i>
-                  </div>
-                  <div>
-                      <button>Editar Perfil</button>
-                      <button>Ver Portafolio</button>
-                  </div>
-            </div>
-
-            <div>
-            <div><h4>Informacion Personal</h4></div>
-                <div>
-                    <h3>Nombre:</h3>
-                    <h3>Apellido:</h3>
-                </div>
-
-            <div><h4>Sobre Mi</h4></div>
-                <div>
-                    <h3>Descripcion</h3>
-                </div>
-
-            <div><h4>Contacto</h4></div>
-                <div>
-                    <div>
-                    <h3>Email:</h3>
-                    </div>
-                    <div>
-                    <h3>Numero:</h3>
-                    </div>
-                    <div>
-                    <h3>LinkedIn:</h3>
-                    </div>
-                    <div>
-                    <h3>Github:</h3>
-                    </div>
-                </div>
-
-            <div><h4>Seguridad</h4></div>
-                <div>
-                    <h3>Cambiar contraseña:</h3>
-                </div>
-            </div>
-            <Skills/>
+import portada from "../images/portada.jpg";
+import 'boxicons'
+import Acordeon from "./Acordeon";
+import Nav from "../NavRecluiter/NavRecluiter"
+ 
+export default function Profile() {
+  return (
+    <div className={style.container}>
+      <Nav/>
+      <div className={style.contporta}>
+        <img src={portada} className={style.img} />
+      </div>
+      <div className={style.container2}>
+        <div className={style.conttitulo}>
+          <h3 className={style.title}>Mi Perfil:</h3>
         </div>
-    )
+        <div className={style.contenido}>
+          <div className={style.cont1}>
+            <div>
+              <img className={style.imgperfil} src={portada}></img>
+            </div>
+            <div className={style.subtitulo}>
+              <h1>Luis Lescano</h1>
+              <h3>Junior UI/UX Design</h3>
+            </div>
+
+            <div className={style.contli}>
+              <ul name="bx-ul">
+                <li className={style.lista}>
+                  <box-icon name="map"></box-icon> Figura, Malta
+                </li>
+                <li className={style.lista}>
+                  <box-icon name="search-alt-2"></box-icon> Seeking:
+                  No Data
+                </li>
+                <li className={style.lista}>
+                  <box-icon name="cake"></box-icon> 2022-02-03
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <ul>
+                <li className={style.botonLista}>
+                  <button className={style.btn}>Editar Perfil</button>
+                </li>
+                <li className={style.botonLista}>
+                  <button className={style.btn}>Ver Portafolio</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className={style.box}>
+            <div className={style.cont2}>
+            <Acordeon/>
+            </div>
+          </div>
+        </div>
+        <div>
+          <Skills />
+        </div>
+      </div>
+    </div>
+  );
 }

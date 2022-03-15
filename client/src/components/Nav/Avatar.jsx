@@ -32,9 +32,10 @@ export default function ProfileHome() {
     };
 
 
-var userLogeado = useSelector (
+const userLogeado = useSelector (
     state => state.usuario
 )
+
 return (
     <div classname="foto">
         <React.Fragment>
@@ -48,8 +49,7 @@ return (
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >   
-                        
-                        <Avatar sx={{ width: 48, height: 45, fontSize: "2.5rem", color:'#FF6363', background:'#19111d'}}></Avatar>
+                        {userLogeado.image ? <img style={{borderRadius: "50%"}} src={`${userLogeado.image}`} height={45} width={48} alt="Not Found"/> : <Avatar sx={{ width: 48, height: 45, fontSize: "2.5rem", color:'#FF6363', background:'#19111d'}}></Avatar>}
                     </IconButton>
 
                 </Tooltip>

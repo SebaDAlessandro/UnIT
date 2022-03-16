@@ -14,6 +14,7 @@ import Error from './components/404/Error'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import FavCart from './components/FavCart/FavCart';
 import Profile from "./components/Profile/Profile"
+import ArchivosCarpetas from './components/ArchivosCarpetas/ArchivosCarpetas';
 
 function App() {
 
@@ -61,6 +62,8 @@ function App() {
       <Route exact path='/homerecluiter' element={ logeado === false ? <Error/> : <HomeRecluiter/>}/>
 
       <Route exact path='/folders' element={logeado === false ? <Error/> : <FavCart/>}/>
+
+      <Route exact path='/carpetas/:id' element={logeado === false ? <Error/> : <ArchivosCarpetas/>}/>
 
     </Routes>
 

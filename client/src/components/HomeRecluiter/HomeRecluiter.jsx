@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import CardFavorite from '../CardFavorite/CardFavorite'
 import img from '../images/Carpeta.png'
+import saludo from '../images/Saludo.png'
 import carpetas from '../images/Carpetas.png'
 import tablas from '../images/Tablas.png'
 import explora from '../images/Explora.png'
@@ -41,11 +42,15 @@ useEffect(() => {
           <img src={`${favorites.image}`} alt="Not Found"/>
         </div>
         <div className={style.text}>
-          <h1>Hola {favorites.name}</h1>
+          <h1>{favorites.name}</h1>
+          <button>Editar perfil</button>
         </div>
       </div>
         <div className={style.bottominfo}> 
-          <h1>Bienvenido {favorites.name}</h1>
+          <div className={style.saludo}>
+            <h1>Bienvenido {favorites.name}</h1>
+            <img src={saludo} height={100} alt='Not Found' />
+          </div>
         </div>
           <div className={style.nav}> 
             <NavRecluiter/> 

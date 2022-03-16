@@ -1,8 +1,11 @@
 import React from 'react'
 import style from '../CardFolder/CardFolder.module.css'
+import { Link } from 'react-router-dom'
 
-const CardFolder = ({name}) => {
+const CardFolder = ({name, id}) => {
+
   return (
+    <Link to={`/carpetas/${id}`}>
     <div className={style.contenedor}>
         <div className={style.folder}>
             <span class="material-icons">
@@ -13,6 +16,7 @@ const CardFolder = ({name}) => {
                 <p>{name}</p>
             </div>
     </div>
+    </Link>
   )
 }
 

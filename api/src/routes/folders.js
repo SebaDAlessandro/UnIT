@@ -11,15 +11,22 @@ router.get("/:id", async (req, res, next) => {
   let folderById;
   try {
     const folders = await Folders.findByPk(id, { include: Candidate });
+
+    console.log(folders.candidates, "Esta es la funcion de info")
     
     folderById = {
       folderName: folders.folderName,
       candidates: folders.candidates.map((c) => [
         {
+          id: c.id,
           nombre: c.name,
+          lastname: c.lastname,
+          image: c.image,
         },
       ]),
     };
+
+    console.log(folderById, "FolderById")
 
     res.json(folderById);
   } catch (error) {

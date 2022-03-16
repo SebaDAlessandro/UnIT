@@ -38,8 +38,8 @@ const LogIn = () => {
                         <h1>con tu</h1>
                         <h1>futuro</h1>
                     </div>
+                    
                     <div className={style.cohete}>
-
                     </div>
 
                 </div>
@@ -71,7 +71,7 @@ const LogIn = () => {
 
                     <div className={style.input_form}>
                         <input
-                            type='text'
+                            type='password'
                             value={state.password}
                             name='password'
                             onChange={handleChange}

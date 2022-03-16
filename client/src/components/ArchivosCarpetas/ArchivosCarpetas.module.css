@@ -1,0 +1,32 @@
+.globalCont {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 0.4fr repeat(4, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: #D7D7D7;
+}
+
+.nav {
+    min-height: 100%;
+    min-width: 100%;
+    grid-area: 1 / 1 / 2 / 6;
+}
+
+.archivos {
+    display: flex;
+    min-height: 100%;
+    grid-area: 2 / 2 / 6 / 6;
+    background-color: white;
+    margin: 0 3rem 0 0;
+    border-radius: 30px;
+}
+
+.contCarpetas {
+    margin: 0 0 0 3rem;
+    height: 95%;
+    grid-area: 2 / 1 / 6 / 2;
+    background-color: rgb(223, 223, 223);
+}

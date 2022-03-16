@@ -59,9 +59,10 @@ router.get('/:id', async (req, res, next ) => {
  })
 
 
- router.delete("/candidate/:candidateId", async (req, res, next) => {
-    const {candidateId} = req.params;
-    const {recruiterId} = req.body;
+ router.post("/candidate/", async (req, res, next) => {
+    /* const {candidateId} = req.params; */
+    const {recruiterId, candidateId} = req.body;
+    console.log(candidateId, recruiterId, "Deberia ir el Id del recluta")
     try {
         const recruiter = await Recruiter.findByPk(recruiterId);
         if(recruiter){
@@ -70,7 +71,8 @@ router.get('/:id', async (req, res, next ) => {
         }
 
     } catch (error) {
-        next(error)
+        res.send(error.message)
+        console.log(error.message)
     }
 })
 

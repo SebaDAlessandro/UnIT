@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import style from '../FormCarpetas/FormCarpetas.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { createFolder, getFolders } from '../../redux/actions'
@@ -9,6 +9,7 @@ const FormCarpetas = () => {
 
     const id = useSelector(state => state.usuario)
     const usuario = useSelector(state => state.usuario)
+    const carpetas = useSelector(state => state.carpetas)
 
     const [carpeta, setCarpeta] = useState({
         recruiterId: id.id,
@@ -24,7 +25,9 @@ const FormCarpetas = () => {
         dispatch(createFolder(carpeta))
     }
 
-
+    /* useEffect(() => {
+        dispatch(getFolders(usuario.id))
+    }, [carpetas])  */
 
   return (
         <form  className={style.container} onSubmit={handleSumbit}>

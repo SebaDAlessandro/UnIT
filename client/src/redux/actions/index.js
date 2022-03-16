@@ -10,6 +10,9 @@ export const CAMBIAR_LOGEO = 'CAMBIAR_LOGEO'
 export const FILTRO_BUSCADOS = 'FILTRO_BUSCADOS'
 export const CREATE_FOLDER = 'CREATE_FOLDER'
 export const GET_FOLDERS = 'GET_FOLDERS'
+export const DELETE_FAVORITE = 'DELETE_FAVORITE'
+export const GET_FOLDER_FAVORITES = 'GET_FOLDER_FAVORITES'
+export const ADD_CANDIDATE = 'ADD_CANDIDATE'
 
 export const CreateCandidate = (create) => async () => {
 
@@ -51,6 +54,20 @@ export function addFavorite(payload) {
     };
 }
 
+export const deleteFavorite = (recruiterId) => async dispatch => {
+    
+    console.log(recruiterId, "Favorito por eliminar")
+    
+    const res = await axios.post(`http://localhost:3001/favorites/candidate/`, recruiterId)
+
+    console.log(res.data, "Esto es el Res")
+    
+    return dispatch({
+        type: DELETE_FAVORITE,
+        payload: res.data
+    })
+
+}
 
 export function getFavorites (id) {   
     console.log("Id ususarios");  
@@ -63,7 +80,7 @@ export function getFavorites (id) {
         });   
     }  }
 
-    export function getFolders (id) {   
+export function getFolders (id) {   
         /* console.log("Id ususarios");  */ 
         return async function (dispatch) {
             dispatch({ type: LOADING, payload: 'Buscando Carpetas...' }) 
@@ -73,27 +90,32 @@ export function getFavorites (id) {
                 payload: json.data,      
             });   
         }  }
+
+export function getFolderFavorites (id) {   
+        /* console.log("Id ususarios");  */ 
+        return async function (dispatch) {
+            dispatch({ type: LOADING, payload: 'Buscando Favoritos de la carpeta...' }) 
+            var json = await axios.get(`http://localhost:3001/folders/${id}`)
+            return dispatch({         
+                type: GET_FOLDER_FAVORITES,
+                payload: json.data,      
+            });   
+        }  
+    }       
+
+export const addCandidateToFolder = ({fId, cId}) => async dispatch => {
+
+    console.log(fId, cId, "Estos son los Ids para la ruta")
+
+    const res = await axios.post(`http://localhost:3001/folders/${fId}/candidate/${cId}`, fId, cId)
     
-/*     export function getFolders(id) {
-        console.log("Obtener carpetas", id);
-        return async (dispatch) => {
-            try {
-                var json = await axios.post(`http://localhost:3001/folders/recruiter/${id}`);
-               
-                return dispatch({
-                    type: GET_FOLDERS,
-                    payload: json.data,
-                });
-            }
-            catch (error) {
-                return dispatch({
-                    type: GET_FOLDERS,
-                    payload: "No se pudo obtener las carpetas",
-                });
-            }
-        };
-    } */
-    
+    return dispatch({
+        type: ADD_CANDIDATE,
+        payload: res.data
+    })
+ 
+}
+        
 export const Login = (create) => async dispatch => {
 
     console.log(create)
@@ -108,8 +130,7 @@ export const Login = (create) => async dispatch => {
         type: GET_USER,
         payload: res.data
     })
-    
-    
+ 
 }
 
 export const createFolder = (create) => async dispatch => {
@@ -122,7 +143,6 @@ export const createFolder = (create) => async dispatch => {
         type: CREATE_FOLDER,
         payload: res.data
     })
-
 
 }
 
@@ -165,18 +185,18 @@ export const filtrarBuscados = (info) => async dispatch => {
 
     /* export function getFavorites (id) {   
          console.log("Id ususarios");  
-        return function (dispatch) {
+         return function (dispatch) {
         dispatch({ type: LOADING, payload: 'Buscando Favoritos...' }) 
         return ( {     
                 try {var json = await axios.get(`http://localhost:3001/favorites/${id}`);        
                     console.log("Datos para posteo", json.data);   
                 console.log(json.data)      
-                    return dispatch({         
+                return dispatch({         
                         type: GET_FAVORITES,         
                         payload: json.data,       
                     });     
     
-                catch (error) {      
+                    catch (error) {      
                     return dispatch({         
                         type: GET_FAVORITES,         
                         payload: "No se pudo cargar los favoritos",      
@@ -189,7 +209,7 @@ export const filtrarBuscados = (info) => async dispatch => {
     
              
     
-    /* Mejor formad e hacer las rutas
+        /* Mejor formad e hacer las rutas
     
     export function loginUser(payload) {   
         console.log("datos enviados para ac", payload);    
@@ -207,5 +227,26 @@ export const filtrarBuscados = (info) => async dispatch => {
                         payload: "400",       
                     });     
                 }  
-             }; 
+            }; 
+        } */
+
+        /*     export function getFolders(id) {
+                console.log("Obtener carpetas", id);
+                return async (dispatch) => {
+                    try {
+                        var json = await axios.post(`http://localhost:3001/folders/recruiter/${id}`);
+                       
+                        return dispatch({
+                            type: GET_FOLDERS,
+                            payload: json.data,
+                        });
+                    }
+                    catch (error) {
+                        return dispatch({
+                            type: GET_FOLDERS,
+                            payload: "No se pudo obtener las carpetas",
+                        });
+                    }
+                };
             } */
+        

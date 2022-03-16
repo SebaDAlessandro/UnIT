@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import CardFavorite from '../CardFavorite/CardFavorite'
 import img from '../images/Carpeta.png'
 import style from '../FoldersFavorites/FoldersFavorites.module.css'
-import { getFavorites } from '../../redux/actions'
+import { getFavorites, addCandidateToFolder } from '../../redux/actions'
 import FormCarpetas from '../FormCarpetas/FormCarpetas'
 import NavRecluiter from '../NavRecluiter/NavRecluiter'
 import Carpetas from '../Carpetas/Carpetas'
@@ -14,37 +14,37 @@ const FoldersFavorites = () => {
 const [bandera, setBandera] = useState(0)
 const [ cards, setCards ] = useState("finalSpace")
 
+console.log(bandera, "Este es bandera")
+
 /* Estados de Redux */
 
 const favorites = useSelector(state => state.favorites)
 const usuario = useSelector(state => state.usuario)
 const carpetas = useSelector(state => state.carpetas)
 
+console.log(favorites.candidates, "Favoritos")
+
 const dispatch = useDispatch()
 
-useEffect(() => {
-  if (bandera === 0){
+  useEffect(() => {
+   if (bandera === 0){ 
     dispatch(getFavorites(usuario.id));
-    setTimeout( () => {setBandera(1)}, 100)
-  }
+     setTimeout( () => {setBandera(1)}, 200)
+  } 
 }, [favorites])
 
-const handleOnDragEnd = (result) => {
-  const items = Array.from(cards) 
-  const [reorderItem] = items.splice(result.source.index, 1)
-  items.splice(result.destination.index, 0, reorderItem)
-
-  setCards(items)
+const onDragEnd = (r) => {
+  dispatch(addCandidateToFolder({fId: r.destination.droppableId, cId: r.draggableId}))
+  console.log(r, "Carta arrastrada")
 }
-
 
   return (
 
-    <DragDropContext dropD onDragEnd={handleOnDragEnd} >
+    <DragDropContext dropD onDragEnd={onDragEnd} >
 
       <div className={style.globalCont}>
 
-      <Droppable direction='horizontal' droppableId='task'>  
+      <Droppable direction='vertical' droppableId='task'>  
 
         {(droppableProvider) => (
           <div 
@@ -62,9 +62,10 @@ const handleOnDragEnd = (result) => {
 
                <Draggable key={c.id} draggableId={c.id} index={index}>
 
-                {(draggableProvider) => 
+                {(draggableProvider, snapshot) => 
 
                 <div
+                className={`${snapshot.isDragging? 'isDragging' : 'contDragable' }`}
                 {...draggableProvider.draggableProps}
                 ref={draggableProvider.innerRef}
                 {...draggableProvider.dragHandleProps}

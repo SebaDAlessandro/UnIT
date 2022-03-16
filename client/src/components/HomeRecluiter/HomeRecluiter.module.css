@@ -6,9 +6,7 @@
     grid-template-rows: 0.4fr repeat(3, 1fr);
     grid-column-gap: 50px;
     grid-row-gap: 50px;
-    background-image: url('../images/PruebaFondo.jpg');
-    background-size: cover;
-    color: white;
+    color: rgb(36, 36, 36);
   }
   
   .nav { 
@@ -86,15 +84,28 @@
   }
   
   .bottominfo h1 {
+    margin: 0 2rem ;
+    font-size: 3rem;
     font-weight: 400;
+  }
+
+  .saludo {
+    margin-top: 1rem;
+    display: flex;
+    width: 80%;
+    height: 5rem;
+    justify-content: center;
+    align-items: center;
   }
   
   .slider {
+    padding: 1.5rem;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     flex-direction: column;
     grid-area: 2 / 1 / 5 / 2;
-    box-shadow:0px 0px 100px 40px #dddddd ;
+    box-shadow:0px 0px 100px 40px #dddddd;
     border-radius: 20px;
     margin: 0 0 3rem 3rem;
   }
@@ -103,12 +114,27 @@
     height: 10rem;
     width: 100;
   }
+  
+  .text h1 {
+    text-align: start;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .text button {
+    color: rgb(116, 116, 116);
+    padding: 5px 0;
+    margin-top: 1rem;
+    background: none;
+    border: 1px solid rgb(143, 143, 143);
+    border-radius: 5px;
+    width: 100%;
+  }
 
   .profilepicture {
     margin-top: 2rem;
-    background-color: #429C6D;
-    height: 8rem;
-    width: 8rem;
+    height: 30%;
+    width: 60%;
     border-radius: 50%;
     overflow: hidden;
   }

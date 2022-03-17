@@ -4,6 +4,49 @@ const router = express.Router();
 
 const {Candidate, Language, Contacted, Technicalskills, Project_experience, Softskill, Orientation, Op} = require('../db.js');
 
+/* router.get("/palabraClave", async (req, res, next) => {
+    const {word} = req.body;
+
+    try{
+        var candidates = await Candidate.findAll();
+
+        if(candidates){
+            let aux = [];
+            let description = ""; 
+            for(let i=0; i<candidates.length; i++){
+                
+                let lastname = candidates[i].lastname.toUpperCase();
+                let name = candidates[i].name.toUpperCase();
+                let email = candidates[i].email.toUpperCase();
+                let location = candidates[i].location.toUpperCase();
+                if(candidates[i].description){
+                    let description = candidates[i].description.toUpperCase();
+                }
+                
+
+                if( (lastname.search(word.toUpperCase()) !== -1) || (name.search(word.toUpperCase()) !== -1) || (email.search(word.toUpperCase()) !== -1) 
+                || (location.search(word.toUpperCase()) !== -1) || (description.search(word.toUpperCase()) !== -1)  ){
+                    var a = await Candidate.findByPk(candidates[i].id,{
+                        include: [
+                            {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}, {model: Orientation}
+                        ]
+                    })
+    
+                    if(a){
+                        aux.push(a)
+                    }
+                }
+            }
+            candidates = aux;
+        }
+
+        const contador = candidates.length;
+        res.json({contador,candidates})
+
+    } catch (error) {
+        next(error)
+    }
+}) */
 
 
 router.get("/total", async (req, res, next) => {
@@ -22,24 +65,41 @@ router.get("/total", async (req, res, next) => {
             var candidates = await Candidate.findAll();
         }
 
-        //filtrador por name en proceso!! <-----
 
-        // if(name && candidates){
-        //     let aux = [];
-        //     console.log("hola")
-        //     for(let i=0; i<candidates.length; i++){
-                
-        //      let flag = candidates[i].name.toUpperCase()
-        //      let expresion = /(`${name}` \d+(\.\d)*)/i;
-        //         if(flag.match(expresion)){
-        //             aux.push(candidates[i])
-        //         }
-                
-        //     }
-        //     candidates = aux;
 
-        // }
+        if(name && candidates){
+            let aux = [];
+            let aux2 = [];
+            let nameAux = name.toUpperCase().split(" ");
 
+            for(let i=0; i<candidates.length; i++){
+                let nm = candidates[i].name.toUpperCase();
+                let lnm = candidates[i].lastname.toUpperCase();
+
+                if((name.toUpperCase() == nm + " " + lnm) || (name.toUpperCase() == lnm + " " + nm)){
+                    aux2.push(candidates[i])
+                }else{
+                    let encontrado = false;
+                    for(let j=0; j<nameAux.length; j++){
+                        if((nm.search(nameAux[j]) !== -1 ) || (lnm.search(nameAux[j]) !== -1)){
+                            encontrado = true;
+                        }
+                    }
+                    if (encontrado){
+                        aux.push(candidates[i])
+                    }                    
+                }
+
+            }
+            
+            if(aux2.length !== 0){
+                candidates = aux2
+            }else{
+                candidates = aux;
+            }
+            
+        }
+        
 
         if(language && candidates){
             let aux = [];

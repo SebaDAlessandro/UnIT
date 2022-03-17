@@ -10,14 +10,13 @@
   
   .container {
 	display: flex;
-	flex-direction: column;
-	position: relative;
-	width: 500px;
-	height: 300px;
+	width: 1200px;
+	height: 500px;
 	background: #f1f1f1;
 	margin: 100px auto 0;
 	word-break: break-all;
 	border: 1px solid rgba(0, 0, 0, 0.274);
+	border-radius: 20px;
   }
   
   .bloctabs {
@@ -96,8 +95,43 @@
   }
 
   .btn{
-	background-color: rgba(0, 0, 0, 0.52);
-	border-radius: 55px;
-	color: rgb(184, 184, 0);
-	justify-content: space-around;
-  }
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+	height: 30px;
+	background: rgb(182, 29, 156);
+	color: #f1f1f1;
+	font-size: 10px;
+	border-radius: 10px;
+	border: none;
+	cursor:pointer;
+	/*text-transform: uppercase;*/
+	transition: .3s ease all;
+	 }
+	 .btn:hover{
+		 background: #ccc;
+	 }
+
+	 .tabtec{
+	   width: 50%;
+	   height: 100%;
+	   float: right;
+
+	 }
+	 .tabbla{
+	   width: 50%;
+	   height: 100%;
+	   float: right;
+	 }
+
+
+	 .tlet{
+		 width: 100%;
+		 height: 100%;
+	 }
+
+	 .sosvos{
+		 width: 100%;
+		 height: 100%;
+	 }

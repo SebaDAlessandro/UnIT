@@ -5,6 +5,14 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import style from './Skills.module.css'
+ /*import Grid from '@mui/material/Grid';
+import FormLabel from '@mui/material/FormLabel';
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import HighlightedCode from 'docs/src/modules/components/HighlightedCode';
+import RadioGroup from '@mui/material/RadioGroup';
+import Radio from '@mui/material/Radio';
+import Paper from '@mui/material/Paper'; */
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -16,9 +24,10 @@ function TabPanel(props) {
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
+      className={style.tlet}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: 2 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -50,34 +59,34 @@ export default function BasicTabs() {
     <div> 
       <h1 className={style.habilidades}>Mis Habilidades:</h1>
     <div className={style.container}>
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%' }} className ={style.sosvos}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" className={style.lenguetas}>
-          <Tab label="Blandas" {...a11yProps(0)} />
-          <Tab label="Tecnicas" {...a11yProps(1)} />
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"  className={style.lenguetas}>
+          <Tab label="Tecnicas" {...a11yProps(0)} /> 
+          <Tab label="Blandas" {...a11yProps(1)} />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-                <span className={style.btn}>Javascript</span>
-                <span className={style.btn}>React</span>
-                <span className={style.btn}>Css</span>
-                <span className={style.btn}>Java</span>
-                <span className={style.btn}>PHP</span>
-                <span className={style.btn}>Python</span>
-                <span className={style.btn}>HTML</span>
-                <span className={style.btn}>Redux</span>
-                <span className={style.btn}>Node</span>
+      <TabPanel value={value} index={0} className={style.tabtec}>
+                <button className={style.btn}><span>Javascript</span></button>
+                <button className={style.btn}><span>React</span></button>
+                <button className={style.btn}><span>Css</span></button>
+                <button className={style.btn}><span>Java</span></button>
+                <button className={style.btn}><span>PHP</span></button>
+                <button className={style.btn}><span>Python</span></button>
+                <button className={style.btn}><span>HTML</span></button>
+                <button className={style.btn}><span>Redux</span></button>
+                <button className={style.btn}><span>Node</span></button>
       </TabPanel>
-      <TabPanel value={value} index={1}>
-                <span>Paciente</span>
-                <span>Empatíc@</span>
-                <span>Puntual</span>
-                <span>Respetuos@</span>
-                <span>Compañer@</span>
-                <span>Analista</span>
-                <span>Autodidacta</span>
-                <span>Atent@</span>
-                <span>Adaptabilidad</span>
+      <TabPanel value={value} index={1} className={style.tabbla}>
+                <button className={style.btn}><span>Paciente</span></button>
+                <button className={style.btn}><span>Empatíc@</span></button>
+                <button className={style.btn}><span>Puntual</span></button>
+                <button className={style.btn}><span>Respetuos@</span></button>
+                <button className={style.btn}><span>Compañer@</span></button>
+                <button className={style.btn}><span>Analista</span></button>
+                <button className={style.btn}><span>Autodidacta</span></button>
+                <button className={style.btn}><span>Atent@</span></button>
+                <button className={style.btn}><span>Adaptabilidad</span></button>
       </TabPanel>
     </Box>
     </div>

@@ -25,7 +25,7 @@ const FavCart = ()=>{
             onChange={(e)=>{setBusca(e.target.value)}}
             />
             <div>
-                <Link to='/favorites'>
+                <Link to='/homerecluiter'>
                 <button>Home</button>
                 </Link>
             </div>

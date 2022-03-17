@@ -21,6 +21,7 @@ console.log(bandera, "Este es bandera")
 const favorites = useSelector(state => state.favorites)
 const usuario = useSelector(state => state.usuario)
 const carpetas = useSelector(state => state.carpetas)
+console.log(carpetas, "Estas son las carpetas del componente folders")
 
 console.log(favorites.candidates, "Favoritos")
 
@@ -44,7 +45,23 @@ const onDragEnd = (r) => {
 
       <div className={style.globalCont}>
 
-      <Droppable direction='vertical' droppableId='task'>  
+      <div className={style.buscador}>
+            <h1>Estos son tus favoritos.</h1>
+            <div className={style.buscar}>
+              <div className={style.continput}>
+                <input type='text'
+                placeholder='Busca tus favoritos...'
+                />
+              </div>
+                <div className={style.filtros}>
+                  <span class="material-icons-outlined">
+                    filter_alt
+                  </span>
+                </div>
+            </div>
+      </div>
+
+      <Droppable direction='horizontal' droppableId='task'>  
 
         {(droppableProvider) => (
           <div 
@@ -52,7 +69,6 @@ const onDragEnd = (r) => {
           {...droppableProvider.droppableProps}
           ref={droppableProvider.innerRef}
           > 
-
               {bandera === 0 ? 
               <div className={style.folder}>
                 <img src={img} />
@@ -65,11 +81,12 @@ const onDragEnd = (r) => {
                 {(draggableProvider, snapshot) => 
 
                 <div
-                className={`${snapshot.isDragging? 'isDragging' : 'contDragable' }`}
+                className={`${snapshot.isDragging? style.isDragging : style.contDragable }`}
                 {...draggableProvider.draggableProps}
                 ref={draggableProvider.innerRef}
                 {...draggableProvider.dragHandleProps}
                 >
+
                 <CardFavorite
                   key={index}
                   name={c.name}
@@ -94,9 +111,9 @@ const onDragEnd = (r) => {
       </Droppable>
 
           <div className={style.contCarpetas}> 
-            <div>
+         {/*    <div>
               {!carpetas.length ? <FormCarpetas/> : <h1>Aun no tienes carpetas creadas</h1>}
-            </div> 
+            </div>  */}
               <div>
                 <Carpetas/>
               </div> 

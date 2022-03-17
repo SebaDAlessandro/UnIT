@@ -7,6 +7,8 @@ const FormCarpetas = () => {
 
     const dispatch = useDispatch();
 
+    const [mostrar, setMostrar] = useState(true);
+
     const id = useSelector(state => state.usuario)
     const usuario = useSelector(state => state.usuario)
     const carpetas = useSelector(state => state.carpetas)
@@ -22,12 +24,11 @@ const FormCarpetas = () => {
 
     const handleSumbit = (e) => {
         e.preventDefault();
+        setMostrar(false)
         dispatch(createFolder(carpeta))
+        setTimeout(() => {setMostrar(true)}, 400)
     }
 
-    /* useEffect(() => {
-        dispatch(getFolders(usuario.id))
-    }, [carpetas])  */
 
   return (
         <form  className={style.container} onSubmit={handleSumbit}>

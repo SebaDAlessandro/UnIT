@@ -102,7 +102,7 @@ router.post("/:fId/candidate/:cId", async (req, res, next) => {
 
 
 
-router.delete('/', async(req, res, next) => {
+router.post('/delete', async(req, res, next) => {
   const { idFolder } = req.body;
   
   try{

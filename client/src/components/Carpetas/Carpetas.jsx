@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getFolders } from '../../redux/actions'
+import { getFolders, createFolder } from '../../redux/actions'
 import CardFolder from '../CardFolder/CardFolder'
 import { Droppable } from 'react-beautiful-dnd'
 import { style } from '@mui/system'
@@ -14,6 +14,13 @@ const Carpetas = () => {
     const carpetas = useSelector(state => state.carpetas)
     /* console.log(carpetas.Folders, "Estas son las carpetas del componente Carpetas") */
 
+    const [mostrar, setMostrar] = useState(true);
+
+    const [carpeta, setCarpeta] = useState({
+      recruiterId: usuario.id,
+      folderName: ''
+  })
+
     useEffect(() => {
         if (bandera === 0){
             dispatch(getFolders(usuario.id));
@@ -21,10 +28,46 @@ const Carpetas = () => {
           }
     }, [carpetas])
 
+    const handleChange = (e) => {
+      setCarpeta({...carpeta, [e.target.name]: e.target.value})
+  } 
+
+  const handleSumbit = (e) => {
+      e.preventDefault();
+      dispatch(createFolder(carpeta))
+      setMostrar(false)
+      setTimeout(() => {
+        setMostrar(true)
+        dispatch(getFolders(usuario.id))
+      }, 400)
+  }
+
   return (
 
     <div>
-      {carpetas.Folders?.map((n, index) => 
+
+      <h1>Tus carpetas.</h1>
+
+      <form  className={style.container} onSubmit={handleSumbit}>
+
+      <input
+      className={style.input}
+      type='text'
+      value={carpeta.folderName}
+      name='folderName'
+      placeholder='Nombre carpeta'
+      onChange={handleChange}
+      />
+
+      <button
+      type='submit'
+      />
+
+      </form>
+      {mostrar === false? 
+      <h1>Cargando...</h1> 
+      :
+      carpetas.Folders?.map((n, index) => 
       <Droppable droppableId={`${n.folderId}`} >
         {(droppableProvider, snapshot) => 
         <div
@@ -40,7 +83,9 @@ const Carpetas = () => {
         </div>
         }
       </Droppable>
-      )}
+      )
+      }
+      
     </div>
   )
 }

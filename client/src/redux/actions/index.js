@@ -13,6 +13,7 @@ export const GET_FOLDERS = 'GET_FOLDERS'
 export const DELETE_FAVORITE = 'DELETE_FAVORITE'
 export const GET_FOLDER_FAVORITES = 'GET_FOLDER_FAVORITES'
 export const ADD_CANDIDATE = 'ADD_CANDIDATE'
+export const DELETE_FOLDER = 'DELETE_FOLDER'
 
 export const CreateCandidate = (create) => async () => {
 
@@ -101,7 +102,21 @@ export function getFolderFavorites (id) {
                 payload: json.data,      
             });   
         }  
-    }       
+    }   
+    
+    
+export const deleteFolder = (idFolder) => async dispatch => {
+
+        console.log(idFolder, "Este es el id de la carpeta para eliminar")
+    
+        const res = await axios.post(`http://localhost:3001/folders/delete`, idFolder)
+        
+        return dispatch({
+            type: DELETE_FOLDER,
+            payload: res.data
+        })
+     
+    }
 
 export const addCandidateToFolder = ({fId, cId}) => async dispatch => {
 

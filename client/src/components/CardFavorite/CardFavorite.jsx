@@ -12,7 +12,7 @@ function CardFavorite ({name, lastname, location, id, image}) {
 
     const eliminar = () => {
         dispatch(deleteFavorite({candidateId: id, recruiterId: usuario.id}))
-        dispatch(getFavorites(usuario.id))
+        setTimeout(() => {dispatch(getFavorites(usuario.id))}, 400)
     } 
 
     return (

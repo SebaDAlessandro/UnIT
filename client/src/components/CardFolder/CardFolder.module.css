@@ -9,6 +9,15 @@
     border-radius: 20px;
     padding: 0 10px 0 20px;
     background-color: white;
+    transition: all 0.4s ease-in-out;
+}
+
+.delete span {
+    color: black;
+}
+
+.contenedor:hover {
+    background-color: rgb(206, 206, 206);
 }
 
 .name {

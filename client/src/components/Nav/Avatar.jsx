@@ -82,7 +82,7 @@ return (
                             display: 'block',
                             position: 'absolute',
                             top: 0,
-                            right: 14,
+                            right: 17,
                             width: 10,
                             height: 10,
                             bgcolor: 'background.paper',
@@ -92,7 +92,7 @@ return (
                         },
                     },
                 }}
-                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                transformOrigin={{ horizontal: 'left', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
 
             >

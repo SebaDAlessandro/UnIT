@@ -1,12 +1,14 @@
 import React from 'react';
-import style from './Acordeon.module.css'
+import style from "./Acordeon.module.css"
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {useSelector} from "react-redux"
 
 export default function SimpleAccordion() {
+  const usuario = useSelector((estate)=> estate.usuario)
   return (
     <div>
       <Accordion className={style.cont}>
@@ -16,15 +18,35 @@ export default function SimpleAccordion() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={style.txacordion}>Informacion Personal</Typography>
+          <Typography className={style.txacordion}>Habilidades Tecnicas</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography className={style.conacordeon}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            Javascript
           </Typography>
           <Typography className={style.conacordeon}>
-              peronista
+            Java
+          </Typography>
+          <Typography className={style.conacordeon}>
+            React
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Css
+          </Typography>
+          <Typography className={style.conacordeon}>
+            PHP
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Python
+          </Typography>
+          <Typography className={style.conacordeon}>
+            HTML
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Redux
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Node
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -35,12 +57,41 @@ export default function SimpleAccordion() {
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography className={style.txacordion}>Sobre Mi</Typography>
+          <Typography className={style.txacordion}>Hablidades Blandas</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography className={style.conacordeon}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            Empatico/a
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Puntual
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Autodidacta
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Critico/a
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Creativo/a
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Adaptable
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Sociable
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Colaborador/a
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Responsable
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Liderazgo
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Amigable
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -55,7 +106,16 @@ export default function SimpleAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography className={style.conacordeon}>
-            contacto
+            Mail: {usuario.email} <br/>
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Linkedin: 
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Github: 
+          </Typography>
+          <Typography className={style.conacordeon}>
+            Numero: 
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -70,7 +130,7 @@ export default function SimpleAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography className={style.conacordeon}>
-            seguridad
+            Contraseña: {usuario.password}
           </Typography>
         </AccordionDetails>
       </Accordion>

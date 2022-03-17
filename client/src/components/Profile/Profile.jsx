@@ -1,16 +1,24 @@
 import React, {useState} from "react";
 import style from "./Profile.module.css";
 import Skills from "./Skills";
-import portada from "../images/portada.jpg";
+import portada from "../images/porta.png";
+import img from '../images/LogoNav.png'
 import 'boxicons'
 import Acordeon from "./Acordeon";
-import Nav from "../NavRecluiter/NavRecluiter"
- 
+import {useSelector} from "react-redux"
+import NavCandidato from "../NavCandidato/NavCandidato"
+
 export default function Profile() {
+  const usuario = useSelector((estate)=> estate.usuario)
   return (
     <div className={style.container}>
-      <Nav/>
+      <div className={style.nav}>
+          <NavCandidato/>
+      </div>
       <div className={style.contporta}>
+        <div className={style.circulo}>
+          <img src={img} className={style.unit} />
+        </div>
         <img src={portada} className={style.img} />
       </div>
       <div className={style.container2}>
@@ -20,21 +28,21 @@ export default function Profile() {
         <div className={style.contenido}>
           <div className={style.cont1}>
             <div>
-              <img className={style.imgperfil} src={portada}></img>
+              <img className={style.imgperfil} src={usuario.image}></img>
             </div>
             <div className={style.subtitulo}>
-              <h1>Luis Lescano</h1>
+              <h1>{usuario.name} {usuario.lastname}</h1>
               <h3>Junior UI/UX Design</h3>
             </div>
 
             <div className={style.contli}>
               <ul name="bx-ul">
                 <li className={style.lista}>
-                  <box-icon name="map"></box-icon> Figura, Malta
+                  <box-icon name="map"></box-icon> {usuario.location}
                 </li>
                 <li className={style.lista}>
                   <box-icon name="search-alt-2"></box-icon> Seeking:
-                  No Data
+                  {usuario.state}
                 </li>
                 <li className={style.lista}>
                   <box-icon name="cake"></box-icon> 2022-02-03
@@ -59,9 +67,9 @@ export default function Profile() {
             </div>
           </div>
         </div>
-        <div>
+       {/*  <div>
           <Skills />
-        </div>
+        </div> */}
       </div>
     </div>
   );

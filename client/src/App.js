@@ -15,7 +15,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 import FavCart from './components/FavCart/FavCart';
 import Profile from "./components/Profile/Profile"
 import ArchivosCarpetas from './components/ArchivosCarpetas/ArchivosCarpetas';
-
+import BusquedaFiltro from './components/BusquedaFiltro/BusquedaFIltro';
 function App() {
 
   const [mostrar, setMostrar] = useState(false);
@@ -44,6 +44,8 @@ function App() {
     <Routes>
 
       <Route path='/' element={<LogIn/>}/>
+      
+      <Route path='/prueba' element={<BusquedaFiltro/>}/>
 
       <Route exact path='/form' element={<FormHome/>}/>
 

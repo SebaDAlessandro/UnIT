@@ -1,0 +1,174 @@
+.contenedorGeneral{
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+.gridFiltros{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.titulo{
+    font-size: 60px;
+    color: #001E38;
+    text-align: left;
+
+}
+.contInput{
+    display: flex;
+    justify-content: left;
+    margin-top: 2%;
+}
+.inputGeneral{
+    width: 90%;
+    height: 50px;
+    border-radius: 10px;
+    background: none;
+    border: 1px solid #001E38;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+}
+.botonBuscar{
+    width: 10%;
+    height: 50px;
+    border-radius: 10px;
+    margin-left: 20px;
+    background-color: #001E38;
+}
+.botonBuscar span{
+    color: #fff;
+}
+.modal{
+    display: none;
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.904), 0 17px 17px 0 rgba(0, 0, 0, .5);
+    background-color: #001E38;
+    border-radius: 15px;
+    left: 20%;
+    
+
+
+}
+.cerrarModal{
+    display: flex;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(136, 5, 5);
+    color: white;
+    margin: 5%;
+}
+.contEtiquetas{
+    width: 80%;
+    margin: 5% 10%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.etiquetas{
+    color:#59CD90;
+    font-weight: bold;
+    background-color: #005096;
+    border-radius: 5px;
+    height: 40px;
+}
+.botonesModal{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #001E38;
+    width: 30%;
+    height: 200px;
+    max-height: 200px;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+
+
+.contenedorBotones{
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 4%;
+}
+
+.contenedorBotones h4{
+    font-size: 15px;
+    color: #9E9E9E;
+}
+.iconoAgregar{
+    font-size: 60px;
+    color: #9E9E9E;
+}
+.contSelec{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+}
+.select{
+    width: 30%;
+    background: none;
+    border: 1px solid #001E38;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #001E38 ;
+}
+.contSelec h3{
+    font-size: 30px;
+    text-align: left;
+    color: #001E38;
+    width: 30%;
+}
+.imgFiltros{
+    background-image: url('../../components/images/celularLupa.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:contain;
+  
+}
+.mostrarModal{
+    display: block;
+}
+.contBotonesEnviar{
+    display: flex;
+    align-items: center;
+    margin-top: 3%;
+}
+.botonEnviar{
+    width: 90%;
+    background-color: #001E38;
+    border: none;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+.botonLimpiar{
+    width: 10%;
+    height: 50px;
+    border-radius: 10px;
+    margin-left: 20px;
+    background-color: #001E38;
+    color: #59CD90;
+}
+
+.seleccionado{
+    background-color: #fff;
+    color: #000;
+}
+.etiquetasMostrar{
+    font-size: 10px;
+    background-color: #001E38;
+    border-radius: 10px;
+    width: 65px;
+    color: #59CD90;
+    font-weight: bold;
+    margin: 1%;
+}

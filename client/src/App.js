@@ -57,7 +57,7 @@ function App() {
       
       <Route exact path='/about' element={<About/>}/>
 
-      <Route exact path='/profile' element={<Profile/>}/>
+      <Route exact path='/profilecandidate' element={<Profile/>}/>
 
       <Route exact path='/favorites' element={logeado === false ? <Error/> : <FoldersFavorites/>}/>
 

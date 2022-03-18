@@ -27,6 +27,10 @@
     -moz-box-shadow: 2px 4px 6px -1px rgba(0,0,0,0.71);
 }
 
+.btn:active{
+    background-color: #322c88;
+}
+
 .cont1{
     margin-top: -200px;
     display: flex;
@@ -47,7 +51,6 @@
     width: 100%;
     display: block;
     margin: 0 auto;
-
 }
 
 .cont2{
@@ -62,7 +65,7 @@
 .contenido{
     display:grid;
     grid-template-columns: 1fr 3fr;
-    width: 100%;
+    width: 95%;
 
 }
 
@@ -72,7 +75,7 @@
     align-content: center;
     float: top;
    /*  background-color: green; */
-    width: 100%;
+    width: 95%;
     height: 30%;
     border-radius: 0 0 20px 10px;
 }
@@ -129,4 +132,36 @@
 
 .item{
     cursor: text;
+}
+
+.nav{
+    display: flex;
+    float: left;
+    height: 100%;
+    margin-right: 5px;
+    margin-left: 6px;
+    min-width: 4.3%;
+}
+
+.circulo{
+    background-color: aqua;
+    width: 110px;
+    height: 60px;
+    float: left;
+    margin: top;
+    z-index: 20;
+    display: flex;
+    position: absolute;
+    border-radius: 0px 0px 20px 0px;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 20px 20px 20px -7px rgba(255,255,255,0.75);
+    -webkit-box-shadow: 9px 10px 17px -7px rgba(255,255,255,0.75);
+    -moz-box-shadow: 9px 10px 17px -7px rgba(255,255,255,0.75);
+}
+
+.unit{
+    width: 100%;
+    height: 100%;
+    margin-left: 5px;
 }

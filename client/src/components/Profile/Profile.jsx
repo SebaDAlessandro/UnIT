@@ -67,9 +67,9 @@ export default function Profile() {
             </div>
           </div>
         </div>
-       {/*  <div>
+        {/* <div>
           <Skills />
-        </div> */}
+        </div>  */}
       </div>
     </div>
   );

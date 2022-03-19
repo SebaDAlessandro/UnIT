@@ -108,7 +108,7 @@ router.get("/login", async (req, res, next) => {
 })
 
 //VERIFICAR SI EXISTE EL MAIL, TANTO EN LA TABLA DE CANDIDATOS COMO EN LA DE RECRUITER
-router.get("/loginrecruiter", async (req, res) => {
+router.post("/loginrecruiter", async (req, res) => {
     // TODO: >> http://localhost:3001/cuentarecruiter/loginrecruiter <<
     const { email, password } = req.body
 

@@ -28,7 +28,7 @@ export default function Profile() {
         <div className={style.contenido}>
           <div className={style.cont1}>
             <div>
-              <img className={style.imgperfil} src={usuario.image}></img>
+              <img className={style.imgperfil} src={usuario.image} alt="algo"></img>
             </div>
             <div className={style.subtitulo}>
               <h1>{usuario.name} {usuario.lastname}</h1>

@@ -16,6 +16,8 @@ import FavCart from './components/FavCart/FavCart';
 import Profile from "./components/Profile/Profile"
 import ArchivosCarpetas from './components/ArchivosCarpetas/ArchivosCarpetas';
 import BusquedaFiltro from './components/BusquedaFiltro/BusquedaFIltro';
+import Portfolio from './components/Portfolio/Portfolio';
+
 function App() {
 
   const [mostrar, setMostrar] = useState(false);
@@ -37,6 +39,7 @@ function App() {
   }, [logeado, dispatch])
 
   return (
+
     <div className='App'>
 
     { mostrar === false ? <h1>Cargando...</h1> :
@@ -66,6 +69,8 @@ function App() {
       <Route exact path='/folders' element={logeado === false ? <Error/> : <FavCart/>}/>
 
       <Route exact path='/carpetas/:id' element={logeado === false ? <Error/> : <ArchivosCarpetas/>}/>
+
+      <Route exact path='/portfolio' element={logeado === false ? <Error/> : <Portfolio/>}/>
 
     </Routes>
 

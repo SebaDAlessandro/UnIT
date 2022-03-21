@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../CardFavorite/CardFavorite.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { addFavorite, getFavorites, getFolders, deleteFavorite } from '../../redux/actions'
+import { addFavorite, getFavorites, getFolders, deleteFavorite, addCandidateToFolder } from '../../redux/actions'
 
-function CardFavorite ({name, lastname, location, id, image}) {
+function CardFavorite ({name, lastname, location, id, image, size}) {
 
     const dispatch = useDispatch();
     const logeado = useSelector(state => state.usuario);
@@ -15,8 +15,25 @@ function CardFavorite ({name, lastname, location, id, image}) {
         setTimeout(() => {dispatch(getFavorites(usuario.id))}, 400)
     } 
 
+    const [state, setState] = useState(0)
+
+   /*  useEffect(() => {
+      if (state !== 0){
+          validar()
+          setState(0)
+      }
+    }, [state]) 
+
+
+    const validar = () => {
+        console.log({
+            folderId: state,
+            userId: id
+        })
+    } */
+
     return (
-    <div className={styles.Cards}>
+    <div className={`${size === 'cuatro'? styles.Cards : styles.sizeChange} `}>
 
     <div className={styles.cont_card}>
         
@@ -29,11 +46,12 @@ function CardFavorite ({name, lastname, location, id, image}) {
                     <div>
 
                         <div className={styles.constSelect}>
-                           <select name='Carpetas'>
+                           <select /* value={} */ /* onChange={setState(3)} */ name='folderId'>
                                 {
                                     carpetas.Folders.map(c => (
-                                        <option key={c.folderId} value={c.folderId}>
+                                        <option /* onChange={handleChange} */ name='folderId' key={c.folderId} value={c.folderId}>
                                             {c.folderName}
+                                            {c.folderId}
                                         </option>
                                     ))
                                 }

@@ -7,7 +7,6 @@ import { getFavorites, addCandidateToFolder } from '../../redux/actions'
 import FormCarpetas from '../FormCarpetas/FormCarpetas'
 import NavRecluiter from '../NavRecluiter/NavRecluiter'
 import Carpetas from '../Carpetas/Carpetas'
-import FilterFavorites from '../FoldersFavorites/FilterFavorites'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 const FoldersFavorites = () => {

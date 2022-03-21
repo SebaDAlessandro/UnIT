@@ -39,14 +39,14 @@ const NavRecluiter = () => {
             </Link> 
         </div>
 
-        <div className={style.home}>
+    {/*     <div className={style.home}>
             <Link to='/folders'>
             <span class={`material-icons-round ${ruta === folders? style.rutas : style.default} `}>
               favorite
             </span>
                 <span className={style.tooltip}>Tablas</span>
             </Link> 
-        </div>
+        </div> */}
 
         <div className={style.home}>
             <Link to='/home'>

@@ -3,7 +3,7 @@ import "./FavCart.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getFavorites } from "../../redux/actions";
 import { Link } from 'react-router-dom'
-
+import NavRecluiter from "../NavRecluiter/NavRecluiter";
 
 const FavCart = ()=>{
     const [busca, setBusca] = useState("");
@@ -19,16 +19,13 @@ const FavCart = ()=>{
    
     return (
         <div>
+
             <input type="text"
             placeholder="Filtrar candidatos"
             class="buscador"            
             onChange={(e)=>{setBusca(e.target.value)}}
             />
-            <div>
-                <Link to='/homerecluiter'>
-                <button>Home</button>
-                </Link>
-            </div>
+    
         <table>
         <thead>            
             <tr>                    

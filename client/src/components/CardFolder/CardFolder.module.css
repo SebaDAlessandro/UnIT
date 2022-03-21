@@ -2,11 +2,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 3rem;
+   /*  min-height: 3rem; */
 }
 
 .contenedor {
-    position: absolute;
+   /*  position: absolute; */
     display: flex;
     align-items: center;
     justify-content: left;
@@ -17,8 +17,8 @@
     padding: 0 10px 0 20px;
     background-color: white;
     transition: all 0.3s ease-in-out;
-    width: 80%;
-    height: 100%;
+    /* width: 80%;
+    height: 100%;  */
     top: 0;
 }
 
@@ -29,7 +29,7 @@
 
 .delete {
     right: 0;
-    position: absolute;
+   /*  position: absolute; */
     display: flex;
     align-items: center;
     justify-content: center;

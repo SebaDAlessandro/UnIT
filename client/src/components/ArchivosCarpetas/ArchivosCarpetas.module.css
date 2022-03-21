@@ -1,32 +1,62 @@
 .globalCont {
     display: grid;
-    grid-template-columns: 0.3fr repeat(4, 1fr);
+    grid-template-columns: 0.3fr 0.5fr repeat(3, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
+    grid-column-gap: 20px;
     grid-row-gap: 0px;
     min-height: 100vh;
     min-width: 100vw;
     background-color: #D7D7D7;
 }
 
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 5rem;
+}
+
 .nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100%;
-    min-width: 100%;
     grid-area: 1 / 1 / 6 / 2;
+}
+
+.nav button {
+    background: #08b783;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-left: 1rem;
 }
 
 .archivos {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
     min-height: 100%;
     grid-area: 1 / 3 / 6 / 6;
     background-color: white;
-    margin: 0 3rem 0 0;
-    border-radius: 30px;
+    min-height: 100vh;
+    max-height: 100vh;
 }
 
 .contCarpetas {
-    margin: 0 0 0 3rem;
+    display: flex;
+    flex-direction: column;
     grid-area: 1 / 2 / 6 / 3;
-    background-color: rgb(223, 223, 223);
+    height: 100%;
+    background-color: rgb(191, 171, 209);
+}
+
+.tablas {
+    grid-area: 1 / 3 / 6 / 6;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
 }

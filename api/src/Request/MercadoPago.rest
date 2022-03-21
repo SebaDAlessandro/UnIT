@@ -1,0 +1,9 @@
+curl --location --request POST 'https://api.mercadopago.com/preapproval' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer TEST-1908273831559083-031703-a9147988f2ef8919868140e85e73a50b-1090416048' \
+--data-raw '{
+   "preapproval_plan_id":"2c9380847f98bbbf017f9948151e0007",
+   "card_token_id":"9fca87c7338585abd000111222333444",
+   "payer_email":"test_user_XXXX@testuser.com"
+   
+}'

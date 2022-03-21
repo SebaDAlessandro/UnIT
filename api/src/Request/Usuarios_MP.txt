@@ -1,0 +1,78 @@
+>> Usuario Venderdor de prueba
+{
+    "id": 1090416048,
+    "nickname": "TETE780454",
+    "password": "qatest8525",
+    "site_status": "active",
+    "email": "test_user_94002089@testuser.com"
+}
+
+/* Usuarios Compradores de Prueba */
+
+{
+    "id": 1091316384,
+    "nickname": "TETE4709845",
+    "password": "qatest5867",
+    "site_status": "active",
+    "email": "test_user_54137704@testuser.com"
+}
+
+{
+    "id": 1091321825,
+    "nickname": "TETE8971542",
+    "password": "qatest4135",
+    "site_status": "active",
+    "email": "test_user_20200295@testuser.com"
+}
+
+{
+    "id": 1091320238,
+    "nickname": "TETE5237719",
+    "password": "qatest711",
+    "site_status": "active",
+    "email": "test_user_49060745@testuser.com"
+}
+
+{
+    "id": 1091320243,
+    "nickname": "TT325156",
+    "password": "qatest7757",
+    "site_status": "active",
+    "email": "test_user_69240019@testuser.com"
+}
+
+{
+    "id": 1091318189,
+    "nickname": "TESTZIEMFWM1",
+    "password": "qatest3831",
+    "site_status": "active",
+    "email": "test_user_59839869@testuser.com"
+}
+
+
+>> Datos de la subscription de UnIT 
+
+{
+  "id": "2c9380847f98bbbf017f9948151e0007",
+  "back_url": "https://www.mercadopago.com.ar",
+  "collector_id": 1090416048,
+  "application_id": 1908273831559083,
+  "reason": "Plan subscription de UnIT",
+  "status": "active",
+  "date_created": "2022-03-17T15:08:32.415-04:00",
+  "last_modified": "2022-03-17T15:08:32.415-04:00",
+  "init_point": "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847f98bbbf017f9948151e0007",
+  "auto_recurring": {
+    "frequency": 1,
+    "frequency_type": "months",
+    "transaction_amount": 1000.00,
+    "currency_id": "ARS",
+    "repetitions": 12,
+    "free_trial": {
+      "frequency": 1,
+      "frequency_type": "days",
+      "first_invoice_offset": 1
+    }
+  },
+  "payment_methods_allowed": {}
+}

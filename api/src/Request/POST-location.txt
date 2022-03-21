@@ -1,0 +1,51 @@
+{"location": [{
+  "name": "Claremont"
+}, {
+  "name": "Hongxingqiao"
+}, {
+  "name": "Bogota"
+}, {
+  "name": "Shulan"
+}, {
+  "name": "Terenozek"
+}, {
+  "name": "Hashtpar"
+}, {
+  "name": "Rēzekne"
+}, {
+  "name": "Kijini"
+}, {
+  "name": "Azilal"
+}, {
+  "name": "Rouen"
+}, {
+  "name": "Wutun"
+}, {
+  "name": "Letownia"
+}, {
+  "name": "Coromandel"
+}, {
+  "name": "Cullinan"
+}, {
+  "name": "Besançon"
+}, {
+  "name": "Huaping"
+}, {
+  "name": "Oarai"
+}, {
+  "name": "Little Current"
+}, {
+  "name": "Pessac"
+}, {
+  "name": "Zhireken"
+}, {
+  "name": "Joroinen"
+}, {
+  "name": "Dolní Kounice"
+}, {
+  "name": "Huangzhu"
+}, {
+  "name": "Nakhon Ratchasima"
+}, {
+  "name": "Tamiso"
+}]}

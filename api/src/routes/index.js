@@ -21,6 +21,7 @@ const admins = require('./admin')
 const softkillsBulk = require('./softSkillBulk')
 const technicalskillsBulk = require('./technicalSkillBulk')
 const lenguageBulk = require('./lenguageBulk')
+const senority = require('./senority')
 
 
 
@@ -48,6 +49,7 @@ router.use('/admin', admins);
 router.use("/softskillBulk", softkillsBulk)
 router.use("/technicalBulk", technicalskillsBulk)
 router.use("/languageBulk", lenguageBulk)
+router.use("/senority", senority)
 
 
 

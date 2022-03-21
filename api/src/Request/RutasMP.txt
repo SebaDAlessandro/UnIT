@@ -1,0 +1,52 @@
+>> Ruta para crear un plan de subscripcion 
+
+
+curl --location --request POST 'https://api.mercadopago.com/preapproval_plan' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer TEST-1908273831559083-031703-a9147988f2ef8919868140e85e73a50b-1090416048' \
+--data-raw '{
+	"back_url":"https://www.mercadopago.com.ar",
+	"reason":"Plan subscription de UnIT",
+	"auto_recurring":{
+		"frequency":"1",
+		"frequency_type":"months",
+        "transaction_amount":1000.00,
+		"currency_id":"ARS",
+		"repetitions":"",
+		"free_trial":{
+			"frequency_type":"months",
+			"frequency":"1"
+		}
+	}
+}'
+
+
+>> RESPUESTA:
+{
+  "id": "2c9380847f98bbbf017f9948151e0007",
+  "back_url": "https://www.mercadopago.com.ar",
+  "collector_id": 1090416048,
+  "application_id": 1908273831559083,
+  "reason": "Plan subscription de UnIT",
+  "status": "active",
+  "date_created": "2022-03-17T15:08:32.415-04:00",
+  "last_modified": "2022-03-17T15:08:32.415-04:00",
+  "init_point": "https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c9380847f98bbbf017f9948151e0007",
+  "auto_recurring": {
+    "frequency": 1,
+    "frequency_type": "months",
+    "transaction_amount": 1000.00,
+    "currency_id": "ARS",
+    "repetitions": 12,
+    "free_trial": {
+      "frequency": 1,
+      "frequency_type": "days",
+      "first_invoice_offset": 1
+    }
+  },
+  "payment_methods_allowed": {}
+}
+
+--------------------------------------------------------------
+
+>> 

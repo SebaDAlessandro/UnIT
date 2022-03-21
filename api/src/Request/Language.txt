@@ -1,81 +1,61 @@
 {"lenguage": [{
   "language": "English",
-  "native" : true,
   "level": "A1"
 }, {
   "language": "Somali",
-  "native" : true,
   "level": "A1"
 }, {
   "language": "Czech",
-  "native" : true,
   "level": "A1"
 }, {
   "language": "Guaraní",
-  "native" : true,
   "level": "A1"
 }, {
   "language": "Portuguese",
-  "native" : true,
   "level": "A1"
 }, {
   "language": "Punjabi",
-  "native" : true,
   "level": "B1"
 }, {
   "language": "Quechua",
-  "native" : false,
   "level": "A0"
 }, {
   "language": "Georgian",
-  "native" : true,
   "level": "C1"
 }, {
   "language": "Albanian",
-  "native" : false,
   "level": "C2"
 }, {
   "language": "Korean",
-  "native" : true,
   "level": "B2"
 }, {
   "language": "Māori",
-  "native" : false,
   "level": "B1"
 }, {
   "language": "Swahili",
-  "native" : true,
   "level": "C1"
 }, {
   "language": "Dzongkha",
-  "native" : true,
   "level": "C1"
 }, {
   "language": "Georgian",
-  "native" : false,
   "level": "B2"
 }, {
   "language": "Haitian Creole",
-  "native" : true,
   "level": "A2"
 }, {
   "language": "Malay",
-  "native" : false,
   "level": "A0"
 }, {
   "language": "Quechua",
-  "native" : true,
   "level": "A1"
 }, {
   "language": "Albanian",
-  "native" : false,
   "level": "C2"
 }, {
   "language": "New Zealand Sign Language",
-  "native" : true,
   "level": "B1"
 }, {
   "language": "Italian",
-  "native" : false,
   "level": "C1"
 }]}

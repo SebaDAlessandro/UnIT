@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 
-const {Candidate, Language, Contacted, Technicalskills, Project_experience, Softskill, Orientation} = require('../db.js');
+const {Candidate, Language, Contacted, Technicalskills, Project_experience, Softskill, Orientation, Location} = require('../db.js');
 
 
 router.get('/', async(req, res, next) => {
     try {
         const candidates = await Candidate.findAll({
             include: [
-                {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}, {model: Orientation}
+                {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}, {model: Orientation}, {model: Location}
             ]
         })
         res.json(candidates);
@@ -19,7 +19,7 @@ router.get('/', async(req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
-    const {name, lastname, email, location, status, image, password} = req.body;
+    const {name, lastname, email, status, image, password} = req.body;
 
     const passwords = await bcryptjs.hash(password, 10);
 
@@ -28,7 +28,6 @@ router.post('/', async (req, res, next) => {
             name,
             lastname,
             email,
-            location,
             status,
             image,
             password: passwords
@@ -42,14 +41,13 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
     const { id } = req.params;
-    const { name, lastname, email, location, description, linkedin, github, portfolio, status, image, cv, password } = req.body;
+    const { name, lastname, email, description, linkedin, github, portfolio, status, image, cv, password } = req.body;
     try{
         const encontrado = await Candidate.findByPk(id);
 
         let nombre = encontrado.dataValues.name 
         let apellido= encontrado.dataValues.lastname 
         let correo = encontrado.dataValues.email 
-        let locacion = encontrado.dataValues.location
         let descripcion = encontrado.dataValues.description
         let newLinkeding = encontrado.dataValues.linkedin
         let newGithub = encontrado.dataValues.github
@@ -63,7 +61,6 @@ router.put('/:id', async (req, res, next) => {
             name: name || nombre, 
             lastname: lastname || apellido, 
             email: email || correo, 
-            location: location || locacion, 
             description: description || descripcion,
             linkedin: linkedin || newLinkeding,
             github: github || newGithub,
@@ -88,7 +85,7 @@ router.get('/:id', async (req, res, next) => {
         if(id){
           const candidato = await Candidate.findByPk(id,{
             include: [
-                {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}, {model: Orientation}
+                {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Location}, {model: Project_experience}, {model: Orientation}
             ]
           })
           if(candidato != 0){

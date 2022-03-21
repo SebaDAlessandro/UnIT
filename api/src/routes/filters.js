@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-const {Candidate, Language, Contacted, Technicalskills, Project_experience, Softskill, Orientation, Op} = require('../db.js');
+const {Candidate, Language, Contacted, Technicalskills, Project_experience, Softskill, Orientation, Location, Op} = require('../db.js');
 
 /* router.get("/palabraClave", async (req, res, next) => {
     const {word} = req.body;
@@ -57,10 +57,14 @@ router.get("/total", async (req, res, next) => {
 
     try {
 
+        
         if(location){
             var candidates = await Candidate.findAll({
-                where: {location: location},
-            })
+                include: [
+                    {model: Location, where: {location: location}}
+                ]
+            });
+
         }else{
             var candidates = await Candidate.findAll();
         }
@@ -99,7 +103,7 @@ router.get("/total", async (req, res, next) => {
             }
             
         }
-        
+
 
         if(language && candidates){
             let aux = [];
@@ -144,6 +148,7 @@ router.get("/total", async (req, res, next) => {
             })
         }
 
+
         if(sskill && candidates){
             let aux = [];
             console.log(candidates.length)
@@ -173,7 +178,7 @@ router.get("/total", async (req, res, next) => {
 
                 var a = await Candidate.findByPk(candidates[i].id,{
                     include: [
-                        {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}, {model: Orientation, where: {name: orientation}}
+                        {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Location}, {model: Softskill}, {model: Project_experience}, {model: Orientation, where: {name: orientation}}
                     ]
                 })
 
@@ -214,6 +219,6 @@ router.get("/total", async (req, res, next) => {
 })
 
 
-module.exports = router;
+
 
 module.exports = router;

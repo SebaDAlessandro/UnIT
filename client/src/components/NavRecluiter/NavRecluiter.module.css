@@ -3,6 +3,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    min-width: 10rem;
     min-height: 100vh;
     max-height: 100vh;
 }
@@ -51,15 +52,15 @@
 
 .rutas {
     height: 3.5rem;
-    width: 3.5rem;
-  /*   background-color: #08b783b4; */
+    width: 5rem;
+ /*    background-color: #08b783b4; */ 
     position: relative;
     display: grid;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
     font-size: 35px;
     color: #08b783;
+    border-right: 3px solid #08b783;
 }
 
 /* .home span {

@@ -14,6 +14,7 @@ export const DELETE_FAVORITE = 'DELETE_FAVORITE'
 export const GET_FOLDER_FAVORITES = 'GET_FOLDER_FAVORITES'
 export const ADD_CANDIDATE = 'ADD_CANDIDATE'
 export const DELETE_FOLDER = 'DELETE_FOLDER'
+export const FILTRO_FAVORITES = 'FILTRO_FAVORITES'
 
 export const CreateCandidate = (create) => async () => {
 

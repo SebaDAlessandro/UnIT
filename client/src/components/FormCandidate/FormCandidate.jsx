@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { CreateCandidate } from '../../redux/actions'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UploadImage from '../UploadImage/UploadImage'
 import '../FormCandidate/FormCandidate.css'
 
@@ -51,6 +51,8 @@ const [state, setState] = useState({
     portfolio: '', 
 });
 
+const history = useNavigate();
+
 const [paso , setPaso] = useState(0) 
 
 const dispatch = useDispatch(); 
@@ -66,6 +68,7 @@ const handleChange = (e) => {
     e.preventDefault();
     dispatch(CreateCandidate(state)); 
     alert(`Info send corectly ${state.name} ${state.lastname}`)
+    history('/homerecluiter')
   }
 
   const handleImageurl = (imageurl) => {
@@ -91,8 +94,42 @@ const handleChange = (e) => {
   })
   }
 
+  const PersonalInfoNext = () => {
+    if(state.name === '' ) {
+        alert('El campo de nombre es obligatorio')
+        } 
+    else if (state.lastname === '') {
+        alert('El campo de apellidos es obligatorio')
+    }
+    else if (state.location === '') {
+        alert('El campo de locación es obligatorio')
+    }
+    else if (state.password === '') {
+        alert('El campo de contraseña es obligatorio')
+    }
+    else if (state.status === '') {
+        alert('El campo de  es obligatorio')
+    }
+     
+      else {
+        setPaso(paso + 1)  
+      }
+  }
+
+  const HabilidadesNext = () => {
+    if (state.soft_skills.length === 0) {
+        alert('Las habilidades blandas son obligatorias')
+    }
+    else {
+        setPaso(paso + 1)  
+    }
+      
+  }
+
   const PasoNext = () => {
-    setPaso(paso + 1)
+
+        setPaso(paso + 1)  
+    
   }
 
   const PasoBack = () => {
@@ -217,8 +254,7 @@ const handleChange = (e) => {
                                 </label>
                     </div> 
            
-                    <span className='btn' onClick={PasoNext}>Continuar</span>
-                   
+                    <span className='btn' onClick={PersonalInfoNext}>Continuar</span> 
 
             </div>
 
@@ -296,7 +332,7 @@ const handleChange = (e) => {
 
             </div>           
 
-                            <span className='btn' onClick={PasoNext}>Continuar</span>
+                            <span className='btn' onClick={HabilidadesNext}>Continuar</span>
                             <span className='btn' onClick={PasoBack}>Anterior</span>
                        
             </div> 

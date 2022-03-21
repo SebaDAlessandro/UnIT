@@ -9,7 +9,7 @@ router.get('/', async(req, res, next) => {
     try {
         const candidates = await Candidate.findAll({
             include: [
-                {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}, {model: Orientation}, {model: Location}
+                {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}, {model: Orientation}, {model: Location},{model: Senorit}
             ]
         })
         res.json(candidates);
@@ -85,7 +85,7 @@ router.get('/:id', async (req, res, next) => {
         if(id){
           const candidato = await Candidate.findByPk(id,{
             include: [
-                {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Location}, {model: Project_experience}, {model: Orientation}
+                {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Location}, {model: Project_experience}, {model: Orientation},{model: Senorit}
             ]
           })
           if(candidato != 0){

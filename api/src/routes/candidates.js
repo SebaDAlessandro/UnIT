@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 
-const {Candidate, Language, Contacted, Technicalskills, Project_experience, Softskill, Orientation, Location} = require('../db.js');
+const {Candidate, Language, Contacted, Technicalskills, Project_experience, Softskill, Orientation, Location, Senorit} = require('../db.js');
 
 
 router.get('/', async(req, res, next) => {

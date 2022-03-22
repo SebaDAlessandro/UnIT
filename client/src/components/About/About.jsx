@@ -44,9 +44,9 @@ export default function Slider() {
                     <h1>Proposito</h1>
                   </div>
                   <div className={style.aboutus}>
-                  <p>Queremos lograr que las empresas tengan un acceso mucho mas fácil 
+                  <p>Queremos lograr que tengas un acceso mucho mas fácil 
                     a los talentos del mundo IT por medio de un algoritmo súper complejo 
-                    que les permitirá hacer match con el candidato</p>
+                    que permitirá hacer match con el candidato que deseen</p>
                   </div>
                   <a className={style.dropdown} href='#2'>
                   <button className={style.botonHome}>Nuestro Propósito</button>

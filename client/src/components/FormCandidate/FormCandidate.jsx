@@ -233,7 +233,7 @@ const handleChange = (e) => {
                             placeholder="Sube tu imágen aquí"
                             onChange={uploadImage}
                         />
-                            {loading ? (<h3>Cargando imágen...</h3>) : (<img src={image} style={{width:"300px"}}/>)}
+                            {loading ? (<h3>Cargando imagen...</h3>) : (<img src={image} style={{width:"300px"}}/>)}
                         </div>
                     </div>
                      
@@ -305,7 +305,7 @@ const handleChange = (e) => {
  
             <div className='cont-softSkills'> 
 
-            <h2>Habilidades tecnicas</h2>
+            <h2>Habilidades técnicas</h2>
 
             <div className='contHabilidades'>
 
@@ -395,7 +395,7 @@ const handleChange = (e) => {
                 /> 
                    <label className='lbl_nombre'>
                                     <span className='text_nomb'>
-                                        Correo electronico
+                                        Correo electrónico
                                     </span>
                                 </label>
                 </div> 
@@ -416,7 +416,7 @@ const handleChange = (e) => {
                 </div> 
 
                 <span className='btn' onClick={PasoNext}>Continuar</span>
-                <span className='btn' onClick={PasoBack}>Previous</span>
+                <span className='btn' onClick={PasoBack}>Anterior</span>
 
             </div>
 
@@ -437,7 +437,7 @@ const handleChange = (e) => {
                         className='btn' 
                         type='sumbit' 
                         onClick={handleSumbit}>Crear</button>
-                        <span className='btn' onClick={PasoBack}>Previous</span>
+                        <span className='btn' onClick={PasoBack}>Anterior</span>
                    
 
 

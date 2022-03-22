@@ -169,7 +169,7 @@ const uploadImage = async (e) => {
                             placeholder="Sube tu imágen aquí"
                             onChange={uploadImage}
                         />
-                            {loading ? (<h3>Cargando imágen...</h3>) : (<img src={image} style={{width:"300px"}}/>)}
+                            {loading ? (<h3>Cargando imagen...</h3>) : (<img src={image} style={{width:"300px"}}/>)}
                         </div>
                     </div>
                      

@@ -138,7 +138,7 @@ export default function BusquedaFiltro() {
                             <span className={`material-icons-outlined ${Style.iconoAgregar}`}>
                                 add_circle_outline
                             </span>
-                            <h4>Agregar Tecnologias</h4>
+                            <h4>Agregar Tecnologías</h4>
                             </div>
                             :
                             tecnologias.map(e =>

@@ -18,6 +18,7 @@ module.exports = (sequelize) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true
     },
     // nombre de la empresa o freelance desde el front
     organization: {

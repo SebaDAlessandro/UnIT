@@ -1,0 +1,411 @@
+
+.globalContainer {
+    --colorFondo: #001E38;
+    --colorLetra: #08B783;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colorFondo);
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+/* Estilos projects  */
+
+.contPorjects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 85%;
+}
+
+.contPorjects h1 {
+    margin-bottom: 5rem;
+    width: 100%;
+    color: var(--colorLetra);
+    font-size: 50px;
+}
+
+.miniatura {
+    border-radius: 20px;
+    height: 10rem;
+    overflow: hidden;
+    background-color: #034646;
+    margin-bottom: 2rem;
+}
+
+.miniatura img {
+    object-fit: cover;
+    width: 100%;
+}
+
+.projectGlobal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.contp {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 520px;
+    background-color: #182228;  
+    border-radius: 20px;
+}
+
+.des {
+    height: 6rem;
+    overflow: hidden;
+    overflow: hidden;
+}
+
+.des p {
+    text-align: left;
+    color: rgb(177, 177, 177);
+    text-overflow: ellipsis;
+}
+
+.contp button {
+    padding: 0.5rem 2rem;
+    width: 50%;
+    background: none;
+    border: 2px solid #FFA97A;
+    border-radius: 10px;
+    margin-top: 2rem;
+    color: white;
+    font-size: 20px;
+}
+
+.contp h2 {
+    color: white;
+    margin-bottom: 2rem;
+}
+
+/* Estilos Footer */
+
+.contFooter {
+    padding: 2rem 0;
+    height: 17rem;
+    width: 100%;
+    background-color: var(--colorLetra);
+    color: var(--colorFondo);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.linkCont {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.linkCont a {
+    color: var(--colorFondo);
+}
+
+.contSocial {
+    display: flex;
+    justify-content: space-between;
+    width: 10%;
+}
+
+.social {
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--colorFondo);;
+    border-radius: 10px;
+}
+
+.contproyectos {
+    background-color: var(--colorFondo);;
+}
+
+
+/* Estilos sobre mi */
+
+.contSobreMi {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    width: 85%;
+}
+
+.titleAbout {
+    margin-top: 6rem;
+    width: 100%;
+    color: var(--colorLetra);
+    font-size: 30px;
+}
+
+.contInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.contIntro {
+    width: 30%;
+    height: 60%;
+}
+
+.contIntro button {
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    color: #001E38;
+    background: var(--colorLetra);
+    border: 2px solid var(--colorLetra);
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.contIntro p {
+    color: #959595;
+    text-align: left;
+}
+
+.contIntro h2 {
+    color: var(--colorLetra);
+    font-size: 35px;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.contEducación {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cajas {
+    height: 10rem;
+    width: 50%;
+}
+
+.cajas h3 {
+    color: white;
+}
+
+/* Estilos section Hello */
+
+.contHello {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    width: 85%;
+    border-bottom: 2px solid #3A3C56;
+}
+
+.picture {
+    height: 30rem;
+    width: 30rem;
+    background-color: #2b5274;
+    border: 10px solid var(--colorLetra);;
+    border-radius: 50%;
+    overflow: hidden; 
+     display: flex;
+    justify-content: center;
+}
+
+.picture img {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.titleHello {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.titleHello h1 {
+    font-size: 6vw;
+    margin-bottom: 2rem;
+    color: var(--colorLetra);
+}
+
+.download {
+    padding: 0.8rem 2rem;
+    color: white;
+    background: none;
+    border: 2px solid var(--colorLetra);
+    border-radius: 8px;
+    margin-right: 1rem;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.aboutme {
+    padding: 0.8rem 2rem;
+    color: var(--colorFondo);
+    background: var(--colorLetra);
+    border: 2px solid var(--colorLetra);
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* Estilos Nav */
+
+.center{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+}
+.navContainer{
+    position: fixed;
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+}
+
+
+.linkContainer{
+    color:var(--colorLetra);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.rutas {
+    color: gold;
+}
+
+.linkContainer a {
+    color:#fff;
+    font-weight: bold;
+    margin: 0 2%;
+    
+    
+    
+}
+.nombreNav{
+    font-weight: bold;
+    font-size: 30px;
+    color: #fff;
+}
+.nombreNav::first-letter{
+    text-transform: uppercase;
+}
+.nombreNav span{
+    font-size: 30px;
+    color: var(--colorLetra);
+}
+
+
+
+
+
+.contenedorGralHabilidades{
+    min-height: 100vh;
+    width: 100%;
+    display :flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+   
+}
+.botonHab{
+    padding: 10px 30px;
+    background-color: #000;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 20px;
+    margin: 0 5px;
+    color: #034646;
+}
+
+.botonActivo{
+    padding: 10px 30px;
+    background-color: #000;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 20px;
+    margin: 0 5px;
+    color: var(--colorLetra);
+    
+}
+.contenedorGralHabilidades h1{
+    margin-top: 5%;
+  font-size: 50px;
+  font-weight: bold;
+  color: var(--colorLetra);
+
+}
+
+.gridHabilidades{
+    display: grid;
+    width: 80%;
+    height: 80%;
+    grid-template-columns: repeat(2,1fr);
+    background-color: #000;
+    border-radius: 30px;
+    
+}
+.imgHabilidades{
+    background-image: url('./../images/programando.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+ 
+}
+.contenidoHabilidades{
+    display: flex;
+    justify-content: center ;
+}
+.contenidoHabilidades h2{
+    color: var(--colorLetra);
+    font-size: 40px;
+    margin-top: 5%;
+}
+.cuadro{
+    width: 90%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.contenedorEtiquetas{
+    margin-top: 5%;
+    display: flex;
+    max-width: 90%;
+    flex-wrap: wrap;
+}
+.etiquetasMostrar{
+    font-size: 25px;
+    background-color: var(--colorLetra);
+    border-radius: 35px;
+    padding: 5px 20px;
+    color: var(--colorFondo);
+    font-weight: bold;
+    margin: 4%;
+    
+}
+.contBotones{
+    display: flex;
+    width: 70%;
+
+}

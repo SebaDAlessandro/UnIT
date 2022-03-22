@@ -16,25 +16,25 @@ const CardFolder = ({name, id}) => {
   }
 
   return (
-    <div>
-    <Link to={`/carpetas/${id}`}>
-    <div className={style.contenedor}>
-        <div className={style.folder}>
-            <span class="material-icons">
-                folder
-            </span>
-        </div>
-            <div className={style.name}>
-                <p>{name}</p>
-            </div>
-    </div>
-    </Link>
-            <div onClick={() => {borrarCarpeta()}} className={style.delete}>
-              <span class="material-icons-outlined">
-                clear
+    <div className={style.globalContainer}>
+      <Link to={`/carpetas/${id}`}>
+      <div className={style.contenedor}>
+          <div className={style.folder}>
+              <span class="material-icons">
+                  folder
               </span>
-            </div>
-            </div>
+          </div>
+              <div className={style.name}>
+                  <p>{name}</p>
+              </div>
+      </div>
+      </Link>
+          <div onClick={() => {borrarCarpeta()}} className={style.delete}>
+                <span class="material-icons-outlined">
+                  clear
+                </span>
+          </div>
+    </div>
   )
 }
 

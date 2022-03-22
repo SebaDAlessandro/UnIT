@@ -14,12 +14,13 @@ export const DELETE_FAVORITE = 'DELETE_FAVORITE'
 export const GET_FOLDER_FAVORITES = 'GET_FOLDER_FAVORITES'
 export const ADD_CANDIDATE = 'ADD_CANDIDATE'
 export const DELETE_FOLDER = 'DELETE_FOLDER'
+export const FILTRO_FAVORITES = 'FILTRO_FAVORITES'
 
 export const CreateCandidate = (create) => async () => {
 
     console.log(create)
 
-    const res = await axios.post(`http://localhost:3001/candidates/`, create)
+    const res = await axios.post(`/candidates/`, create)
 
     console.log(res.data)
 
@@ -29,7 +30,7 @@ export const CreateRecluiter = (create) => async () => {
 
     console.log(create)
 
-    const res = await axios.post(`http://localhost:3001/cuentarecruiter`, create)
+    const res = await axios.post(`/cuentarecruiter`, create)
 
     console.log(res.data)
 
@@ -39,7 +40,7 @@ export function addFavorite(payload) {
     console.log("Id ususarios", payload);
     return async (dispatch) => {
         try {
-            var json = await axios.post('http://localhost:3001/favorites', payload);
+            var json = await axios.post('/favorites', payload);
             /*   console.log("Datos para posteo", json.data);  */
             return dispatch({
                 type: ADD_FAVORITE,
@@ -59,7 +60,7 @@ export const deleteFavorite = (recruiterId) => async dispatch => {
     
     console.log(recruiterId, "Favorito por eliminar")
     
-    const res = await axios.post(`http://localhost:3001/favorites/candidate/`, recruiterId)
+    const res = await axios.post(`/favorites/candidate/`, recruiterId)
 
     console.log(res.data, "Esto es el Res")
     
@@ -74,7 +75,7 @@ export function getFavorites (id) {
     console.log("Id ususarios");  
     return async function (dispatch) {
         dispatch({ type: LOADING, payload: 'Buscando Favoritos...' }) 
-        var json = await axios.get(`http://localhost:3001/favorites/${id}`)
+        var json = await axios.get(`/favorites/${id}`)
         return dispatch({         
             type: GET_FAVORITES,         
             payload: json.data,       
@@ -85,7 +86,7 @@ export function getFolders (id) {
         /* console.log("Id ususarios");  */ 
         return async function (dispatch) {
             dispatch({ type: LOADING, payload: 'Buscando Carpetas...' }) 
-            var json = await axios.get(`http://localhost:3001/folders/recruiter/${id}`)
+            var json = await axios.get(`/folders/recruiter/${id}`)
             return dispatch({         
                 type: GET_FOLDERS,
                 payload: json.data,      
@@ -96,7 +97,7 @@ export function getFolderFavorites (id) {
         /* console.log("Id ususarios");  */ 
         return async function (dispatch) {
             dispatch({ type: LOADING, payload: 'Buscando Favoritos de la carpeta...' }) 
-            var json = await axios.get(`http://localhost:3001/folders/${id}`)
+            var json = await axios.get(`/folders/${id}`)
             return dispatch({         
                 type: GET_FOLDER_FAVORITES,
                 payload: json.data,      
@@ -109,7 +110,7 @@ export const deleteFolder = (idFolder) => async dispatch => {
 
         console.log(idFolder, "Este es el id de la carpeta para eliminar")
     
-        const res = await axios.post(`http://localhost:3001/folders/delete`, idFolder)
+        const res = await axios.post(`/folders/delete`, idFolder)
         
         return dispatch({
             type: DELETE_FOLDER,
@@ -122,7 +123,7 @@ export const addCandidateToFolder = ({fId, cId}) => async dispatch => {
 
     console.log(fId, cId, "Estos son los Ids para la ruta")
 
-    const res = await axios.post(`http://localhost:3001/folders/${fId}/candidate/${cId}`, fId, cId)
+    const res = await axios.post(`/folders/${fId}/candidate/${cId}`, fId, cId)
     
     return dispatch({
         type: ADD_CANDIDATE,
@@ -135,7 +136,7 @@ export const Login = (create) => async dispatch => {
 
     console.log(create)
 
-    const res = await axios.post(`http://localhost:3001/cuentarecruiter/loginrecruiter`, create)
+    const res = await axios.post(`/cuentarecruiter/loginrecruiter`, create)
 
    /*  console.log(res.data.token, "Este es el token") */
    
@@ -152,7 +153,7 @@ export const createFolder = (create) => async dispatch => {
     
     console.log(create, "Carpeta por crear")
     
-    const res = await axios.post(`http://localhost:3001/folders`, create)
+    const res = await axios.post(`/folders`, create)
     
     return dispatch({
         type: CREATE_FOLDER,
@@ -162,7 +163,7 @@ export const createFolder = (create) => async dispatch => {
 }
 
 export const getAllCandidates = () => async dispatch => {
-    let json = await axios.get('http://localhost:3001/candidates')
+    let json = await axios.get('/candidates')
     dispatch({
         type: GET_ALL_CANDIDATES,
         payload: json.data

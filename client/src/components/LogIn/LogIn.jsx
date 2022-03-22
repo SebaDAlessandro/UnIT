@@ -91,7 +91,7 @@ const LogIn = () => {
                     <div className={style.containerbtn}>
 
                         <div className={style.contbtn}>
-                            <button className={style.inicio}>Iniciar Sesion</button>
+                            <button className={style.inicio}>Iniciar Sesión</button>
                         </div>
 
                         <div className={style.contbtn}>

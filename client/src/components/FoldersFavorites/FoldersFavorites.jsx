@@ -13,6 +13,7 @@ const FoldersFavorites = () => {
 
 const [bandera, setBandera] = useState(0)
 const [ cards, setCards ] = useState("finalSpace")
+const [size, setSize] = useState('cuatro')
 
 console.log(bandera, "Este es bandera")
 
@@ -34,6 +35,13 @@ const dispatch = useDispatch()
   } 
 }, [favorites])
 
+const toTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}
+
 const onDragEnd = (r) => {
   dispatch(addCandidateToFolder({fId: r.destination.droppableId, cId: r.draggableId}))
   console.log(r, "Carta arrastrada")
@@ -45,22 +53,6 @@ const onDragEnd = (r) => {
 
       <div className={style.globalCont}>
 
-      <div className={style.buscador}>
-            <h1>Estos son tus favoritos.</h1>
-            <div className={style.buscar}>
-              <div className={style.continput}>
-                <input type='text'
-                placeholder='Busca tus favoritos...'
-                />
-              </div>
-                <div className={style.filtros}>
-                  <span class="material-icons-outlined">
-                    filter_alt
-                  </span>
-                </div>
-            </div>
-      </div>
-
       <Droppable direction='horizontal' droppableId='task'>  
 
         {(droppableProvider) => (
@@ -69,6 +61,29 @@ const onDragEnd = (r) => {
           {...droppableProvider.droppableProps}
           ref={droppableProvider.innerRef}
           > 
+
+            <div className={style.buscador}>
+                  <h1>Estos son tus favoritos.</h1>
+                  <div className={style.buscar}>
+                    <div className={style.continput}>
+                      <input type='text'
+                      placeholder='Busca tus favoritos...'
+                      />
+                    </div>
+                      <div className={style.filtros}>
+                        <span class="material-icons-outlined">
+                          tune
+                        </span>
+                      </div>
+                  </div>
+            </div>
+
+            <div className={style.buttons}>
+              <button onClick={() => {setSize('cuatro')}} >Menos</button>
+              <button onClick={() => {setSize('seis')}} >Más</button>
+              <button onClick={() => {toTop()}}>Top</button>
+            </div>
+
               {bandera === 0 ? 
               <div className={style.folder}>
                 <img src={img} />
@@ -80,8 +95,10 @@ const onDragEnd = (r) => {
 
                 {(draggableProvider, snapshot) => 
 
+/* Estilo is draggind ${snapshot.isDragging? style.isDragging : style.contDragable } */
+
                 <div
-                className={`${snapshot.isDragging? style.isDragging : style.contDragable }`}
+                className={`${size === 'cuatro'? style.contDragable : style.sizeChange }`}
                 {...draggableProvider.draggableProps}
                 ref={draggableProvider.innerRef}
                 {...draggableProvider.dragHandleProps}
@@ -94,6 +111,7 @@ const onDragEnd = (r) => {
                   location={c.location}
                   id={c.id}
                   image={c.image}
+                  size={size}
                 />
                 </div>
 
@@ -111,12 +129,7 @@ const onDragEnd = (r) => {
       </Droppable>
 
           <div className={style.contCarpetas}> 
-         {/*    <div>
-              {!carpetas.length ? <FormCarpetas/> : <h1>Aun no tienes carpetas creadas</h1>}
-            </div>  */}
-              <div>
                 <Carpetas/>
-              </div> 
           </div>
 
             <div className={style.contNav}>

@@ -3,13 +3,15 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    min-width: 100%;
-    max-width: 100%;
-    height: 100%;
+    min-width: 10rem;
+    min-height: 100vh;
+    max-height: 100vh;
 }
 
 .picture {
-    margin: 3rem 0;
+    margin: 2rem 0 0 0;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .contBottom {
@@ -17,6 +19,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 2rem;
 }
 
 .cont {
@@ -42,15 +45,31 @@
    transform: scale(1.1);
 }
 
-.home span {
-    color: #17262A;
-    font-size: 33px;
+.default{
+    color: rgb(156, 156, 156);
+    font-size: 30px;
 }
 
 .rutas {
-    color: #F47061;
-    background-color: #08B783;
-    border-radius: 50%;
+    height: 3.5rem;
+    width: 5rem;
+ /*    background-color: #08b783b4; */ 
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    color: #08b783;
+    border-right: 3px solid #08b783;
+}
+
+/* .home span {
+    color: #17262A;
+    font-size: 33px;
+} */
+
+.contBottom span {
+    color: #08B783;
 }
 
 .home .tooltip {
@@ -59,14 +78,14 @@
     font-size: 20px;
     left: 70px;
     top: 0;
-    transform:  translateY(-20%);
+    transform:  translateY(-30%);
     border-radius: 6px;
     height: 35px;
     width: 110px;
     background-color: #FAE1DF;
     line-height: 35px;
     text-align: center;
-    box-shadow: 0px 0px 90px 10px #b6b6b6 ;
+    box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.1);
     transition: 0s;
     opacity: 0;
     pointer-events: none;
@@ -75,5 +94,5 @@
 .home:hover .tooltip {
     transition:  all 0.5s ease;
     opacity: 1;
-    top: 20%;
+    top: 30%;
 }

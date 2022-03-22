@@ -1,24 +1,56 @@
+.globalContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   /*  min-height: 3rem; */
+}
+
 .contenedor {
-    margin: 1rem;
+   /*  position: absolute; */
     display: flex;
     align-items: center;
     justify-content: left;
-    min-height: 2rem;
-    min-width: 10rem;
+    min-height: 3rem;
+    min-width: 13rem;
     border: 1px solid rgb(199, 199, 199); 
-    border-radius: 20px;
+    border-radius: 15px;
     padding: 0 10px 0 20px;
     background-color: white;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    /* width: 80%;
+    height: 100%;  */
+    top: 0;
+}
+
+.contenedor:hover {
+    background-color: rgb(233, 233, 233);
+    border: 1px solid #08B783;
+}
+
+.delete {
+    right: 0;
+   /*  position: absolute; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    min-width: 10%;
+    border: 1px solid rgb(199, 199, 199); 
+    border-radius: 15px;
+    padding: 10px;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.delete:hover {
+    background-color: rgb(233, 214, 214);
+    border: 1px solid rgb(200, 85, 85);
 }
 
 .delete span {
     color: black;
 }
 
-.contenedor:hover {
-    background-color: rgb(206, 206, 206);
-}
 
 .name {
     width: 70%;

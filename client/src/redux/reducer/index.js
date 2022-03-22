@@ -4,11 +4,12 @@ import {
     LOGOUT, 
     LOADING, 
     CAMBIAR_LOGEO, 
-    FILTRO_BUSCADOS, 
+    FILTRO_BUSCADOS,
+    FILTRO_FAVORITES, 
     GET_FOLDERS, 
     DELETE_FAVORITE,
     GET_FOLDER_FAVORITES
- } from '../actions/index'
+} from '../actions/index';
 
 const inicialState = { 
     candidates: [], 
@@ -17,6 +18,7 @@ const inicialState = {
     carpetas: [], 
     loading: {loading: false, msg:""}, 
     mostrar:[], 
+    mostrarf: [],
     logeado: false, 
     eliminado: [],
     archivos: [], 
@@ -43,7 +45,8 @@ const rootReducer = (state = inicialState, action) => {
         return {
             ...state,
             favorites: action.payload,
-            loading: {loading: false, msg: ""}
+            loading: {loading: false, msg: ""},
+            mostrarf: action.payload
         }
 
         case GET_FOLDERS:
@@ -79,6 +82,11 @@ const rootReducer = (state = inicialState, action) => {
                 ...state,
                 mostrar: action.payload
             }
+        case FILTRO_FAVORITES:
+            return {
+                ...state,
+                mostrarf: action.payload
+            }    
         case DELETE_FAVORITE:
             return {
                 ...state,

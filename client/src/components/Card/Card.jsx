@@ -23,7 +23,7 @@ function Card ({name, lastname, location, id, image}) {
                         <div className={styles.header}>
                             <div className={styles.title}>
                                 <p>{name} {lastname}</p>
-                                <p className={styles.roll}>Fronted</p>
+                                <p className={styles.roll}>Frontend</p>
                             </div>
                             <div className={styles.contButons}>
                                 <span onClick={handleChange} className="material-icons">favorite_border</span>

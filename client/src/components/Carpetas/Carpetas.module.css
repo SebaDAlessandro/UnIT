@@ -1,0 +1,56 @@
+.containerFolder {
+   position: relative;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   padding: 0 1rem;
+} 
+
+.contFolder {
+   position: relative;
+   margin: 1rem 0;
+   width: 100%;
+   max-height: 3rem;
+}
+
+.contCard {
+   transform: scale(1.1);
+   border: 1px solid #078660;
+}
+
+.contTitle {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 6rem;
+   margin-bottom: 1rem;
+
+}
+
+.contForm {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 2rem;
+}
+
+.contForm button {
+   border: none;
+   border-radius: 10px;
+   padding: 0.5rem 1rem;
+   background-color: #08B783;
+   color: #F6F6F6;
+   transition: 0.3s all ease-in-out;
+}
+
+.contForm button:hover {
+   background-color: #08976c;
+}
+
+.contForm input {
+   border: none;
+   border-radius: 10px;
+   padding: 0.5rem 1rem;
+   outline: none;
+   background-color: rgb(228, 228, 228);
+}

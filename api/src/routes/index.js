@@ -23,6 +23,7 @@ const technicalskillsBulk = require('./technicalSkillBulk')
 const lenguageBulk = require('./lenguageBulk')
 const location = require('./location')
 const senority = require('./senority')
+const gender = require('./genero.js')
 
 
 
@@ -52,6 +53,7 @@ router.use("/technicalBulk", technicalskillsBulk)
 router.use("/languageBulk", lenguageBulk)
 router.use('/location', location)
 router.use('/senority', senority)
+router.use('/gender', gender)
 
 
 

@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 
-const {Candidate, Language, Contacted, Technicalskills, Project_experience, Softskill, Orientation, Location, Senorit} = require('../db.js');
+const {Candidate, Language, Contacted, Technicalskills, Project_experience, Softskill, Orientation, Location, Senorit, Gender} = require('../db.js');
 
 
 router.get('/', async(req, res, next) => {
     try {
         const candidates = await Candidate.findAll({
             include: [
-                {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}, {model: Orientation}, {model: Location},{model: Senorit}
+                {model: Gender}, {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}, {model: Orientation}, {model: Location},{model: Senorit}
             ]
         })
         res.json(candidates);
@@ -61,9 +61,11 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
     const { id } = req.params;
-    const { name, lastname, email, description, linkedin, github, portfolio, status, image, cv, password } = req.body;
+    const { name, lastname, email, description, linkedin, github, portfolio, status, image, cv, password, gender, location } = req.body;
     try{
         const encontrado = await Candidate.findByPk(id);
+        const gn = await Gender.findOne({where: {gender: gender}});
+        const lc = await Location.findOne({where: {location: location}});
 
         let nombre = encontrado.dataValues.name 
         let apellido= encontrado.dataValues.lastname 
@@ -76,6 +78,8 @@ router.put('/:id', async (req, res, next) => {
         let imagen = encontrado.dataValues.image
         let newCv = encontrado.dataValues.cv
         let contraseña = encontrado.dataValues.password
+        let genero = encontrado.dataValues.genderId
+        let locacion = encontrado.dataValues.locationId
 
         const actualizacion = await encontrado.update({
             name: name || nombre, 
@@ -88,7 +92,9 @@ router.put('/:id', async (req, res, next) => {
             status: status || estado,
             image: image || imagen,
             cv: cv || newCv,
-            password: password || contraseña        
+            password: password || contraseña,
+            genderId: gn.id || genero,
+            locationId: lc.id || locacion        
         })
         res.status(200).json(actualizacion);
     }catch(error){

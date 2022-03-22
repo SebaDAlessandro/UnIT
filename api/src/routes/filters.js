@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-const {Candidate, Language, Contacted, Technicalskills, Project_experience, Softskill, Orientation, Location, Op} = require('../db.js');
+const {Candidate, Language, Contacted, Technicalskills, Project_experience, Softskill, Orientation, Senorit, Location, Gender, Op} = require('../db.js');
 
 /* router.get("/palabraClave", async (req, res, next) => {
     const {word} = req.body;
@@ -53,7 +53,7 @@ router.get("/total", async (req, res, next) => {
 
     // language, tskill, sskill son arrays [ ] <---- 
 
-    const {name, location, language, tskill, sskill, orientation} = req.body;
+    const {name, location, language, tskill, sskill, orientation, senority, gender} = req.body;
 
     try {
 
@@ -69,6 +69,47 @@ router.get("/total", async (req, res, next) => {
             var candidates = await Candidate.findAll();
         }
 
+
+        if(gender && candidates){
+            let aux = [];
+            for(let i=0; i<candidates.length; i++){
+
+                var a = await Candidate.findByPk(candidates[i].id,{
+                    include: [
+                        {model: Gender, where: {gender: gender}}
+                    ]
+                })
+
+                if(a){
+                    aux.push(a)
+                }
+
+            }
+
+            candidates = aux;
+
+        }
+        
+
+        if(senority && candidates){
+            let aux = [];
+            for(let i=0; i<candidates.length; i++){
+
+                var a = await Candidate.findByPk(candidates[i].id,{
+                    include: [
+                        {model: Senorit, where: {senority: senority}}
+                    ]
+                })
+
+                if(a){
+                    aux.push(a)
+                }
+
+            }
+
+            candidates = aux;
+
+        }
 
 
         if(name && candidates){
@@ -151,7 +192,6 @@ router.get("/total", async (req, res, next) => {
 
         if(sskill && candidates){
             let aux = [];
-            console.log(candidates.length)
             for(let i=0; i<candidates.length; i++){
 
                 var a = await Candidate.findByPk(candidates[i].id,{
@@ -173,12 +213,11 @@ router.get("/total", async (req, res, next) => {
 
         if(orientation && candidates){
             let aux = [];
-            console.log(candidates.length)
             for(let i=0; i<candidates.length; i++){
 
                 var a = await Candidate.findByPk(candidates[i].id,{
                     include: [
-                        {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Location}, {model: Softskill}, {model: Project_experience}, {model: Orientation, where: {name: orientation}}
+                        {model: Language}, {model: Senorit}, {model: Contacted}, {model: Technicalskills}, {model: Location}, {model: Softskill}, {model: Project_experience}, {model: Orientation, where: {name: orientation}}
                     ]
                 })
 
@@ -198,7 +237,7 @@ router.get("/total", async (req, res, next) => {
     
                     var a = await Candidate.findByPk(candidates[i].id,{
                         include: [
-                            {model: Language}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}, {model: Orientation}
+                            {model: Language}, {model: Senorit}, {model: Contacted}, {model: Technicalskills}, {model: Softskill}, {model: Project_experience}, {model: Orientation}
                         ]
                     })
     

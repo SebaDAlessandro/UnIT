@@ -3,12 +3,7 @@ const {Candidate, Senorit} = require('../db.js');
 
 router.get('/', async(req, res, next) => {
     try {
-        const señority = await Senorit.findAll({
-            include: [
-                {model: Candidate}
-            ]
-        }
-        )
+        const señority = await Senorit.findAll()
         res.json(señority);
     } catch (error) {
         next(error)

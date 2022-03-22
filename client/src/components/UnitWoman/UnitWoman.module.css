@@ -1,0 +1,151 @@
+.contGlobal {
+    min-height: 100vh;
+    min-width: 100%;
+    background-color: #e43371;
+  }
+  
+  .arrow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+  }
+  
+  .title h1 {
+    text-align: left;
+    margin: 0;
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: flex-start;
+    width: 75%;
+    height: 5rem;
+  }
+  
+  .aboutus p {
+    text-align: left;
+    font-size: 30px;
+  }
+  
+  .logo img {
+    width: 8rem;
+  }
+  
+  .contdevs {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  :root {
+    --animate-duration: 10000ms;
+    --animate-delay: 0.9s;
+  }
+  
+  .devs {
+    border-radius: 10px;
+    margin: 0.5rem;
+    width: 8rem;
+    height: 10rem;
+    background-color: gray;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .slider{
+    min-height: 100vh;
+    min-width: 100%;
+    background-color: #EABCA3;
+  }
+  
+  .home {
+    min-height: 100vh;
+    min-width: 100%;
+    background-color: #F28773;
+  }
+  .gridHome{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+  }
+  .textHome{
+    font-size: 60px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: center;
+    width: 100%;
+    max-height: 100%;
+  
+  }
+  .textHome h1{
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+  .imgHome{
+    width: 80%;
+    height: 80%;
+    background-image: url('../images/wescrit.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
+  } 
+  
+  .imgSobrenosotros {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/pfem.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+  }
+  
+  .imgdevs {
+    width: 100%;
+    height: 90%;
+    background-image: url('../images/mtel.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
+  }
+  
+  
+  .botonHome{
+    width: 402px;
+    height: 67px;
+    border-radius: 10px;
+    color: #EABCA3;
+    background-color: #C74874;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  
+  .cont {
+    position: relative;
+    min-height: 100vh;
+    min-width: 100%;
+    background-color: #F28773;
+    color: white;
+  }
+  
+  .cont1 {
+    min-height: 100vh;
+    min-width: 100%;
+    background-color: #F28773;
+  }
+  
+  .dropdown span {
+    font-size: 150px;
+  }

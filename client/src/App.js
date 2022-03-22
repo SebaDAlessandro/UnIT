@@ -16,6 +16,7 @@ import FavCart from './components/FavCart/FavCart';
 import Profile from "./components/Profile/Profile"
 import ArchivosCarpetas from './components/ArchivosCarpetas/ArchivosCarpetas';
 import BusquedaFiltro from './components/BusquedaFiltro/BusquedaFIltro';
+import Uwoman from './components/UnitWoman/UnitWoman';
 function App() {
 
   const [mostrar, setMostrar] = useState(false);
@@ -58,6 +59,8 @@ function App() {
       <Route exact path='/about' element={<About/>}/>
 
       <Route exact path='/profilecandidate' element={<Profile/>}/>
+
+      <Route exact path='/unitwoman' element={<Uwoman/>}/>
 
       <Route exact path='/favorites' element={logeado === false ? <Error/> : <FoldersFavorites/>}/>
 

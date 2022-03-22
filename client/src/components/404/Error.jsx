@@ -7,7 +7,7 @@ export const Error = () => {
     <div>
       <img src={error} alt='Not Found' />
       <Link to='/'>
-      <button>Porque eres tan estresante y intentas entrar a donde no puedes? dale click aquí y ingresa como una persona normal</button>
+      <button>Volver</button>
       </Link>
     </div>
   )

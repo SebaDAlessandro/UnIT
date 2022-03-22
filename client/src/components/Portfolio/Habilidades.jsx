@@ -24,7 +24,7 @@ export default function Habilidades() {
                     <div className={Style.contenidoHbilidades}>
                         {seleccion === 'tecnicas'?
                         <div>
-                        <h2>Tecnicas</h2>
+                        <h2>Técnicas</h2>
                         <div className={Style.contenedorEtiquetas}>
                             <span className={Style.etiquetasMostrar}>react</span>
                             <span className={Style.etiquetasMostrar}>Angular</span>

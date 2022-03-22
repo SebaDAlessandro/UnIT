@@ -20,7 +20,7 @@ const SobreMi = () => {
                 <button>Contacto</button>
             </div>
             <div className={style.contIntro}>
-                <h2>Educacion</h2>
+                <h2>Educación</h2>
                 <div className={style.contEducación}>
                     <div className={style.cajas}>
                         <img src={maleta} alt='Not Found'/>

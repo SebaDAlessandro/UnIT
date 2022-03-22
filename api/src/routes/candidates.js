@@ -19,24 +19,44 @@ router.get('/', async(req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
-    const {name, lastname, email, status, image, password} = req.body;
-
+  
+    const {name, lastname, email, description, status, image, password, linkedin, github, portfolio, cv } = req.body;
+  
     const passwords = await bcryptjs.hash(password, 10);
-
-    try {
-        const candidate = await Candidate.create({
-            name,
-            lastname,
-            email,
-            status,
-            image,
-            password: passwords
-        })
-        res.json({msg: "el candidato se guardo correctamente"})    
-    } catch (error) {
-        res.send(error)
-        
-    }
+    
+      const encontrado = await Candidate.findOne({
+        where:{
+          email:email
+        }
+      })
+      console.log(encontrado)
+      if(encontrado){
+        res.send("El usuario con este mail ya exite")
+      }else{
+            try {
+              const candidate = await Candidate.create({
+                  name,
+                  lastname,
+                  email,
+                  status,
+                  image,
+                  password: passwords,
+                  description,
+                  linkedin,
+                  github,
+                  portfolio,
+                  cv
+      
+              })
+            
+              res.json({msg: "el candidato se guardo correctamente"})    
+          } catch (error) {
+              res.send(error)
+              
+          }
+      
+        }
+    
 })
 
 router.put('/:id', async (req, res, next) => {

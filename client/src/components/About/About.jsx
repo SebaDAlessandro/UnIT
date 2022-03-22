@@ -18,7 +18,7 @@ export default function Slider() {
             <h1>Encuentra tu </h1>
             <h1>Talento ideal</h1>
             <div>
-              <a href='#1' className={style.botonHome}>Nuestro Proposito</a>
+              <a href='#1' className={style.botonHome}>Nuestro Propósito</a>
             </div>
             <div className={style.arrow} >
                     <a className={style.dropdown} href='#1'>
@@ -44,13 +44,12 @@ export default function Slider() {
                     <h1>Proposito</h1>
                   </div>
                   <div className={style.aboutus}>
-                  <p>Queremos lograr que las empresas tengas un acceso mucho mas facil 
-                    a los talentos del mundo IT por medio de una algoritmo super complejo 
-                    el cual ler permitira hacer match con el candidato que ustedes relamente 
-                    quieren, no como LinkedIn que son nuestros hijos, espero les guste bye</p>
+                  <p>Queremos lograr que las empresas tengan un acceso simple 
+                    a los talentos del mundo IT, por medio de un algoritmo super complejo 
+                    que les permitirá hacer match con el candidato que deseen</p>
                   </div>
                   <a className={style.dropdown} href='#2'>
-                  <button className={style.botonHome}>Nuestro Proposito</button>
+                  <button className={style.botonHome}>Nuestro propósito</button>
                   </a>
                   <div className={style.arrow}>
                     <a className={style.dropdown} href='#2'>

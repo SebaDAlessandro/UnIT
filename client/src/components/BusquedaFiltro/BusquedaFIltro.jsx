@@ -116,7 +116,7 @@ export default function BusquedaFiltro() {
                     <h1 className={Style.titulo}>Explora y Conecta</h1>
                     <div className={Style.contInput}>
                         <input type="text" className={Style.inputGeneral} placeholder="Ingrese un nombre o caracteristica" />
-                        <button className={Style.botonBuscar}><span class="material-icons-outlined">search</span></button>
+                        <button className={Style.botonBuscar}><span class="material-icons-outlined">Search</span></button>
                     </div>
                     <div className={Style.contSelec}>
                         <h3>Filtros</h3>
@@ -138,7 +138,7 @@ export default function BusquedaFiltro() {
                             <span className={`material-icons-outlined ${Style.iconoAgregar}`}>
                                 add_circle_outline
                             </span>
-                            <h4>Agregar Tecnologias</h4>
+                            <h4>Agregar Tecnologías</h4>
                             </div>
                             :
                             tecnologias.map(e =>

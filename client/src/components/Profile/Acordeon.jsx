@@ -18,7 +18,7 @@ export default function SimpleAccordion() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={style.txacordion}>Habilidades Tecnicas</Typography>
+          <Typography className={style.txacordion}>Habilidades Técnicas</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography className={style.conacordeon}>
@@ -61,7 +61,7 @@ export default function SimpleAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography className={style.conacordeon}>
-            Empatico/a
+            Empático/a
           </Typography>
           <Typography className={style.conacordeon}>
             Puntual
@@ -70,7 +70,7 @@ export default function SimpleAccordion() {
             Autodidacta
           </Typography>
           <Typography className={style.conacordeon}>
-            Critico/a
+            Crítico/a
           </Typography>
           <Typography className={style.conacordeon}>
             Creativo/a
@@ -109,13 +109,13 @@ export default function SimpleAccordion() {
             Mail: {usuario.email} <br/>
           </Typography>
           <Typography className={style.conacordeon}>
-            Linkedin: 
+            LinkedIn: 
           </Typography>
           <Typography className={style.conacordeon}>
             Github: 
           </Typography>
           <Typography className={style.conacordeon}>
-            Numero: 
+            Número: 
           </Typography>
         </AccordionDetails>
       </Accordion>

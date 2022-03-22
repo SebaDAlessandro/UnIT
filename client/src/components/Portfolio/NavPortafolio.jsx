@@ -16,7 +16,7 @@ export default function NavPortafolio(){
                 <div className={Style.linkContainer}>
                     <a href="#hello">Home</a>
                     <a href="#sobremi">Sobre Mi</a>
-                    <a href="#habilidades">Mis Habilidaddes</a>
+                    <a href="#habilidades">Mis Habilidades</a>
                     <a href="#proyectos">Mis Proyectos</a>
                 </div>
             </div>

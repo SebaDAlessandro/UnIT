@@ -6,7 +6,7 @@ export const Hello = () => {
     <div id='hello' className={style.contHello}>
         <div className={style.titleHello}>
             <div>
-                <h1>Hola soy Alvaro!</h1>
+                <h1>Hola, soy Alvaro</h1>
             </div>
             <div>
             <button className={style.download}>Descargar CV</button>

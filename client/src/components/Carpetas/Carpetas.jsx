@@ -48,7 +48,7 @@ const Carpetas = () => {
     <div className={styles.containerFolder}>
 
     <div className={styles.contTitle}>
-      <h1>Tus carpetas.</h1>
+      <h1>Tus carpetas</h1>
     </div>  
 
       <form  className={styles.contForm} onSubmit={handleSumbit}>

@@ -23,7 +23,7 @@ export default function Profile() {
       </div>
       <div className={style.container2}>
         <div className={style.conttitulo}>
-          <h3 className={style.title}>Mi Perfil:</h3>
+          <h3 className={style.title}>Mi Perfil</h3>
         </div>
         <div className={style.contenido}>
           <div className={style.cont1}>

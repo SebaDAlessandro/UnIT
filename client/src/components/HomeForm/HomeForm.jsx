@@ -10,7 +10,7 @@ const HomeForm = (e) => {
 
             <div className={styles.titler}>
             <Link to='/formr'>
-                <h1>Recluiter</h1>
+                <h1>Recruiter</h1>
             </Link>
             </div>
 

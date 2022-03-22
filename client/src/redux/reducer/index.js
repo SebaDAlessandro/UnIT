@@ -9,7 +9,7 @@ import {
     GET_FOLDERS, 
     DELETE_FAVORITE,
     GET_FOLDER_FAVORITES
- } from '../actions/index'
+} from '../actions/index';
 
 const inicialState = { 
     candidates: [], 

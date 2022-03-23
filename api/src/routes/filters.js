@@ -146,7 +146,7 @@ router.get("/total", async (req, res, next) => {
         }
 
 
-        if(language && candidates){
+        if(language.length > 0 && candidates){
             let aux = [];
             for(let i=0; i<candidates.length; i++){
 
@@ -168,7 +168,7 @@ router.get("/total", async (req, res, next) => {
              console.log(candidates)
         }
 
-        if(tskill && candidates){
+        if(tskill.length > 0 && candidates){
             let aux = [];
             for(let i=0; i<candidates.length; i++){
 
@@ -190,7 +190,7 @@ router.get("/total", async (req, res, next) => {
         }
 
 
-        if(sskill && candidates){
+        if(sskill.length > 0 && candidates){
             let aux = [];
             for(let i=0; i<candidates.length; i++){
 

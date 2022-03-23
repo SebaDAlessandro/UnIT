@@ -14,7 +14,8 @@ import {
     GET_SENIORITY,
     GET_SOFT,
     GET_TECH,
-    GET_LOCATIONS
+    GET_LOCATIONS,
+    GET_CANDIDATE
 } from '../actions/index';
 
 const inicialState = { 
@@ -27,6 +28,7 @@ const inicialState = {
     mostrarf: [],
     logeado: false, 
     eliminado: [],
+    candidato: [],
     archivos: [], 
     
     locations: [],
@@ -40,6 +42,12 @@ const inicialState = {
 
 const rootReducer = (state = inicialState, action) => {
     switch (action.type) {
+
+        case GET_CANDIDATE:
+            return {
+                ...state,
+                candidato: action.payload
+            }
 
         case GET_ALL_CANDIDATES:
             return {

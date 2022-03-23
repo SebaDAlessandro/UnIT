@@ -110,18 +110,21 @@ router.get("/login", async (req, res, next) => {
 //VERIFICAR SI EXISTE EL MAIL, TANTO EN LA TABLA DE CANDIDATOS COMO EN LA DE RECRUITER
 router.post("/loginrecruiter", async (req, res) => {
     // TODO: >> http://localhost:3001/cuentarecruiter/loginrecruiter <<
+
     const { email, password } = req.body
+
+    console.log(email, password, "Email, Password")
 
     const userToken = {
         email,
         password
     }
     const token = jwt.sign(userToken, SECRET, { expiresIn: "1h" })
-  
+    const recruiter = await Recruiter.findOne({ where: { email: email }, })
+    const candidate = await Candidate.findOne({ where: { email: email }, })
+
     try {
-            const recruiter = await Recruiter.findOne({ where: { email: email }, })
-            const candidate = await Candidate.findOne({ where: { email: email }, })
-            if (recruiter !=0 ) {
+            if (recruiter) {
                 const passwords = await bcryptjs.compare(password, recruiter.password)
                 if (passwords) {
                     const data = {
@@ -134,17 +137,26 @@ router.post("/loginrecruiter", async (req, res) => {
                 } else {
                     res.send("Ingrese datos validos")
                 }
-            } else if (candidate !=0) {
-                const passwordValidated = await bcryptjs.compare(password, Candidate.password)
+
+            } else { 
+                console.log(email, password, "Email, Password 2")
+                const passwordValidated = await bcryptjs.compare(password, candidate.password)
                 if (passwordValidated) {
-                    res.send(Candidate)
+                    const dataCandidate = {
+                        id: candidate.id,
+                        email: candidate.email,
+                        image: candidate.image,
+                        token
+                    }
+                    res.send(dataCandidate)
                 } else {
-                    res.send("Ingrese datos validos")
+                    res.send(error.message)
                 }
             }      
     }
+
     catch (error) {
-        res.json({msg: "Ups...!!!existe un error"})
+        res.send('No se encontro el usuario')
     }
   })
 

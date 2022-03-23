@@ -17,18 +17,19 @@
   margin-top: 1rem;
   padding: 1rem;
   min-width: 60%;
-  background-color:#C74874;
-  color: #EABCA3;
+  background-color:#08B783;
+  color: #17262A;
   font-weight: bold;
 }
+
 .btn_claro{
   border-radius: 10px;
   font-size: 20px;
   margin-top: 1rem;
   padding: 1rem;
   min-width: 60%;
-  background-color:#EABCA3;
-  color: #C74874;
+  background-color:#17262A;
+  color: #08B783;
   font-weight: bold;
 }
 
@@ -38,7 +39,7 @@ a {
 
 .recluiter {
   height: 100%;
-  background-color: #EABCA3;
+  background-color: #17262A;
 }
 
 .recluiter .contImgr:hover {
@@ -52,13 +53,9 @@ a {
 
 /* Aquí va el diseño de el titulo del recluta */
 
-.titler {
-  font-size: 50px;
-  color: #C74874;
-}
-
 .titler a {
-  color: #C74874;
+  font-size: 50px;
+  color: #08B783;
 }
 
 .contImgr {
@@ -68,17 +65,15 @@ a {
   background-repeat: no-repeat;
   background-position: center center;
   transition: 0.5s all ease-in-out;
-  filter: drop-shadow(0 2px 40px #8a8a8a);
+  filter: drop-shadow(0 2px 40px #101c1f);
 }
 
 /* Aquí va el diseño de el titulo del candidato */
 
-.titlec {
-  font-size: 50px;
-}
 
 .titlec a {
-  color: #C74874;
+  font-size: 50px;
+  color: #17262A;
 }
 
 .contImgc {
@@ -86,9 +81,9 @@ a {
   background-image: url('../images/candidato.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 60%;
+  background-size: 58%;
   transition: 0.5s all ease-in-out;
-  filter: drop-shadow(0 2px 40px #8a8a8a);
+  filter: drop-shadow(0 2px 20px #101c1f9b);
 }
 .candidate .contImgc:hover {
   transform: scale(0.9);

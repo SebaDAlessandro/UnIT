@@ -20,14 +20,12 @@ const loading = useSelector(state => state.loading)
 const usuario = useSelector(state => state.usuario)
 const dispatch = useDispatch()
 
-console.log(favorites)
-
-const id = JSON.parse(localStorage.getItem('id')) 
+/* const id = JSON.parse(localStorage.getItem('id'))  */
 
 useEffect(() => {
   if (bandera === 0){
     dispatch(getFavorites(usuario.id));
-    console.log(id, "Este es el LocalStorage")
+    console.log("Este es el LocalStorage")
     setTimeout( () => {setBandera(1)}, 100)
   }
 }, [favorites])

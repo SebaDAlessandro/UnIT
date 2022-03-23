@@ -1,20 +1,38 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Profile.module.css";
 import Skills from "./Skills";
 import portada from "../images/porta.png";
 import img from '../images/LogoNav.png'
 import 'boxicons'
 import Acordeon from "./Acordeon";
-import {useSelector} from "react-redux"
+import { useSelector, useDispatch  } from "react-redux"
 import NavCandidato from "../NavCandidato/NavCandidato"
+import Habilidades from "../Portfolio/Habilidades";
+import { Link } from "react-router-dom";
+import { getCandidate } from "../../redux/actions";
 
 export default function Profile() {
-  const usuario = useSelector((estate)=> estate.usuario)
+
+  const [bandera, setBandera] = useState(0)
+
+  /* Estados redux */
+
+  const usuario = useSelector( state => state.usuario)
+  const candidato = useSelector( state => state.candidato)
+  console.log(candidato, 'Info cnadidato')
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (bandera === 0){
+      dispatch(getCandidate(usuario.id));
+      setTimeout( () => {setBandera(1)}, 100)
+    }
+  })
+
   return (
     <div className={style.container}>
-      <div className={style.nav}>
-          <NavCandidato/>
-      </div>
+      <NavCandidato/>
       <div className={style.contporta}>
         <div className={style.circulo}>
           <img src={img} className={style.unit} />
@@ -56,7 +74,9 @@ export default function Profile() {
                   <button className={style.btn}>Editar Perfil</button>
                 </li>
                 <li className={style.botonLista}>
+                  <Link to='/portfolio'>
                   <button className={style.btn}>Ver Portafolio</button>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -67,9 +87,9 @@ export default function Profile() {
             </div>
           </div>
         </div>
-        {/* <div>
-          <Skills />
-        </div>  */}
+         <div>
+          <Habilidades/>
+        </div>  
       </div>
     </div>
   );

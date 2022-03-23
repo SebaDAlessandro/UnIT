@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #C74874;
+    color: #17262A;
 }
 
 .contGlobal {
@@ -110,14 +110,14 @@
     font-size: 20px;
     margin-top: 1rem;
     padding: 1rem;
-    color:#C74874;
+    color: white;
     min-width: 57%;
-    background-color: #EABCA3;
+    background-color: #17262A;
     font-weight: bold;
 }
 
 .home {
     position: absolute;
-    top: 6%;
+    top: 3%;
     right: 16%;
 }

@@ -1,18 +1,23 @@
 import React from 'react'
 import style from '../LogIn/LogIn.module.css'
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Login } from '../../redux/actions'
 import { Link } from 'react-router-dom'
 import 'animate.css';
 
 const LogIn = () => {
 
+    const [logeado, setLogeado] = useState(false)
+
     const [state, setState] = useState({
         email: '',
         password: ''
     })
+
+    const usuarios = useSelector(state => state.usuario)
+    console.log(usuarios, 'Prueba')
 
     const dispatch = useDispatch();
     const history = useNavigate();
@@ -23,9 +28,21 @@ const LogIn = () => {
 
     const handleSumbit = (e) => {
         e.preventDefault();
+        setLogeado(true)
         dispatch(Login(state)); 
-        history('/homerecluiter')
       }
+
+    useEffect(() => {
+        if (logeado === true && usuarios !== []){
+            if(typeof usuarios.id === 'string'){
+                history('/profilecandidate')
+            } else {
+                history('/homerecluiter')
+            }
+            /* console.log('Alguien se logeo', usuarios.id) */
+            setLogeado(false)
+        }
+    }, [usuarios]) 
 
     return (
         <div className={style.global_cont}>

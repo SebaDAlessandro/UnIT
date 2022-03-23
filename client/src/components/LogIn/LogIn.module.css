@@ -44,6 +44,24 @@
     justify-content: center;
 }
 
+/* Animaciónes texto */
+
+.conectah1 {
+    animation-name: Conecta;
+    animation-duration: 0.8s;
+}
+
+@keyframes Conecta {
+    0% {
+        opacity: 20%;
+        transform: translateX(-200px);
+    }
+    100% {
+        opacity: 100%;
+       /*  transform: translateX(5%); */
+    }
+}
+
 .cohete{
     z-index: 80;
     position: absolute;

@@ -248,10 +248,7 @@ export const getIdiomas = () => async dispatch => {
         payload: json.data
     })}
     catch(error){
-        dispatch({
-            type: GET_IDIOMAS,
-            payload: ["No hay idiomas"]
-        })
+        console.log(error)
     }
 }
 
@@ -263,12 +260,7 @@ export const getLocations = () => async dispatch => {
             payload: json.data
         })
     } catch (error) {
-        dispatch({
-            type: GET_LOCATIONS,
-            payload: "No se pudo obtener la informacion"
-
-        }
-        )
+        console.log(error)
     }
 }
 
@@ -281,12 +273,7 @@ export const getGeneros = () => async dispatch => {
             payload: json.data
         })
     } catch (error) {
-        dispatch({
-            type: GET_GENEROS,
-            payload: "No se pudo obtener la informacion"
-
-        }
-        )
+        console.log(error)
     }
 
 
@@ -299,12 +286,7 @@ export const getSoft = () => async dispatch => {
             payload: json.data
         })
     } catch (error) {
-        dispatch({
-            type: GET_SOFT,
-            payload: "No se pudo obtener la informacion"
-
-        }
-        )
+        console.log(error)
     }
 }
 
@@ -320,12 +302,7 @@ export const getTech = () => async dispatch => {
         payload: json.data
     })
     } catch (error) {
-        dispatch({
-            type: GET_TECH,
-            payload: "No se pudo obtener la informacion"
-
-        }
-        )
+        console.log(error)
     }
 
 }
@@ -337,12 +314,7 @@ export const getSeniority = () => async dispatch => {
         payload: json.data
     })
     } catch (error) {
-        dispatch({
-            type: GET_SENIORITY,
-            payload: "No se pudo obtener la informacion"
-
-        }
-        )
+        console.log(error)
     }
 }
 

@@ -8,7 +8,13 @@ import {
     FILTRO_FAVORITES, 
     GET_FOLDERS, 
     DELETE_FAVORITE,
-    GET_FOLDER_FAVORITES
+    GET_FOLDER_FAVORITES,
+    GET_GENEROS,
+    GET_IDIOMAS,
+    GET_SENIORITY,
+    GET_SOFT,
+    GET_TECH,
+    GET_LOCATIONS
 } from '../actions/index';
 
 const inicialState = { 
@@ -22,6 +28,14 @@ const inicialState = {
     logeado: false, 
     eliminado: [],
     archivos: [], 
+    
+    locations: [],
+    soft: [],
+    tech: [],
+    seniority: [],
+    generos: [],
+    idiomas: [],
+    
 };
 
 const rootReducer = (state = inicialState, action) => {
@@ -97,6 +111,38 @@ const rootReducer = (state = inicialState, action) => {
                 ...state,
                 archivos: action.payload
             } 
+        
+
+        case GET_GENEROS:
+            return {
+                ...state,
+                generos: action.payload
+            }
+        case GET_IDIOMAS:
+            return {
+                ...state,
+                idiomas: action.payload
+            }
+        case GET_SENIORITY:
+            return {
+                ...state,
+                seniority: action.payload
+            }
+        case GET_SOFT:
+            return {
+                ...state,
+                soft: action.payload
+            }
+        case GET_TECH:
+            return {
+                ...state,
+                tech: action.payload
+            }
+        case GET_LOCATIONS:
+            return {
+                ...state,
+                locations: action.payload
+            }
 
         default:
         return state

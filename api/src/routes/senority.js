@@ -1,14 +1,22 @@
 const router = require('express').Router();
 const {Candidate, Senorit} = require('../db.js');
 
-router.get('/', async(req, res, next) => {
+router.get('/', async (req, res, next) => {
     try {
-        const señority = await Senorit.findAll()
-        res.json(señority);
+        const seniority = await Senorit.findAll();
+        if(seniority.length > 0){
+            console.log('desde la DB')
+            res.json(seniority);
+        }else{
+            console.log('desde el bulk')
+            const seniory = [{senority: "Trainee" }, {senority: "Junior"},{senority:"Junior Plus"}, {senority:"Semi senior"}, {senority:"Senior"}];
+            const senio = await Senorit.bulkCreate(seniory);
+            res.json(senio);
+        }
     } catch (error) {
         next(error)
     }
-})
+});
 
 router.post("/senoryty", async (req, res, next) => {
     const {senorit} = req.body;

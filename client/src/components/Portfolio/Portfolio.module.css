@@ -13,7 +13,9 @@
 }
 
 /* Estilos projects  */
-
+.linkActivo{
+    color: var(--colorLetra) !important;
+}
 .contPorjects {
     display: flex;
     flex-direction: column;

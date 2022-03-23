@@ -50,11 +50,13 @@
     display: none;
     width: 400px;
     height: 400px;
+    max-height: 400px;
     position: absolute;
     box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.904), 0 17px 17px 0 rgba(0, 0, 0, .5);
     background-color: #001E38;
     border-radius: 15px;
     left: 20%;
+    overflow: auto;
     
 
 
@@ -71,17 +73,23 @@
 }
 .contEtiquetas{
     width: 80%;
+    max-width: 80%;
     margin: 5% 10%;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    max-height: 90%;
 }
 .etiquetas{
+    display: flex;
     color:#59CD90;
     font-weight: bold;
     background-color: #005096;
     border-radius: 5px;
-    height: 40px;
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: center;
 }
 .botonesModal{
     display: flex;
@@ -186,8 +194,9 @@
     font-size: 10px;
     background-color: #001E38;
     border-radius: 10px;
-    width: 65px;
+    width: 75px;
     color: #59CD90;
     font-weight: bold;
     margin: 1%;
+    padding: 5px;
 }

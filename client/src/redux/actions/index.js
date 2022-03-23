@@ -15,6 +15,14 @@ export const GET_FOLDER_FAVORITES = 'GET_FOLDER_FAVORITES'
 export const ADD_CANDIDATE = 'ADD_CANDIDATE'
 export const DELETE_FOLDER = 'DELETE_FOLDER'
 export const FILTRO_FAVORITES = 'FILTRO_FAVORITES'
+//PARA FILTROS
+
+export const GET_GENEROS = 'FILTRO_FAVORITES'
+export const GET_IDIOMAS = 'GET_IDIOMAS'
+export const GET_SENIORITY = 'GET_SENIORITY'
+export const GET_LOCATIONS = 'GET_LOCATIONS'
+export const GET_SOFT = 'GET_SOFT'
+export const GET_TECH = 'GET_TECH'
 
 export const CreateCandidate = (create) => async () => {
 
@@ -197,6 +205,72 @@ export const filtrarBuscados = (info) => async dispatch => {
         payload: info
     })
 }
+
+
+
+/// GET PARA FILTROSS
+
+export const getIdiomas = () => async dispatch => {
+    let json = await axios.get('/language')
+    dispatch({
+        type: GET_IDIOMAS,
+        payload: json.data
+    })
+    
+    console.log(json.data)
+}
+export const getLocations = () => async dispatch => {
+    let json = await axios.get('/location')
+    dispatch({
+        type: GET_LOCATIONS,
+        payload: json.data
+    })
+    
+    console.log(json.data)
+}
+export const getGeneros = () => async dispatch => {
+    let json = await axios.get('/gender')
+    dispatch({
+        type: GET_GENEROS,
+        payload: json.data
+    })
+    
+    console.log(json.data)
+}
+export const getSoft = () => async dispatch => {
+    let json = await axios.get('/softskill')
+    dispatch({
+        type: GET_SOFT,
+        payload: json.data
+    })
+    
+    console.log(json.data)
+}
+export const getTech = () => async dispatch => {
+    let json = await axios.get('/technicalskill')
+    dispatch({
+        type: GET_TECH,
+        payload: json.data
+    })
+    
+    console.log(json.data)
+}
+export const getSeniority = () => async dispatch => {
+    let json = await axios.get('/senority')
+    dispatch({
+        type: GET_SENIORITY,
+        payload: json.data
+    })
+    
+    console.log(json.data)
+}
+
+
+
+
+
+
+
 
 
     /* export function getFavorites (id) {   

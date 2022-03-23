@@ -52,11 +52,7 @@ router.post("/:idCandidate", async (req, res, next) => {
 
 router.get('/', async (req, res, next) => {
     try {
-        const softskills = await Softskill.findAll({
-            include: [
-                {model: Candidate}
-            ]
-        })
+        const softskills = await Softskill.findAll();
         res.json(softskills);
     } catch (error) {
         next(error)

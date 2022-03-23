@@ -71,11 +71,7 @@ router.post('/:candidate', async (req, res, next) => {
 
 router.get('/', async (req, res, next) => {
     try {
-        const technicalskills = await Technicalskills.findAll({
-            include: [
-                {model: Candidate}
-            ]
-        })
+        const technicalskills = await Technicalskills.findAll();
         res.json(technicalskills);
     } catch (error) {
         next(error)

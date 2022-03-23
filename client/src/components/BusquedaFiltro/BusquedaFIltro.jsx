@@ -1,85 +1,41 @@
 import React, { useState } from "react";
 import Style from "./BusquedaFiltro.module.css";
-
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getGeneros, getSoft, getTech, getSeniority , getLocations, getIdiomas } from "../../redux/actions";
 export default function BusquedaFiltro() {
-    const tec = [
-        {
-            name:'React'
-        },
-        {
-            name:'Angular'
-        },
-        {
-            name:'Vue'
-        },
-        {
-            name:'Node'
-        },
-    ]
-
-    const idi = [
-        {
-            name:'Ingles'
-        },
-        {
-            name:'Aleman'
-        },
-        {
-            name:'Portugues'
-        },
-        {
-            name:'Frances'
-        },
-    ]
-   
-    const soft = [
-        {
-            name:'lindo'
-        },
-        {
-            name:'alegre'
-        },
-        {
-            name:'audaz'
-        },
-        {
-            name:'creativo'
-        },
-        {
-            name:'aasdasd'
-        },
-        {
-            name:'asdasd'
-        },
-        {
-            name:'asadsd'
-        },
-        {
-            name:'kjbkjasd'
-        },
-        {
-            name:'dfgdfgd'
-        },
-        {
-            name:'dfgdfgg'
-        },
-        {
-            name:'dfgdfg'
-        },
-        {
-            name:'dfgdfgdf'
-        },
-        {
-            name:'dfgdfgdf'
-        },
-        {
-            name:'werwref'
-        },
-    ]
 
 
 
+    const generos = useSelector(state => state.generos);
+    const softState = useSelector(state => state.soft);
+    const tech = useSelector(state => state.tech);
+    const seniority = useSelector(state => state.seniority);
+    const locations = useSelector(state => state.locations);
+    const idiomasState = useSelector(state => state.idiomas);
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (generos.length === 0) {
+            dispatch(getGeneros());
+        }
+        if (softState.length === 0) {
+            dispatch(getSoft());
+        }
+        if (tech.length === 0) {
+            dispatch(getTech());
+        }
+        if (seniority.length === 0) {
+            dispatch(getSeniority());
+        }
+        if (locations.length === 0) {
+            dispatch(getLocations());
+        }
+        if (idiomasState.length === 0) {
+            dispatch(getIdiomas());
+        }
+    }, [idiomasState, generos, softState, tech, seniority, locations]);
     
     const [idiomas, setIdiomas] = useState([]);
     const [tecnologias, setTecnologias] = useState([]);
@@ -123,10 +79,17 @@ export default function BusquedaFiltro() {
 
                         <select name="Ubicacion" className={Style.select} id="">
                             <option value="value1">Ubicaciones</option>
+                            {locations.map(l => (
+                                <option value={l.id}>{l.location}</option>
+                            ))}
+
                         </select>
 
                         <select name="Seniority" className={Style.select} >
-                            <option value="value1">Seniority</option>
+                            <option defaultChecked value="">Seniority</option>
+                            {seniority.map(s => (
+                                <option value={s.id}>{s.senority}</option>
+                            ))}
                         </select>
                     </div>
                     <div className={Style.contenedorBotones}>
@@ -151,8 +114,8 @@ export default function BusquedaFiltro() {
                         <div className={Style.modal} id="tecnologias">
                             <button onClick={()=>{abrirModal('tecnologias')}} className={Style.cerrarModal}>x</button>
                             <div className={Style.contEtiquetas}> 
-                                {tec.map(e=> (
-                                    <span id={e.name} onClick={()=>agregarSeleccion(e.name, 'tecnologias')} className={Style.etiquetas}>{e.name}</span>
+                                {tech?.map(e=> (
+                                    <span id={e.technicalskills} onClick={()=>agregarSeleccion(e.technicalskills, 'tecnologias')} className={Style.etiquetas}>{e.technicalskills}</span>
                                 ))
 
                                 }
@@ -178,8 +141,8 @@ export default function BusquedaFiltro() {
                         <div className={Style.modal} id="idiomas">
                             <button onClick={()=>{abrirModal('idiomas')}} className={Style.cerrarModal}>x</button>
                             <div className={Style.contEtiquetas}> 
-                                {idi.map(e=> (
-                                    <span id={e.name} onClick={()=>agregarSeleccion(e.name, 'idiomas')} className={Style.etiquetas}>{e.name}</span>
+                                {idiomasState?.map(e=> (
+                                    <span id={e.language} onClick={()=>agregarSeleccion(e.language, 'idiomas')} className={Style.etiquetas}>{e.language}</span>
                                 ))
 
                                 }
@@ -204,8 +167,8 @@ export default function BusquedaFiltro() {
                         <div className={Style.modal} id="soft">
                         <button onClick={()=>{abrirModal('soft')}} className={Style.cerrarModal}>x</button>
                             <div className={Style.contEtiquetas}> 
-                                {soft.map(e=> (
-                                    <span id={e.name} onClick={()=>agregarSeleccion(e.name, 'softkills')} className={Style.etiquetas}>{e.name}</span>
+                                {softState?.map(e=> (
+                                    <span id={e.soft_skill} onClick={()=>agregarSeleccion(e.soft_skill, 'softkills')} className={Style.etiquetas}>{e.soft_skill}</span>
                                 ))
 
                                 }

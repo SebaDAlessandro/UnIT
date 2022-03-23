@@ -150,13 +150,14 @@ router.post("/loginrecruiter", async (req, res) => {
                     }
                     res.send(dataCandidate)
                 } else {
-                    res.send(error.message)
+                    
+                    res.send('password incorrecto')
                 }
             }      
     }
 
     catch (error) {
-        res.send('No se encontro el usuario')
+        res.send(error.message)
     }
   })
 

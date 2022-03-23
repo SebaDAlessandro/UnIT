@@ -49,7 +49,7 @@ const {Candidate, Language, Contacted, Technicalskills, Project_experience, Soft
 }) */
 
 
-router.get("/total", async (req, res, next) => {
+router.post("/total", async (req, res, next) => {
 
     // language, tskill, sskill son arrays [ ] <---- 
 

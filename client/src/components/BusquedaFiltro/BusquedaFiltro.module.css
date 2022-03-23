@@ -2,7 +2,7 @@
     width: 80%;
     display: block;
     margin: 0 auto;
-    margin-top: 5%;
+    margin-top: 10%;
 }
 .gridFiltros{
     display: grid;
@@ -199,4 +199,9 @@
     font-weight: bold;
     margin: 1%;
     padding: 5px;
+}
+.gridFiltrados{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-top: 10%;
 }

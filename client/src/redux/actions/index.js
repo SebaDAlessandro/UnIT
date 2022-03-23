@@ -19,12 +19,14 @@ export const GET_CANDIDATE = 'GET_CANDIDATE'
 
 //PARA FILTROS
 
-export const GET_GENEROS = 'FILTRO_FAVORITES'
+export const GET_GENEROS = 'GET_GENEROS'
 export const GET_IDIOMAS = 'GET_IDIOMAS'
 export const GET_SENIORITY = 'GET_SENIORITY'
 export const GET_LOCATIONS = 'GET_LOCATIONS'
 export const GET_SOFT = 'GET_SOFT'
 export const GET_TECH = 'GET_TECH'
+export const FILTERS_TOTAL = 'FILTERS_TOTAL'
+
 
 export const CreateCandidate = (create) => async () => {
 
@@ -36,16 +38,17 @@ export const CreateCandidate = (create) => async () => {
 
 }
 
-export function getCandidate (id) {   
-    console.log("Id candidato");  
+export function getCandidate(id) {
+    console.log("Id candidato");
     return async function (dispatch) {
-        dispatch({ type: LOADING, payload: 'Buscando candidato...' }) 
+        dispatch({ type: LOADING, payload: 'Buscando candidato...' })
         var json = await axios.get(`/candidates/${id}`)
-        return dispatch({         
-            type: GET_CANDIDATE,         
-            payload: json.data,       
-        });   
-    }  }    
+        return dispatch({
+            type: GET_CANDIDATE,
+            payload: json.data,
+        });
+    }
+}
 
 export const CreateRecluiter = (create) => async () => {
 
@@ -78,13 +81,13 @@ export function addFavorite(payload) {
 }
 
 export const deleteFavorite = (recruiterId) => async dispatch => {
-    
+
     console.log(recruiterId, "Favorito por eliminar")
-    
+
     const res = await axios.post(`/favorites/candidate/`, recruiterId)
 
     console.log(res.data, "Esto es el Res")
-    
+
     return dispatch({
         type: DELETE_FAVORITE,
         payload: res.data
@@ -92,90 +95,92 @@ export const deleteFavorite = (recruiterId) => async dispatch => {
 
 }
 
-export function getFavorites (id) {   
-    console.log("Id ususarios");  
+export function getFavorites(id) {
+    console.log("Id ususarios");
     return async function (dispatch) {
-        dispatch({ type: LOADING, payload: 'Buscando Favoritos...' }) 
+        dispatch({ type: LOADING, payload: 'Buscando Favoritos...' })
         var json = await axios.get(`/favorites/${id}`)
-        return dispatch({         
-            type: GET_FAVORITES,         
-            payload: json.data,       
-        });   
-    }  }
+        return dispatch({
+            type: GET_FAVORITES,
+            payload: json.data,
+        });
+    }
+}
 
-export function getFolders (id) {   
-        /* console.log("Id ususarios");  */ 
-        return async function (dispatch) {
-            dispatch({ type: LOADING, payload: 'Buscando Carpetas...' }) 
-            var json = await axios.get(`/folders/recruiter/${id}`)
-            return dispatch({         
-                type: GET_FOLDERS,
-                payload: json.data,      
-            });   
-        }  }
+export function getFolders(id) {
+    /* console.log("Id ususarios");  */
+    return async function (dispatch) {
+        dispatch({ type: LOADING, payload: 'Buscando Carpetas...' })
+        var json = await axios.get(`/folders/recruiter/${id}`)
+        return dispatch({
+            type: GET_FOLDERS,
+            payload: json.data,
+        });
+    }
+}
 
-export function getFolderFavorites (id) {   
-        /* console.log("Id ususarios");  */ 
-        return async function (dispatch) {
-            dispatch({ type: LOADING, payload: 'Buscando Favoritos de la carpeta...' }) 
-            var json = await axios.get(`/folders/${id}`)
-            return dispatch({         
-                type: GET_FOLDER_FAVORITES,
-                payload: json.data,      
-            });   
-        }  
-    }   
-    
-    
+export function getFolderFavorites(id) {
+    /* console.log("Id ususarios");  */
+    return async function (dispatch) {
+        dispatch({ type: LOADING, payload: 'Buscando Favoritos de la carpeta...' })
+        var json = await axios.get(`/folders/${id}`)
+        return dispatch({
+            type: GET_FOLDER_FAVORITES,
+            payload: json.data,
+        });
+    }
+}
+
+
 export const deleteFolder = (idFolder) => async dispatch => {
 
-        console.log(idFolder, "Este es el id de la carpeta para eliminar")
-    
-        const res = await axios.post(`/folders/delete`, idFolder)
-        
-        return dispatch({
-            type: DELETE_FOLDER,
-            payload: res.data
-        })
-     
-    }
+    console.log(idFolder, "Este es el id de la carpeta para eliminar")
 
-export const addCandidateToFolder = ({fId, cId}) => async dispatch => {
+    const res = await axios.post(`/folders/delete`, idFolder)
+
+    return dispatch({
+        type: DELETE_FOLDER,
+        payload: res.data
+    })
+
+}
+
+export const addCandidateToFolder = ({ fId, cId }) => async dispatch => {
 
     console.log(fId, cId, "Estos son los Ids para la ruta")
 
     const res = await axios.post(`/folders/${fId}/candidate/${cId}`, fId, cId)
-    
+
     return dispatch({
         type: ADD_CANDIDATE,
         payload: res.data
     })
- 
+
 }
-        
+
 export const Login = (create) => async dispatch => {
 
     console.log(create)
 
     const res = await axios.post(`/cuentarecruiter/loginrecruiter`, create)
 
-   /*  console.log(res.data.token, "Este es el token") */
-   
+    /*  console.log(res.data.token, "Este es el token") */
+
     localStorage.setItem('id', JSON.stringify(res.data));
-    
+
     return dispatch({
         type: GET_USER,
         payload: res.data
     })
- 
+
 }
 
 export const createFolder = (create) => async dispatch => {
-    
+
     console.log(create, "Carpeta por crear")
-    
+
     const res = await axios.post(`/folders`, create)
-    
+
     return dispatch({
         type: CREATE_FOLDER,
         payload: res.data
@@ -189,14 +194,14 @@ export const getAllCandidates = () => async dispatch => {
         type: GET_ALL_CANDIDATES,
         payload: json.data
     })
-    
+
     console.log(json.data)
 }
 
 export const logout = () => async dispatch => {
-    
+
     localStorage.removeItem('id');
-    
+
     dispatch({
         type: LOGOUT,
         payload: "cerrar sesion"
@@ -204,7 +209,7 @@ export const logout = () => async dispatch => {
 }
 
 export const cambiarlogeo = (info) => async dispatch => {
-    
+
     dispatch({
         type: CAMBIAR_LOGEO,
         payload: info
@@ -212,7 +217,7 @@ export const cambiarlogeo = (info) => async dispatch => {
 }
 
 export const filtrarBuscados = (info) => async dispatch => {
-    
+
     dispatch({
         type: FILTRO_BUSCADOS,
         payload: info
@@ -223,133 +228,125 @@ export const filtrarBuscados = (info) => async dispatch => {
 
 /// GET PARA FILTROSS
 
+
+export const filtersTotal = (payload) => async dispatch => {
+    console.log(payload, "Esto es el filto total")
+    let json = await axios.post('/filters/total',payload)
+    dispatch({
+        type: FILTERS_TOTAL,
+        payload: json.data
+    })
+
+    console.log(json.data)
+}
+
 export const getIdiomas = () => async dispatch => {
+    try{
     let json = await axios.get('/language')
     dispatch({
         type: GET_IDIOMAS,
         payload: json.data
-    })
-    
-    console.log(json.data)
+    })}
+    catch(error){
+        dispatch({
+            type: GET_IDIOMAS,
+            payload: ["No hay idiomas"]
+        })
+    }
 }
+
 export const getLocations = () => async dispatch => {
-    let json = await axios.get('/location')
-    dispatch({
-        type: GET_LOCATIONS,
-        payload: json.data
-    })
-    
-    console.log(json.data)
+    try {
+        let json = await axios.get('/location')
+        dispatch({
+            type: GET_LOCATIONS,
+            payload: json.data
+        })
+    } catch (error) {
+        dispatch({
+            type: GET_LOCATIONS,
+            payload: "No se pudo obtener la informacion"
+
+        }
+        )
+    }
 }
+
+
 export const getGeneros = () => async dispatch => {
-    let json = await axios.get('/gender')
-    dispatch({
-        type: GET_GENEROS,
-        payload: json.data
-    })
-    
-    console.log(json.data)
+    try {
+        let json = await axios.get('/gender')
+        dispatch({
+            type: GET_GENEROS,
+            payload: json.data
+        })
+    } catch (error) {
+        dispatch({
+            type: GET_GENEROS,
+            payload: "No se pudo obtener la informacion"
+
+        }
+        )
+    }
+
+
 }
 export const getSoft = () => async dispatch => {
-    let json = await axios.get('/softskill')
-    dispatch({
-        type: GET_SOFT,
-        payload: json.data
-    })
-    
-    console.log(json.data)
+    try {
+        let json = await axios.get('/softskill')
+        dispatch({
+            type: GET_SOFT,
+            payload: json.data
+        })
+    } catch (error) {
+        dispatch({
+            type: GET_SOFT,
+            payload: "No se pudo obtener la informacion"
+
+        }
+        )
+    }
 }
+
+
+
+
+
 export const getTech = () => async dispatch => {
+    try {
     let json = await axios.get('/technicalskill')
     dispatch({
         type: GET_TECH,
         payload: json.data
     })
-    
-    console.log(json.data)
+    } catch (error) {
+        dispatch({
+            type: GET_TECH,
+            payload: "No se pudo obtener la informacion"
+
+        }
+        )
+    }
+
 }
 export const getSeniority = () => async dispatch => {
+    try {
     let json = await axios.get('/senority')
     dispatch({
         type: GET_SENIORITY,
         payload: json.data
     })
-    
-    console.log(json.data)
+    } catch (error) {
+        dispatch({
+            type: GET_SENIORITY,
+            payload: "No se pudo obtener la informacion"
+
+        }
+        )
+    }
 }
 
 
 
 
 
-
-
-
-
-    /* export function getFavorites (id) {   
-         console.log("Id ususarios");  
-         return function (dispatch) {
-        dispatch({ type: LOADING, payload: 'Buscando Favoritos...' }) 
-        return ( {     
-                try {var json = await axios.get(`http://localhost:3001/favorites/${id}`);        
-                    console.log("Datos para posteo", json.data);   
-                console.log(json.data)      
-                return dispatch({         
-                        type: GET_FAVORITES,         
-                        payload: json.data,       
-                    });     
-    
-                    catch (error) {      
-                    return dispatch({         
-                        type: GET_FAVORITES,         
-                        payload: "No se pudo cargar los favoritos",      
-                    });     
-                    }  
-                
-                })
-            }
-        }}  */
-    
-             
-    
-        /* Mejor formad e hacer las rutas
-    
-    export function loginUser(payload) {   
-        console.log("datos enviados para ac", payload);    
-        return async (dispatch) => {     
-            try {var json = await axios.post(/login/loginUser, payload);        
-                console.log("Datos para posteo", json.data);        
-                return dispatch({         
-                    type: LOGIN_USER,         
-                    payload: json.data,       
-                });     
-            } 
-                catch (error) {      
-                    return dispatch({         
-                        type: LOGIN_USER,         
-                        payload: "400",       
-                    });     
-                }  
-            }; 
-        } */
-
-        /*     export function getFolders(id) {
-                console.log("Obtener carpetas", id);
-                return async (dispatch) => {
-                    try {
-                        var json = await axios.post(`http://localhost:3001/folders/recruiter/${id}`);
-                       
-                        return dispatch({
-                            type: GET_FOLDERS,
-                            payload: json.data,
-                        });
-                    }
-                    catch (error) {
-                        return dispatch({
-                            type: GET_FOLDERS,
-                            payload: "No se pudo obtener las carpetas",
-                        });
-                    }
-                };
-            } */
-        

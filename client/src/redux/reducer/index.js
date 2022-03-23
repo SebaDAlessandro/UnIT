@@ -15,7 +15,8 @@ import {
     GET_SOFT,
     GET_TECH,
     GET_LOCATIONS,
-    GET_CANDIDATE
+    GET_CANDIDATE,
+    FILTERS_TOTAL
 } from '../actions/index';
 
 const inicialState = { 
@@ -37,6 +38,7 @@ const inicialState = {
     seniority: [],
     generos: [],
     idiomas: [],
+    filtrados: []
     
 };
 
@@ -120,7 +122,6 @@ const rootReducer = (state = inicialState, action) => {
                 archivos: action.payload
             } 
         
-
         case GET_GENEROS:
             return {
                 ...state,
@@ -151,6 +152,12 @@ const rootReducer = (state = inicialState, action) => {
                 ...state,
                 locations: action.payload
             }
+        case FILTERS_TOTAL:
+            return {
+                ...state,
+                filtrados: action.payload.candidates
+            }
+
 
         default:
         return state

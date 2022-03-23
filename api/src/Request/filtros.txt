@@ -1,0 +1,10 @@
+{
+    "name":"Nombre del candidate", 
+    "location": "locacion", 
+    "language": ["idioma1", "idioma2"], 
+    "tskill":["tkil1", "tkil2"], 
+    "sskill":["skil1", "skil2"], 
+    "orientation":"posicion Full Stack, BackEnd, FrontEnd", 
+    "senority":"jr, Ssr, Sr", 
+    "gender":"genre"
+}

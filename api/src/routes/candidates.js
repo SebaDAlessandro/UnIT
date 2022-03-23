@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 
-const {Candidate, Language, Contacted, Technicalskills, Project_experience, Softskill, Orientation, Location, Senorit, Gender} = require('../db.js');
+const {Candidate, Language, Contacted, Technicalskills, Project_experience, Softskill, Orientation, Location, Senorit, Gender, Level} = require('../db.js');
 
 
 router.get('/', async(req, res, next) => {
@@ -20,16 +20,19 @@ router.get('/', async(req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   
-    const {name, lastname, email, description, status, image, password, linkedin, github, portfolio, cv, location } = req.body;
-  
+    const {name, lastname, email, description, status, image, password, linkedin, github, portfolio, cv, location, senority, orientation, gender, sskill, tskill, language, level} = req.body;
+   console.log(language, level, "desde el body")
     const passwords = await bcryptjs.hash(password, 10);
     const local = await Location.findOne({where:{location:location}})
-      const encontrado = await Candidate.findOne({
+    const capacidad = await Senorit.findOne({where:{senority:senority}})
+    const orientacion = await Orientation.findOne({where:{name: orientation}})
+    const genero = await Gender.findOne({where:{gender:gender}})
+
+    const encontrado = await Candidate.findOne({
         where:{
           email:email
         }
       })
-      console.log(encontrado)
       if(encontrado){
         res.send("El usuario con este mail ya exite")
       }else{
@@ -48,14 +51,46 @@ router.post('/', async (req, res, next) => {
                   cv
       
               })
-              if(candidate && local){
-                const encontrado = await Candidate.findOne({where:{email:email}})
-                await local.addCandidate(encontrado)
-                res.json({msg: "el candidato se guardo correctamente + location"})    
-              }
-              res.json({msg: "el candidato se guardo correctamente"})    
 
-            
+              if(local || senority || orientation || gender|| sskill || tskill || language){
+                const encontrado = await Candidate.findOne({where:{email:email}})
+              
+                if(local){
+                  await local.addCandidate(encontrado)
+                }
+
+                if(senority){
+                  await capacidad.addCandidate(encontrado)
+                }
+
+                if(orientacion){
+                  await orientacion.addCandidate(encontrado)
+                }
+
+                if(genero){
+                  await genero.addCandidate(encontrado)
+                }
+
+                if(sskill){
+                  const skill = await Softskill.findAll({where:{soft_skill:sskill}})
+                  // console.log(skill, "desde el if de skill")
+                  await encontrado.addSoftskill(skill)
+                }
+
+                if(tskill){
+                  const tkill = await Technicalskills.findAll({where:{technicalskills:tskill}})
+                  await encontrado.addTechnicalskills(tkill)
+                }
+
+                if(language){
+                  for(let i = 0; i < language.length; i++){
+                    const lenguaje = await Language.findOne({where:{language:language[i]}})
+                    await encontrado.addLanguage(lenguaje, {through: {level: level[i]}})
+                  }
+                }
+                res.json({"msg": "Se relaciono el candidato correctamente"})
+              } 
+              res.json({msg: "el candidato se guardo correctamente"})
           } catch (error) {
               res.send(error)
               
@@ -112,6 +147,7 @@ router.put('/:id', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
     const { id } = req.params;
+    console.log(id, "desde el id")
       
       try{
         if(id){

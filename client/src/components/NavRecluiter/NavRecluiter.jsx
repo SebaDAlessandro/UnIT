@@ -26,7 +26,7 @@ const NavRecluiter = () => {
 
       <div className={style.picture}>
           <Link to='/homerecluiter'>
-            <img src={usuario.image} height={50} />
+            <img src={usuario.image} height={65} />
           </Link> 
         </div>
 

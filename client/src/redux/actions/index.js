@@ -15,6 +15,8 @@ export const GET_FOLDER_FAVORITES = 'GET_FOLDER_FAVORITES'
 export const ADD_CANDIDATE = 'ADD_CANDIDATE'
 export const DELETE_FOLDER = 'DELETE_FOLDER'
 export const FILTRO_FAVORITES = 'FILTRO_FAVORITES'
+export const GET_CANDIDATE = 'GET_CANDIDATE'
+
 //PARA FILTROS
 
 export const GET_GENEROS = 'FILTRO_FAVORITES'
@@ -33,6 +35,17 @@ export const CreateCandidate = (create) => async () => {
     console.log(res.data)
 
 }
+
+export function getCandidate (id) {   
+    console.log("Id candidato");  
+    return async function (dispatch) {
+        dispatch({ type: LOADING, payload: 'Buscando candidato...' }) 
+        var json = await axios.get(`/candidates/${id}`)
+        return dispatch({         
+            type: GET_CANDIDATE,         
+            payload: json.data,       
+        });   
+    }  }    
 
 export const CreateRecluiter = (create) => async () => {
 

@@ -24,14 +24,10 @@ function App() {
 
   const [mostrar, setMostrar] = useState(false);
 
-  const history = useNavigate();
   const logeado = useSelector(state => state.logeado)
+  const usuarios = useSelector(state => state.usuario)
   const dispatch = useDispatch();
   const id = JSON.parse(localStorage.getItem('id')) 
-
-  const ingresa = () => {
-    history('/')
-  }
 
   useEffect(() => {
     if (logeado === false && id) {
@@ -48,7 +44,7 @@ function App() {
 
     <Routes>
 
-      <Route path='/' element={<LogIn/>}/>
+      <Route path='/' element={usuarios.length === 0 ?  <LogIn/> : typeof usuarios.id === 'string' ? <Profile/> : <HomeRecluiter/>}/>
       
       <Route path='/prueba' element={<BusquedaFiltro/>}/>
 
@@ -58,7 +54,7 @@ function App() {
 
       <Route exact path='/formc' element={<FormCandidate/>}/>
   
-      <Route exact path='/home' element={logeado === false ? <Error/> : <Home/> }/>
+      <Route exact path='/home' element={usuarios.length === 0 ?  <LogIn/> : typeof usuarios.id === 'number' ? <Home/> : <Error/>}/>
       
       <Route exact path='/about' element={<About/>}/>
 
@@ -66,13 +62,13 @@ function App() {
 
       <Route exact path='/unitwoman' element={<Uwoman/>}/>
 
-      <Route exact path='/favorites' element={logeado === false ? <Error/> : <FoldersFavorites/>}/>
+      <Route exact path='/favorites' element={usuarios.length === 0 ?  <LogIn/> : typeof usuarios.id === 'number' ? <FoldersFavorites/> : <Error/>}/>
 
-      <Route exact path='/homerecluiter' element={ logeado === false ? <Error/> : <HomeRecluiter/>}/>
+      <Route exact path='/homerecluiter' element={usuarios.length === 0 ?  <LogIn/> : typeof usuarios.id === 'number' ? <HomeRecluiter/> : <Error/>}/>
 
       <Route exact path='/folders' element={logeado === false ? <Error/> : <FavCart/>}/>
 
-      <Route exact path='/carpetas/:id' element={logeado === false ? <Error/> : <ArchivosCarpetas/>}/>
+      <Route exact path='/carpetas/:id' element={usuarios.length === 0 ?  <LogIn/> : typeof usuarios.id === 'number' ? <ArchivosCarpetas/> : <Error/>}/>
 
       <Route exact path='/portfolio' element={logeado === false ? <Error/> : <Portfolio/>}/>
 

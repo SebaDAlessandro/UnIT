@@ -20,10 +20,10 @@ router.get('/', async(req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   
-    const {name, lastname, email, description, status, image, password, linkedin, github, portfolio, cv } = req.body;
+    const {name, lastname, email, description, status, image, password, linkedin, github, portfolio, cv, location } = req.body;
   
     const passwords = await bcryptjs.hash(password, 10);
-    
+    const local = await Location.findOne({where:{location:location}})
       const encontrado = await Candidate.findOne({
         where:{
           email:email
@@ -48,8 +48,14 @@ router.post('/', async (req, res, next) => {
                   cv
       
               })
-            
+              if(candidate && local){
+                const encontrado = await Candidate.findOne({where:{email:email}})
+                await local.addCandidate(encontrado)
+                res.json({msg: "el candidato se guardo correctamente + location"})    
+              }
               res.json({msg: "el candidato se guardo correctamente"})    
+
+            
           } catch (error) {
               res.send(error)
               

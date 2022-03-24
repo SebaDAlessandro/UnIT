@@ -16,7 +16,8 @@ import {
     GET_TECH,
     GET_LOCATIONS,
     GET_CANDIDATE,
-    FILTERS_TOTAL
+    FILTERS_TOTAL,
+    GET_NIVEL
 } from '../actions/index';
 
 const inicialState = { 
@@ -31,6 +32,7 @@ const inicialState = {
     eliminado: [],
     candidato: [],
     archivos: [], 
+    niveles: [],
     
     locations: [],
     soft: [],
@@ -44,6 +46,12 @@ const inicialState = {
 
 const rootReducer = (state = inicialState, action) => {
     switch (action.type) {
+
+        case GET_NIVEL:
+            return {
+                ...state,
+                niveles: action.payload
+            }
 
         case GET_CANDIDATE:
             return {

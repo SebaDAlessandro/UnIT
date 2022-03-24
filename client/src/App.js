@@ -15,9 +15,10 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 import FavCart from './components/FavCart/FavCart';
 import Profile from "./components/Profile/Profile"
 import ArchivosCarpetas from './components/ArchivosCarpetas/ArchivosCarpetas';
-import BusquedaFiltro from './components/BusquedaFiltro/BusquedaFIltro';
 import Uwoman from './components/UnitWoman/UnitWoman';
 import Portfolio from './components/Portfolio/Portfolio';
+import BusquedaFiltro from './components/BusquedaFiltro/BusquedaFIltro';
+import DetailCandidato from './components/DetailCandidato/DetailCandidato'
 
 
 function App() {
@@ -54,7 +55,7 @@ function App() {
 
       <Route exact path='/formc' element={<FormCandidate/>}/>
   
-      <Route exact path='/home' element={usuarios.length === 0 ?  <LogIn/> : typeof usuarios.id === 'number' ? <Home/> : <Error/>}/>
+      <Route exact path='/home' element={usuarios.length === 0 ?  <LogIn/> : typeof usuarios.id === 'number' ? <BusquedaFiltro/> : <Error/>}/>
       
       <Route exact path='/about' element={<About/>}/>
 
@@ -69,6 +70,8 @@ function App() {
       <Route exact path='/folders' element={logeado === false ? <Error/> : <FavCart/>}/>
 
       <Route exact path='/carpetas/:id' element={usuarios.length === 0 ?  <LogIn/> : typeof usuarios.id === 'number' ? <ArchivosCarpetas/> : <Error/>}/>
+
+      <Route exact path='/perfil/:id' element={usuarios.length === 0 ? <LogIn/> : <DetailCandidato/>}/>
 
       <Route exact path='/portfolio' element={logeado === false ? <Error/> : <Portfolio/>}/>
 

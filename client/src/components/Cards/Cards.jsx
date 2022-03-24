@@ -10,6 +10,8 @@ const Cards = () => {
     let dispatch = useDispatch();
     const candidates = useSelector(state => state.mostrar)
 
+    console.log(candidates, 'Candidatos cards')
+
     useEffect(() => {
         dispatch(getAllCandidates());
     }, [])
@@ -20,11 +22,15 @@ const Cards = () => {
     <div className={styles.container}>
 
         {Array.isArray(candidates)?candidates.map((c) => <Card
-        name={c.name}
-        lastname={c.lastname}
-        location={c.location}
-        id={c.id}
-        image={c.image}
+            id={c.id}
+             name={c.name} 
+             lastname={c.lastname}
+             description={c.description} 
+             image={c.image} 
+             location={c.location} 
+             orientation={c.orientation} 
+             sskill={c.sskill?.map(c => <span>{c}</span>)}
+             tskill={c.tskill?.map(c => <span>{c}</span>)}
         />):
         <h1>hola</h1>
         }

@@ -16,6 +16,7 @@ export const ADD_CANDIDATE = 'ADD_CANDIDATE'
 export const DELETE_FOLDER = 'DELETE_FOLDER'
 export const FILTRO_FAVORITES = 'FILTRO_FAVORITES'
 export const GET_CANDIDATE = 'GET_CANDIDATE'
+export const GET_NIVEL = 'GET_NIVEL'
 
 //PARA FILTROS
 
@@ -222,6 +223,18 @@ export const filtrarBuscados = (info) => async dispatch => {
         type: FILTRO_BUSCADOS,
         payload: info
     })
+}
+
+export const getNivel = () => async dispatch => {
+    try{
+    let json = await axios.get('/nivel')
+    dispatch({
+        type: GET_NIVEL,
+        payload: json.data
+    })}
+    catch(error){
+        console.log(error)
+    }
 }
 
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { CreateCandidate } from '../../redux/actions'
+import { useDispatch, useSelector } from 'react-redux';
+import { CreateCandidate, getLocations, getSoft, getTech, getGeneros, getSeniority, getIdiomas, getNivel } from '../../redux/actions'
 import { Link, useNavigate } from 'react-router-dom';
 import UploadImage from '../UploadImage/UploadImage'
 import '../FormCandidate/FormCandidate.css'
@@ -55,21 +55,61 @@ function guardarArchivo(e) {
 
 /* ----------------------------------------------------- */
 
+const [idioma, setIdioma] = useState({})
+
 const [state, setState] = useState({
-    name: '',
-    lastname: '',
-    email: '',
-    location: '',
+    name: '', 
+    lastname: '', 
+    email: '', 
+    description: '', 
+    status: '', 
+    image: '', 
     password: '',
-    image: '',
-    status: '',
-    soft_skills: [],
-    tecnicalskills: [],
-    github: '',
-    linkedin: '',
+    linkedin: '', 
+    github: '', 
     portfolio: '', 
-    cv: ''
+    cv: '', 
+    location: '', 
+    senority: '', 
+    orientation: '', 
+    gender: '', 
+    sskill: [], 
+    tskill:[], 
+    language: [],
+    level: []
 });
+
+/* Arreglo niveles */
+
+const niveles = [
+    {nivel: 'A0'}, 
+    {nivel:'A1'}, 
+    {nivel:'A2'}, 
+    {nivel:'B1'}, 
+    {nivel:'B2'}, 
+    {nivel:'C1'}, 
+    {nivel:'C2'}, 
+    {nivel:'Native'}
+]
+
+/* Estods redux */
+
+const locations = useSelector(state => state.locations)
+const soft = useSelector(state => state.soft)
+const tech = useSelector(state => state.tech)
+const generos = useSelector(state => state.generos)
+const seniority = useSelector(state => state.seniority)
+const idiomas = useSelector(state => state.idiomas)
+
+useEffect(() => {
+    dispatch(getLocations())
+    dispatch(getSoft())
+    dispatch(getTech())
+    dispatch(getGeneros())
+    dispatch(getSeniority())
+    dispatch(getIdiomas())
+    dispatch(getNivel())
+}, [])
 
 const history = useNavigate();
 
@@ -83,6 +123,7 @@ const handleChange = (e) => {
       [e.target.name]: e.target.value 
     })
   }
+
 
   const handleSumbit = (e) => {
     e.preventDefault();
@@ -103,14 +144,21 @@ const handleChange = (e) => {
   const handleSoftSkills = (e) => {
     setState({
       ...state,
-      soft_skills: state.soft_skills.includes(e.target.value) ? state.soft_skills.filter(el => el !== e.target.value) : state.soft_skills.concat(e.target.value)
+      sskill: state.sskill.includes(e.target.value) ? state.sskill.filter(el => el !== e.target.value) : state.sskill.concat(e.target.value)
   })
   }
 
-  const handleTecnicalSkills = (e) => {
+  const handleIdiomas = (e) => {
+    setState({
+        ...state,
+        language: state.language.includes(e.target.value) ? state.language.filter(el => el !== e.target.value) : state.language.concat(e.target.value)
+    })
+  }
+
+  const handletskill = (e) => {
     setState({
       ...state,
-      tecnicalskills: state.tecnicalskills.includes(e.target.value) ? state.tecnicalskills.filter(el => el !== e.target.value) : state.tecnicalskills.concat(e.target.value)
+      tskill: state.tskill.includes(e.target.value) ? state.tskill.filter(el => el !== e.target.value) : state.tskill.concat(e.target.value)
   })
   }
 
@@ -137,7 +185,7 @@ const handleChange = (e) => {
   }
 
   const HabilidadesNext = () => {
-    if (state.soft_skills.length === 0) {
+    if (state.sskill.length === 0) {
         alert('Las habilidades blandas son obligatorias')
     }
     else {
@@ -218,19 +266,26 @@ const handleChange = (e) => {
                     </div>
 
                     <div className='input_form'>
-                        <input
-                        type='text'
-                        value={state.location}
-                        name='location'
-                        onChange={handleChange}
-                        required
-                        /> 
-                            <label className='lbl_nombre'>
-                                <span className='text_nomb'>
-                                    Ubicación
-                                </span>
-                            </label>
-                    </div> 
+                    <select value={state.location} onChange={handleChange} name='location'>
+                    <option value="value1">Ubicaciones</option>
+                                {
+                                    locations?.map(c => (
+                                        <option key={c.id} value={c.location}>{c.location}</option>
+                                    ))
+                                }
+                    </select>
+                    </div>
+
+                    <div className='input_form'>
+                    <select value={state.gender} onChange={handleChange} name='gender'>
+                    <option value="value1">Genero</option>
+                                {
+                                    generos?.map(c => (
+                                        <option key={c.id} value={c.gender}>{c.gender}</option>
+                                    ))
+                                }
+                    </select>
+                    </div>
 
                     <div className='input_form'>
                      <select
@@ -300,26 +355,11 @@ const handleChange = (e) => {
 
             <div className='contHabilidades'>
 
-                        <div className='check-soft_skills'>
-                            <input id='Compañerismo' value="Compañerismo" type="checkbox" name="soft_skills" onChange={handleSoftSkills}/>
-                            <label htmlFor='Compañerismo'>Compañerismo</label>
-                        </div>
-                        <div className='check-soft_skills'>
-                            <input id='Amable' value="Amable" type="checkbox" name="soft_skills" onChange={handleSoftSkills}/>
-                            <label htmlFor='Amable'>Amable</label>
-                        </div>
-                        <div className='check-soft_skills'>
-                            <input id='Amigable' value="Amigable" type="checkbox" name="soft_skills" onChange={handleSoftSkills}/>
-                            <label htmlFor='Amigable'>Amigable</label>
-                        </div>
-                        <div className='check-soft_skills'>
-                            <input id='Lindo' value="Lindo" type="checkbox" name="soft_skills" onChange={handleSoftSkills}/>
-                            <label htmlFor='Lindo'>Lindo</label>
-                        </div>
-                        <div className='check-soft_skills'>
-                            <input id='Trabajo_Team' value="Trabajo en equipo" type="checkbox" name="soft_skills" onChange={handleSoftSkills}/>
-                            <label htmlFor='Trabajo_Team'>Trabajo en equipo</label>
-                        </div>
+                {soft.map(c => (
+                <div className='check-sskill'>
+                            <input id={c.id} value={c.soft_skill} type="checkbox" name="sskill" onChange={handleSoftSkills}/>
+                            <label htmlFor={c.id}>{c.soft_skill}</label>
+                </div>))}
 
             </div>            
 
@@ -332,26 +372,11 @@ const handleChange = (e) => {
 
             <div className='contHabilidades'>
 
-                        <div className='check-soft_skills'>
-                            <input id='react' value="react" type="checkbox" name="tecnicalskills" onChange={handleTecnicalSkills}/>
-                            <label htmlFor='react'>React</label>
-                        </div>
-                        <div className='check-soft_skills'>
-                            <input id='nodejs' value="nodejs" type="checkbox" name="tecnicalskills" onChange={handleTecnicalSkills}/>
-                            <label htmlFor='nodejs'>NodeJs</label>
-                        </div>
-                        <div className='check-soft_skills'>
-                            <input id='expressjs' value="expressjs" type="checkbox" name="tecnicalskills" onChange={handleTecnicalSkills}/>
-                            <label htmlFor='expressjs'>ExpressJS</label>
-                        </div>
-                        <div className='check-soft_skills'>
-                            <input id='redux' value="redux" type="checkbox" name="tecnicalskills" onChange={handleTecnicalSkills}/>
-                            <label htmlFor='redux'>Redux</label>
-                        </div>
-                        <div className='check-soft_skills'>
-                            <input id='angular' value="angular" type="checkbox" name="tecnicalskills" onChange={handleTecnicalSkills}/>
-                            <label htmlFor='angular'>Angular</label>
-                        </div>
+                {tech.map(c => (
+                <div className='check-sskill'>
+                            <input id={c.technicalskills} value={c.technicalskills} type="checkbox" name="tskill" onChange={handletskill}/>
+                            <label htmlFor={c.technicalskills}>{c.technicalskills}</label>
+                </div>))}
 
             </div>           
 
@@ -443,6 +468,52 @@ const handleChange = (e) => {
 
             </div>
 
+            <div className='input_form'>
+                    <input
+                        type='text'
+                        value={state.orientation}
+                        name='orientation'
+                        onChange={handleChange}
+                        required
+                        /> 
+                        <label className='lbl_nombre'>
+                                    <span className='text_nomb'>
+                                        Area desarrollo
+                                    </span>
+                                </label>
+                    </div>
+
+                    <div className='input_form'>
+                    <select value={state.senority} onChange={handleChange} name='senority'>
+                    <option value="value1">Senority</option>
+                                {
+                                    seniority?.map(c => (
+                                        <option key={c.id} value={c.senority}>{c.senority}</option>
+                                    ))
+                                }
+                    </select>
+                    </div>
+
+                   {/*  <div className='input_form'>
+                    <select value={state.language} onChange={((e) => setIdioma(...idioma, [e.target.value] ))} name='language'>
+                    <option value="value1">Idiomas</option>
+                                {
+                                    idiomas?.map(c => (
+                                        <option key={c.id} value={c.language}>{c.language}</option>
+                                    ))
+                                }
+                    </select>
+                    </div> */}
+
+                    <div>
+                    {idiomas.map(c => (
+                    <div className='idiomas'>
+                            <input id={c.language} value={c.language} type="checkbox" name="language" onChange={handleIdiomas}/>
+                            <label htmlFor={c.language}>{c.language}</label>
+                    </div>
+                    ))}
+                    </div>
+
         </div>
 
         <div className={(paso === 3)? 'cont-personal' : 'hidden'}>
@@ -461,10 +532,7 @@ const handleChange = (e) => {
                         type='sumbit' 
                         onClick={handleSumbit}>Crear</button>
                         <span className='btn' onClick={PasoBack}>Anterior</span>
-                   
 
-
-                
 
             </div>
 

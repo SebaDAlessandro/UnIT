@@ -4,6 +4,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getGeneros, getSoft, getTech, getSeniority , getLocations, getIdiomas, filtersTotal } from "../../redux/actions";
 import Card from "../Card/Card";
+import { style } from "@mui/system";
+import NavRecluiter from "../NavRecluiter/NavRecluiter";
+
 export default function BusquedaFiltro() {
 
 
@@ -105,6 +108,12 @@ export default function BusquedaFiltro() {
 
 
     return (
+        <div className={Style.GlobalCont}>
+
+        <div className={Style.contNav}>
+            <NavRecluiter/>
+        </div>
+
         <div className={Style.contenedorGeneral}>
             <div className={Style.gridFiltros}>
                 <div className={Style.contenidoFiltros}>
@@ -234,16 +243,22 @@ export default function BusquedaFiltro() {
             </div>
             <div className={Style.gridFiltrados}>
             {Array.isArray(filtrados)?filtrados.map((c) => <Card
-                name={c.name}
-                lastname={c.lastname}
-                location={c.location}
-                id={c.id}
-                image={c.image}
+                  id={c.id}
+                  name={c.name} 
+                  lastname={c.lastname}
+                  description={c.description} 
+                  image={c.image} 
+                  location={c.location} 
+                  orientation={c.orientation} 
+                  sskill={c.sskill?.map(c => <span>{c}</span>)}
+                  tskill={c.tskill?.map(c => <span>{c}</span>)}
                 />):
                 null
                 
             }
             </div>
+
+        </div>
 
         </div>
 

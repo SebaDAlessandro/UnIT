@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-const {Candidate, Language} = require('../db.js');
+const {Candidate, Language, Nivel} = require('../db.js');
 
 
 router.get("/", async (req, res, next) =>{
@@ -14,7 +14,14 @@ router.get("/", async (req, res, next) =>{
     }
 })
 
-    
+router.get("/nivel", async (req, res, next) => {
+    try {
+        const nivel = await Nivel.findAll()
+        res.json(nivel);
+    } catch (error) {
+        next(error)
+    }
+})  
 
 router.post('/', async (req, res, next) => {
     const { language } = req.body;

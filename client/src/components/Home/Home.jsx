@@ -17,8 +17,7 @@ console.log(favorites, "Favoritos")
 console.log(usuario.id)
 
 useEffect(() => {
-  console.log(usuario.id, "Prueba")
- /*  dispatch(getFavorites(usuario?.id)) */
+  dispatch(getFavorites(usuario.id)) 
 }, [usuario])
 
   return (

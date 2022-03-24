@@ -15,7 +15,7 @@ export default function NavPortafolio(){
     return(
         <div className={Style.center}>
             <div className={Style.navContainer}>
-                <h3 className={Style.nombreNav}>{usuario.name}<span>.</span></h3>
+                <h3 className={Style.nombreNav}>{candidato.name}<span>.</span></h3>
                 <div className={Style.linkContainer}>
                     <a className={ruta.includes('hello') ? Style.linkActivo : null} href="#hello">Home</a>
                     <a className={ruta.includes('sobremi')? Style.linkActivo : null} href="#sobremi">Sobre Mi</a>

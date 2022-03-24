@@ -259,9 +259,12 @@
 
  .contHabilidades {
      display: flex;
+     flex-wrap: wrap;
      justify-content: center;
      align-items: center;
-     height: 8rem;
+     height: 13rem;
+     background-color: #17262A;
+     overflow: auto;
  }
 
  .cont {
@@ -271,4 +274,15 @@
     align-items: center;
     min-height: 100%;
     min-width: 100%;
+ }
+
+ /* Modal niveles */
+
+ .oculto {
+     position: absolute;
+     display: none;
+ }
+
+ .idiomas {
+     position: relative;
  }

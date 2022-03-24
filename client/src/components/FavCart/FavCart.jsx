@@ -68,8 +68,8 @@ const FavCart = () => {
                             <td>{candidato.email}</td>
                             <td>{candidato.location}</td>
                             <td>{candidato.languages}</td>
-                            <td>{candidato.technicalskills.map(e => <li >{e}</li>)}</td>
-                            <td>{candidato.softskills.map(e => <li>{e}</li>)}</td>
+                            {/* <td>{candidato.technicalskills.map(e => <li >{e}</li>)}</td>
+                            <td>{candidato.softskills.map(e => <li>{e}</li>)}</td> */}
                             <td>{candidato.linkedin}</td>
                             <td>{candidato.github}</td>
                             <td>{candidato.portfolio}</td>

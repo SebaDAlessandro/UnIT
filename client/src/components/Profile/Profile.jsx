@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./Profile.module.css";
 import Skills from "./Skills";
-import portada from "../images/porta.png";
+import portada from "../images/torre.png";
 import img from '../images/LogoNav.png'
 import 'boxicons'
 import Acordeon from "./Acordeon";
@@ -9,7 +9,7 @@ import { useSelector, useDispatch  } from "react-redux"
 import NavCandidato from "../NavCandidato/NavCandidato"
 import Habilidades from "../Portfolio/Habilidades";
 import { Link } from "react-router-dom";
-import { getCandidate } from "../../redux/actions";
+import { getCandidate, logout } from "../../redux/actions";
 
 export default function Profile() {
 
@@ -32,7 +32,6 @@ export default function Profile() {
 
   return (
     <div className={style.container}>
-      <NavCandidato/>
       <div className={style.contporta}>
         <div className={style.circulo}>
           <img src={img} className={style.unit} />
@@ -42,6 +41,9 @@ export default function Profile() {
       <div className={style.container2}>
         <div className={style.conttitulo}>
           <h3 className={style.title}>Mi Perfil</h3>
+          <span onClick={() => (dispatch(logout()))} className={'material-icons-outlined'}>
+                      logout
+          </span>
         </div>
         <div className={style.contenido}>
           <div className={style.cont1}>
